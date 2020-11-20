@@ -1,5 +1,5 @@
 [init]
-	defaultBranch = main
+	defaultBranch = master
 [user]
 	name = xuexin.li
 	email = xuexin.li@alo7.com
