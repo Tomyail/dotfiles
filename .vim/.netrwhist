@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/lixuexin'
+let g:netrw_dirhist_2='/Users'
+let g:netrw_dirhist_3='/Users/lixuexin/.yarn'
+let g:netrw_dirhist_4='/Users/lixuexin/Library/Caches/electron'
+let g:netrw_dirhist_5='/Users/lixuexin/Library/Caches'
+let g:netrw_dirhist_6='/Users/lixuexin/.electron'
+let g:netrw_dirhist_7='/usr/local/etc/bash_completion.d'
+let g:netrw_dirhist_8='/Users/lixuexin/.nvm'
+let g:netrw_dirhist_9='/Users/lixuexin/.nvm/versions'
