@@ -92,5 +92,5 @@ unset file;
 
 
 # zsh plugin nvm 
-NVM_LAZY=1
-NVM_AUTOLOAD=1
+export NVM_LAZY=1
+export NVM_AUTOLOAD=1
