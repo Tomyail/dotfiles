@@ -90,3 +90,7 @@ for file in ~/.{path,exports,aliases,functions,extra}; do
 done;
 unset file;
 
+
+# zsh plugin nvm 
+NVM_LAZY=1
+NVM_AUTOLOAD=1
