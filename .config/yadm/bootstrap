@@ -1,4 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
+# todo raw.githubusercontent.com 域名可能被 dns 污染,需要考虑代理模式
 
 # Because Git submodule commands cannot operate without a work tree, they must
 # be run from within $HOME (assuming this is the root of your dotfiles)
@@ -9,6 +11,7 @@ yadm submodule update --recursive --init
 
 
 system_type=$(uname -s)
+
 
 if [ "$system_type" = "Darwin" ]; then
 
@@ -23,4 +26,14 @@ if [ "$system_type" = "Darwin" ]; then
     brew bundle --global
   fi
 
+
 fi
+
+
+# 如果没有 ZSH 环境变量,就认为 oh-my-zsh 没有安装 安装 oh-my-zsh
+if [ ! -z "$ZSH" ]; then
+	echo "安装 oh my zsh..."
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# 安装 nvm
