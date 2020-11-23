@@ -82,3 +82,10 @@ brew  'gnupg'
 brew  'vim', args: ['with-override-system-vi']
 brew  'grep'
 brew  'openssh'
+
+
+# 各种小工具
+
+# 磁盘空间查看工具
+
+brew 'ncdu'
