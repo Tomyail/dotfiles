@@ -94,3 +94,6 @@ unset file;
 # zsh plugin nvm 
 export NVM_LAZY=1
 export NVM_AUTOLOAD=1
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
