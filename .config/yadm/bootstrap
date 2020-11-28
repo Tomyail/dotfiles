@@ -26,17 +26,28 @@ if [ "$system_type" = "Darwin" ]; then
     brew bundle --global
   fi
 
-
 fi
 
+# zsh 设置
 
 # 如果没有 ZSH 环境变量,就认为 oh-my-zsh 没有安装 安装 oh-my-zsh
 if [ -z "$ZSH" ]; then
 	echo "安装 oh my zsh..."
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-	# 安装 zsh-autosuggestions 插件
-	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 fi
 
-# 安装 nvm
+
+autosuggestions="$ZSH/custom/plugins/zsh-autosuggestions"
+if [ ! -e "$autosuggestions" ]; then
+  echo "install zsh-autosuggestions plugin"
+    # 安装 zsh-autosuggestions 插件
+  git clone  --depth 1 https://github.com/zsh-users/zsh-autosuggestions "$autosuggestions"
+fi
+
+
+nvm="$ZSH/custom/plugins/zsh-nvm"
+if [ ! -e "$nvm" ]; then
+  echo "install zsh-nvm plugin"
+    # 安装 zsh-nvms 插件
+  git clone  --depth 1 https://github.com/lukechilds/zsh-nvm "$nvm"
+fi

@@ -44,11 +44,14 @@ ZSH_THEME="robbyrussell"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# zsh-nvm 插件需要，必须先设置
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras z zsh-autosuggestions nvm) 
+plugins=(git git-extras z zsh-autosuggestions zsh-nvm) 
 
 # User configuration
 
