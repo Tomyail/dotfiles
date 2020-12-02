@@ -45,7 +45,7 @@ ZSH_THEME="robbyrussell"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # zsh-nvm 插件需要，必须先设置
-export NVM_LAZY_LOAD=true
+# export NVM_LAZY_LOAD=true
 export NVM_COMPLETION=true
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -92,11 +92,6 @@ for file in ~/.{path,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
-
-
-# zsh plugin nvm 
-export NVM_LAZY=1
-export NVM_AUTOLOAD=1
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
