@@ -15,9 +15,6 @@ tap "homebrew/cask-versions"
 # and sometimes fall back on `screen`.
 ##
 
-# iTerm is our favorite terminal app.
-cask 'iterm2'
-
 # Tmux is a newer terminal multiplexer.
 brew 'pkg-config', link: true
 brew 'tmux'
@@ -72,14 +69,9 @@ brew 'git-lfs'
 
 
 
-# Install `wget` with IRI support.
-brew  'wget', args: ['with-iri']
-
 # Install GnuPG to enable PGP-signing commits.
 brew  'gnupg'
 
-# Install more recent versions of some macOS tools.
-brew  'vim', args: ['with-override-system-vi']
 brew  'grep'
 brew  'openssh'
 
