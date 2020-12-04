@@ -4,7 +4,10 @@ export ZSH=~/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="robbyrussell"
+# 如果 sharship 没有安装成功,依然使用 zsh 默认的主题
+if ! command -v starship >/dev/null 2>&1; then
+ ZSH_THEME="robbyrussell"
+fi
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -96,4 +99,7 @@ unset file;
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # 配置 starship 主题
-eval "$(starship init zsh)"
+# todo https://github.com/starship/starship/issues/1736
+if command -v starship >/dev/null 2>&1; then
+	eval "$(starship init zsh)"
+fi
