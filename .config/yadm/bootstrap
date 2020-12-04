@@ -9,6 +9,11 @@ cd "$HOME"
 echo "Init submodules"
 yadm submodule update --recursive --init
 
+for file in ~/.{path,exports,aliases,functions,extra}; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
+
 
 system_type=$(uname -s)
 
@@ -23,7 +28,8 @@ if [ "$system_type" = "Darwin" ]; then
 
   if [ -f "$HOME/.Brewfile" ]; then
     echo "Updating homebrew bundle"
-    brew bundle --global
+    # brew bundle --global
+
   fi
 
 fi

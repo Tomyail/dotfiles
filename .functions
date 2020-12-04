@@ -169,3 +169,34 @@ function o() {
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
+
+# 设置全局代理
+function proxyon() {
+	export HTTPS_PROXY=127.0.0.1:1080
+	export HTTP_PROXY=127.0.0.1:1080
+	git config --global https.proxy http://127.0.0.1:1080
+	git config --global https.proxy https://127.0.0.1:1080
+}
+
+
+# 取消全局代理设置
+
+function proxyoff() {
+ unset HTTPS_PROXY
+ unset HTTP_PROXY
+	git config --global --unset http.proxy
+	git config --global --unset https.proxy
+}
+
+
+function appendPath() {
+	local dest="export PATH=\"${1}:\$PATH\""
+	# echo ${  grep -q "${dest}" ~/.path}
+	[ -f ~/.path ] && echo " exists."
+    if ! grep -q ${dest} ~/.path ; then
+		echo success append $dest to path
+		echo ${dest} >> ~/.path
+		source ~/.path
+    fi
+
+}

@@ -5,8 +5,10 @@ tap "homebrew/core", "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew
 tap "homebrew/services"
 tap 'homebrew/cask-drivers'
 tap "homebrew/cask-versions"
-# font
 
+# Install GNU core utilities (those that come with macOS are outdated).
+# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+brew "coreutils"
 
 ##
 # Terminals
@@ -18,7 +20,6 @@ tap "homebrew/cask-versions"
 # Tmux is a newer terminal multiplexer.
 brew 'pkg-config', link: true
 brew 'tmux'
-brew 'reattach-to-user-namespace'
 
 ##
 # Shells
@@ -35,6 +36,7 @@ brew 'bash-completion'
 
 # Zsh is a shell designed for interactive use.
 brew 'zsh'
+
 
 
 
