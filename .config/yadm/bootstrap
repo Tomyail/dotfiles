@@ -28,6 +28,17 @@ if [ "$system_type" = "Darwin" ]; then
 
 fi
 
+
+# https://stackoverflow.com/questions/7522712/how-can-i-check-if-a-command-exists-in-a-shell-script
+
+# https://github.com/starship/starship#getting-started
+if ! command -v starship >/dev/null 2>&1; then
+  echo "Installing starship"
+  curl -fsSL https://starship.rs/install.sh | bash
+fi
+
+
+
 # zsh 设置
 
 # 如果没有 ZSH 环境变量,就认为 oh-my-zsh 没有安装 安装 oh-my-zsh
@@ -51,3 +62,5 @@ if [ ! -e "$nvm" ]; then
     # 安装 zsh-nvms 插件
   git clone  --depth 1 https://github.com/lukechilds/zsh-nvm "$nvm"
 fi
+
+
