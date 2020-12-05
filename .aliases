@@ -146,3 +146,7 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+
+# alias zsh 的 git 插件自带的 gcmsg
+alias gcsmg="gcmsg"
