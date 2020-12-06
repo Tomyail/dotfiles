@@ -69,4 +69,10 @@ if [ ! -e "$nvm" ]; then
   git clone  --depth 1 https://github.com/lukechilds/zsh-nvm "$nvm"
 fi
 
+# install tmux plugins mamanger
+tpm="$HOME/.tmux/plugins/tpm"
+if [ ! -e "$tpm" ]; then
+    echo "install tmux plugins manager"
+    git clone --depth 1 https://github.com/tmux-plugins/tpm "$tpm"
+fi
 
