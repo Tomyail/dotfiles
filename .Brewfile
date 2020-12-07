@@ -83,3 +83,7 @@ brew  'openssh'
 # 磁盘空间查看工具
 
 brew 'ncdu'
+
+
+# 安装 ruby
+brew 'ruby'

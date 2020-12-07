@@ -1,1 +1,10 @@
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# 替换系统默认的 ruby (用 brew 安装的)
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+ 
+# 手动指定 gem 的安装路径
+export GEM_HOME="$HOME/.gem"
+
+# 把 gem 的运行程序加进来
+export PATH="$GEM_HOME/bin:$PATH"
