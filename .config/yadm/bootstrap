@@ -31,7 +31,10 @@ if [ "$system_type" = "Darwin" ]; then
     # brew bundle --global
 
   fi
-
+elif [ "$system_type" = "Linux" ]; then
+    if command -v apt-get >/dev/null 2>&1; then
+        sudo apt-get install ruby
+    fi
 fi
 
 
