@@ -1,6 +1,5 @@
-if [ -r "~/.path_extra" ] && [ -f "~/.path_extra" ]; then
-  echo "tst"
-  source "~/.path_extra";
+if [ -r "$HOME/.path_extra" ] && [ -f "$HOME/.path_extra" ]; then
+  source "$HOME/.path_extra";
 fi
  
 # 手动指定 gem 的安装路径
