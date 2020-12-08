@@ -21,7 +21,7 @@
 
 ### vim
 
-来自 https://github.com/Tomyail/vimrc/tree/9542ec5f5e2a29df9c849a702a7e537e4d5a0330
+来自 https://github.com/Tomyail/vimrc
 
 ### tmux
 
