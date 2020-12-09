@@ -150,3 +150,6 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # alias zsh 的 git 插件自带的 gcmsg
 alias gcsmg="gcmsg"
+
+# yarn
+alias y="yarn"
