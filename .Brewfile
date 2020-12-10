@@ -87,3 +87,7 @@ brew 'ncdu'
 
 # 安装 ruby
 brew 'ruby'
+
+
+# silver_searcher
+brew 'the_silver_searcher'

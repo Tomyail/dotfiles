@@ -33,7 +33,7 @@ if [ "$system_type" = "Darwin" ]; then
   fi
 elif [ "$system_type" = "Linux" ]; then
     if command -v apt-get >/dev/null 2>&1; then
-        sudo apt-get install ruby
+        sudo apt-get install ruby the_silver_searcher
     fi
 fi
 
