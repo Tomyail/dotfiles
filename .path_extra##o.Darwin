@@ -3,3 +3,6 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 # 替换系统默认的 ruby (用 brew 安装的)
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 
+# homebrew 需要
+export PATH="/usr/local/sbin:$PATH"
+
