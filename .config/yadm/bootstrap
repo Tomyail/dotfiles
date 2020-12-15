@@ -26,6 +26,12 @@ if [ "$system_type" = "Darwin" ]; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
 
+  # 下载 vscode vim 插件需要的 im-select
+  if ! command -v im-select >/dev/null 2>&1; then
+      echo "Install im-select"
+      curl -Ls https://raw.githubusercontent.com/daipeihust/im-select/master/install_mac.sh | sh
+  fi
+
   if [ -f "$HOME/.Brewfile" ]; then
     echo "Updating homebrew bundle"
     brew bundle --global
