@@ -1,7 +1,7 @@
 tap "homebrew/bundle"
-tap "homebrew/cask", "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git"
-tap "homebrew/cask-fonts", "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask-fonts.git"
-tap "homebrew/core", "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
 tap "homebrew/services"
 tap 'homebrew/cask-drivers'
 tap "homebrew/cask-versions"
