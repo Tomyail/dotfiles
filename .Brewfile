@@ -52,6 +52,7 @@ brew 'zsh'
 
 # Vim editor
 brew 'vim'
+brew 'nvim'
 
 
 
