@@ -6,6 +6,9 @@ tap "homebrew/services"
 tap 'homebrew/cask-drivers'
 tap "homebrew/cask-versions"
 
+
+brew 'mas' # Mac App Store manager
+
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew "coreutils"
@@ -121,3 +124,14 @@ cask 'vlc'
 cask 'calibre'
 cask 'virtualbox'
 cask 'qq' 
+cask 'the-unarchiver'
+cask 'transmission'
+cask 'transmit'
+
+# Quicklook
+cask 'qlmarkdown'
+cask 'quicklook-json'
+cask 'quicklook-csv'
+
+mas 'Keynote', id: 409183694
+mas 'Numbers', id: 409203825
