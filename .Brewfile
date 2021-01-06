@@ -92,3 +92,32 @@ brew 'ruby'
 
 # silver_searcher
 brew 'the_silver_searcher'
+
+
+
+brew 'python3'
+
+cask 'wechat' # 聊天软件，微信
+cask 'wechatwork' # 聊天软件，企业微信
+cask 'visual-studio-code' #  开发 ide，vscode
+cask 'google-chrome' 
+cask 'iterm2'
+cask 'notion'
+cask 'docker'
+cask 'charles'
+cask 'postman'
+cask 'sublime-text'
+cask 'slack'
+cask 'dropbox'
+cask 'youdaodict'
+cask 'karabiner-elements'
+cask 'tencent-lemon'
+cask 'zoom'
+cask 'vnc-viewer'
+cask 'neteasemusic'
+cask 'shadowsocksx-ng'
+cask 'openvpn-connect'
+cask 'vlc'
+cask 'calibre'
+cask 'virtualbox'
+cask 'qq' 
