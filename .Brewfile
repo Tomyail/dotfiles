@@ -64,7 +64,6 @@ cask 'openvpn-connect'
 cask 'vlc'
 cask 'calibre'
 cask 'virtualbox'
-cask 'qq' 
 cask 'the-unarchiver'
 cask 'transmission'
 cask 'transmit'
@@ -73,6 +72,9 @@ cask 'imageoptim'
 cask 'dbngin'
 cask 'omnifocus'
 cask 'tableplus'
+case 'hiddenbar'
+case 'anki'
+case 'onedrive'
 
 
 # Quicklook
