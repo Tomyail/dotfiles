@@ -39,7 +39,10 @@ if [ "$system_type" = "Darwin" ]; then
   fi
 elif [ "$system_type" = "Linux" ]; then
     if command -v apt-get >/dev/null 2>&1; then
-        sudo apt-get install ruby the_silver_searcher
+        sudo apt-get install ruby the_silver_searcher snapd
+
+
+        sudo snap install nvim --classic
     fi
 fi
 
