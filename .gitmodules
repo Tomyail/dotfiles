@@ -1,3 +1,9 @@
 [submodule ".vim_runtime"]
 	path = .vim_runtime
 	url = git@github.com:Tomyail/vimrc.git
+[submodule ".config/dracula/iterm"]
+	path = .config/dracula/iterm
+	url = https://github.com/dracula/iterm
+[submodule ".config/dracula/terminal-app"]
+	path = .config/dracula/terminal-app
+	url = https://github.com/dracula/terminal-app
