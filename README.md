@@ -17,6 +17,8 @@
 * zsh + oh-my-zsh
 * git 
 * tmux
+* 主题
+* * https://draculatheme.com/
 
 
 ### vim
