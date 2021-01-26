@@ -38,6 +38,7 @@ brew 'python3'
 
 brew 'the_silver_searcher'
 
+brew 'ripgrep'
 
 
 
