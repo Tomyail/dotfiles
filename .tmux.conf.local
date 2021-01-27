@@ -407,9 +407,9 @@ tmux_conf_update_plugins_on_reload=true
 
 
 # Use Ctrl+A as the prefix key
-set -g prefix C-a
-unbind C-b
-bind C-a send-prefix
+# set -g prefix C-a
+# unbind C-b
+# bind C-a send-prefix
 
 # Use Vim shortcuts
 #setw -g mode-keys vi
