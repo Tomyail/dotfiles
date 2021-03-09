@@ -26,8 +26,10 @@ brew 'git-lfs'
 # Install GnuPG to enable PGP-signing commits.
 brew  'gnupg'
 
+
 brew  'grep'
 brew  'openssh'
+brew 'wget'
 
 
 # 磁盘空间查看工具
@@ -45,7 +47,6 @@ brew 'ripgrep'
 cask 'wechat' # 聊天软件，微信
 cask 'wechatwork' # 聊天软件，企业微信
 cask 'visual-studio-code' #  开发 ide，vscode
-cask 'google-chrome'
 cask 'iterm2'
 cask 'notion'
 cask 'docker'
@@ -56,10 +57,10 @@ cask 'slack'
 cask 'dropbox'
 cask 'youdaodict'
 cask 'karabiner-elements'
-cask 'tencent-lemon'
+# cask 'tencent-lemon'
 cask 'zoom'
 cask 'vnc-viewer'
-cask 'neteasemusic'
+# cask 'neteasemusic'
 cask 'shadowsocksx-ng'
 cask 'openvpn-connect'
 cask 'vlc'
@@ -80,19 +81,19 @@ cask 'rectangle'
 cask 'emacs'
 cask 'font-hack-nerd-font'
 cask 'keepassxc'
-cask 'anaconda'
 cask 'dbeaver-community'
 cask 'alacritty'
 cask 'keka'
 cask 'cyberduck'
-
+cask 'clashx'
 # Quicklook
 cask 'qlmarkdown'
 cask 'quicklook-json'
 cask 'quicklook-csv'
 
+cask 'font-fira-code'
+
 mas 'Keynote', id: 409183694
 mas 'Numbers', id: 409203825
 
 
-cask 'font-fira-code'
