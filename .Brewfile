@@ -34,7 +34,7 @@ brew  'openssh'
 brew 'ncdu'
 
 brew 'ruby'
-brew 'python3'
+brew 'pyenv'
 
 brew 'the_silver_searcher'
 
@@ -45,7 +45,7 @@ brew 'ripgrep'
 cask 'wechat' # 聊天软件，微信
 cask 'wechatwork' # 聊天软件，企业微信
 cask 'visual-studio-code' #  开发 ide，vscode
-cask 'google-chrome' 
+cask 'google-chrome'
 cask 'iterm2'
 cask 'notion'
 cask 'docker'

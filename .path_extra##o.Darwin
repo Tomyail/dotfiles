@@ -1,5 +1,10 @@
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+	  eval "$(pyenv init -)"
+fi
 # 替换系统默认的 ruby (用 brew 安装的)
 export PATH="/usr/local/opt/ruby/bin:$PATH"
 

@@ -54,7 +54,7 @@ export NVM_COMPLETION=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras z zsh-autosuggestions zsh-nvm) 
+plugins=(git git-extras z zsh-autosuggestions zsh-nvm)
 
 # User configuration
 
@@ -103,3 +103,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 if command -v starship >/dev/null 2>&1; then
 	eval "$(starship init zsh)"
 fi
+
