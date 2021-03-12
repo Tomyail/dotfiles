@@ -23,11 +23,11 @@
     buffer_index_type = 4
     enable_tabline_filetype_icon = true
     enable_statusline_mode = false
-		# filemanager = "defx"
-		filemanager = "nerdtree"
-		autocomplete_method = "coc"
-		bootstrap_before = "myspacevim#before"
-		bootstrap_after = "myspacevim#after"
+	# filemanager = "defx"
+	filemanager = "nerdtree"
+	autocomplete_method = "coc"
+	bootstrap_before = "myspacevim#before"
+	bootstrap_after = "myspacevim#after"
 
 # Enable autocomplete layer
 [[layers]]
@@ -65,8 +65,3 @@ name = 'lang#markdown'
 name = 'lang#html'
 
 
-[[custom_plugins]]
-    repo = "roxma/nvim-yarp"
-
-[[custom_plugins]]
-    repo = "roxma/vim-hug-neovim-rpc"
