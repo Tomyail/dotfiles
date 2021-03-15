@@ -1,0 +1,12 @@
+{
+	"codeLens.enable": true,
+	"coc.preferences.formatOnType": true,
+	"coc.preferences.formatOnSaveFiletypes":[
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"json",
+		"md"
+	]
+}
