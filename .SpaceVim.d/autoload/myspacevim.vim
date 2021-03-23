@@ -3,12 +3,23 @@ function! myspacevim#before() abort
     " let g:mapleader = ','
 		" 修改 coc-settings.json 的路径，使其不放在 SpaceVim 而是 SpaceVim.d 文件夹下
 		let g:coc_config_home = '~/.SpaceVim.d/'
+
+
+		call SpaceVim#custom#SPC('nore',['n','f'], ':NERDTreeFind','NERDTreeFind',1)
+
+		call SpaceVim#custom#SPC('nore',['f','v','e'], ':e! ~/.SpaceVim.d/autoload/myspacevim.vim','edit myspacevim',1)
+
 	endfunction
 
 
 	function! myspacevim#after() abort
+
+		" seems no work
+		autocmd BufWritePost  ~/.SpaceVim.d/autoload/myspacevim.vim source ~/.SpaceVim.d/autoload/myspacevim.vim
+
 		call SpaceVim#custom#LangSPCGroupName('typescriptreact',['X'],"+XX")
 		call SpaceVim#custom#LangSPC('typescriptreact','nore',['X','x'],'echom 1', 'echmessage 1',2)
+
 		" GoTo code navigation.
 		nmap <silent> gd <Plug>(coc-definition)
 		nmap <silent> gy <Plug>(coc-type-definition)
