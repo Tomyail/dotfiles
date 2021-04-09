@@ -22,6 +22,7 @@ brew 'nvim'
 
 brew 'git'
 brew 'git-lfs'
+brew 'git-extra'
 
 # Install GnuPG to enable PGP-signing commits.
 brew  'gnupg'
