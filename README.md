@@ -5,7 +5,7 @@
 ## 安装和配置 (先确保你看过我的各种配置,不然把你自己的各种配置覆盖了后果自负...)
 
 1. 安装 [yadm](https://yadm.io/docs/install)
-2. 克隆项目到本地: yadm clone https://github.com/Tomyail/dotfiles.git
+2. 克隆项目到本地: yadm clone git@github.com:Tomyail/dotfiles.git
 
 
 后续脚本更新只要 yadm pull 就好了, yadm bootstrap 可以重新触发安装流程
