@@ -28,9 +28,6 @@ autocmd FileType defx call s:defx_my_settings()
     " 进入主目录 
     nnoremap <silent><buffer><expr> ~
 	  \ defx#do_action('cd')
-    nnoremap <silent><buffer><expr> t<CR>
-	  \ defx#do_action('drop','tabe')
-
 
     " 文件编辑操作
 	  nnoremap <silent><buffer><expr> c
@@ -52,8 +49,12 @@ autocmd FileType defx call s:defx_my_settings()
 
 
      " 打开操作 
-    nnoremap <silent><buffer><expr> E
+    nnoremap <silent><buffer><expr> <C-t>
+	  \ defx#do_action('drop','tabe')
+    nnoremap <silent><buffer><expr> <C-v>
 	  \ defx#do_action('open', 'vsplit')
+    nnoremap <silent><buffer><expr> <C-x>
+	  \ defx#do_action('open', 'split')
 	  nnoremap <silent><buffer><expr> P
 	  \ defx#do_action('open', 'pedit')
 	  nnoremap <silent><buffer><expr> o

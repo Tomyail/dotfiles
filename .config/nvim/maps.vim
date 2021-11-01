@@ -13,7 +13,7 @@ nnoremap - <C-x>
 nnoremap dw vb"_d
 
 " Select all
-nmap <C-a> gg<S-v>G
+" nmap <C-a> gg<S-v>G
 
 " Save with root permission
 command! W w !sudo tee > /dev/null %
@@ -42,7 +42,7 @@ nmap <Tab> :tabnext<Return>
 " Windows
 
 " Split window
-nmap ss :split<Return><C-w>w
+nmap sx :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
 " Move window
 nmap <Space> <C-w>w
