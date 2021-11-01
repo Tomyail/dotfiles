@@ -13,6 +13,8 @@ brew "coreutils"
 brew 'pkg-config', link: true
 brew 'tmux'
 
+brew 'fd'
+
 brew 'bash'
 brew 'bash-completion'
 brew 'zsh'
