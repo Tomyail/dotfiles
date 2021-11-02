@@ -51,8 +51,7 @@ if has("nvim")
   " search like fzf
   Plug 'nvim-telescope/telescope.nvim'
 
-
-  Plug 'tpope/vim-commentary'
+  Plug 'b3nj5m1n/kommentary'
 
 endif
 
