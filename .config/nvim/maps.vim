@@ -1,5 +1,6 @@
 " Description: Keymaps
 
+let mapleader=" "
 nnoremap <S-C-p> "0p
 " Delete without yank
 nnoremap <leader>d "_d
@@ -45,7 +46,7 @@ nmap <Tab> :tabnext<Return>
 nmap sx :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
 " Move window
-nmap <Space> <C-w>w
+nmap <leader>w <C-w>w
 map s<left> <C-w>h
 map s<up> <C-w>k
 map s<down> <C-w>j
@@ -60,3 +61,5 @@ nmap <C-w><right> <C-w>>
 nmap <C-w><up> <C-w>+
 nmap <C-w><down> <C-w>-
 
+
+:tnoremap <Esc> <C-\><C-n>

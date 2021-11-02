@@ -114,11 +114,12 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 " ---------------------------------------------------------------------
 runtime ./plug.vim
 if has("unix")
-  let s:uname = system("uname -s")
+  " run  system will slow down nvim startup, so i disable it 
+  " let s:uname = system("uname -s")
   " Do Mac stuff
-  if s:uname == "Darwin\n"
-    runtime ./macos.vim
-  endif
+  " if s:uname == "Darwin\n"
+    " runtime ./macos.vim
+  " endif
 endif
 
 runtime ./maps.vim
