@@ -50,6 +50,10 @@ if has("nvim")
 
   " search like fzf
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
+  Plug 'nvim-telescope/telescope-frecency.nvim'
+  Plug 'tami5/sqlite.lua'
 
   Plug 'b3nj5m1n/kommentary'
 
