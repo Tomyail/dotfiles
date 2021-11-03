@@ -55,8 +55,10 @@ if has("nvim")
   Plug 'nvim-telescope/telescope-frecency.nvim'
   Plug 'tami5/sqlite.lua'
 
+  " for comment
   Plug 'b3nj5m1n/kommentary'
 
+  Plug 'christoomey/vim-tmux-navigator'
 endif
 
 call plug#end()

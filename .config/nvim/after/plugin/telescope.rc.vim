@@ -1,9 +1,9 @@
 if !exists('g:loaded_telescope') | finish | endif
 
 " vscode like 
-nnoremap <silent> <C-p> <cmd>Telescope find_files<cr>
-nnoremap <silent> <C-f> <cmd>Telescope live_grep<cr>
 nnoremap <silent> <leader>ls <cmd>Telescope file_browser<cr>
+nnoremap <silent> <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <silent> <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <silent> <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <silent> <leader>fc <cmd>Telescope commands<cr>
 nnoremap <silent> <leader>fr <Cmd>lua require('telescope').extensions.frecency.frecency()<CR>
