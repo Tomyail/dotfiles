@@ -5,6 +5,7 @@ if !exists('g:loaded_defx') | finish | endif
 "      \ -columns=indent:mark:icon:icons:filename:git:size
 "      \ -buffer-name=tab`tabpagenr()`<CR>
 nnoremap <silent>sf :<C-u>Defx -listed -resume 
+      \ -split=vertical -winwidth=40 -direction=topleft
       \ -columns=mark:indent:icons:space:filename:git
       \ -buffer-name=tab`tabpagenr()`
       \ `expand('%:p:h')` -search=`expand('%:p')`<CR>
@@ -23,8 +24,10 @@ autocmd FileType defx call s:defx_my_settings()
 	   nnoremap <silent><buffer><expr> l
 	  \ defx#do_action('open')
      " 进入下一层目录
+    " nnoremap <silent><buffer><expr> <CR>
+	  " \ defx#do_action('open')
     nnoremap <silent><buffer><expr> <CR>
-	  \ defx#do_action('open')
+    \  defx#do_action('drop')
     " 进入主目录 
     nnoremap <silent><buffer><expr> ~
 	  \ defx#do_action('cd')
@@ -52,9 +55,9 @@ autocmd FileType defx call s:defx_my_settings()
     nnoremap <silent><buffer><expr> <C-t>
 	  \ defx#do_action('drop','tabe')
     nnoremap <silent><buffer><expr> <C-v>
-	  \ defx#do_action('open', 'vsplit')
+	  \ defx#do_action('drop', 'vsplit')
     nnoremap <silent><buffer><expr> <C-x>
-	  \ defx#do_action('open', 'split')
+	  \ defx#do_action('drop', 'split')
 	  nnoremap <silent><buffer><expr> P
 	  \ defx#do_action('open', 'pedit')
 	  nnoremap <silent><buffer><expr> o
