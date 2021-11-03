@@ -4,14 +4,14 @@ let mapleader=" "
 nnoremap <S-C-p> "0p
 " Delete without yank
 nnoremap <leader>d "_d
-nnoremap x "_x
+" nnoremap x "_x
 
 " Increment/decrement
 nnoremap + <C-a>
 nnoremap - <C-x>
 
 " Delete a word backwards
-nnoremap dw vb"_d
+" nnoremap dw vb"_d
 
 " Select all
 " nmap <C-a> gg<S-v>G
@@ -61,5 +61,5 @@ nmap <C-w><right> <C-w>>
 nmap <C-w><up> <C-w>+
 nmap <C-w><down> <C-w>-
 
-
+" exit terminal insert mode
 :tnoremap <Esc> <C-\><C-n>
