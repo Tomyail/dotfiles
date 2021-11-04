@@ -20,11 +20,13 @@ if has("nvim")
   Plug 'folke/lsp-colors.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
   " file explorer
-  Plug 'kristijanhusak/defx-git'
-  Plug 'kristijanhusak/defx-icons'
-  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Plug 'kristijanhusak/defx-git'
+  " Plug 'kristijanhusak/defx-icons'
+  " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'kyazdani42/nvim-tree.lua'
   " snippet
   Plug 'L3MON4D3/LuaSnip'
+
   " core lsp
   Plug 'neovim/nvim-lspconfig'
   " core code complete
@@ -35,8 +37,6 @@ if has("nvim")
   Plug 'hrsh7th/cmp-cmdline'
   Plug 'windwp/nvim-autopairs'
   Plug 'windwp/nvim-ts-autotag'
-  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-  " Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   " lib utils
   Plug 'nvim-lua/plenary.nvim'
   " search like fzf
@@ -47,8 +47,16 @@ if has("nvim")
   " for comment
   Plug 'tpope/vim-commentary'
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+
+  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+  " Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'RRethy/nvim-treesitter-textsubjects'
+
   Plug 'christoomey/vim-tmux-navigator'
+  Plug 'https://gitlab.com/yorickpeterse/nvim-window.git'
+  Plug 'akinsho/toggleterm.nvim'
+  Plug 'Mofiqul/dracula.nvim'
+  Plug 'editorconfig/editorconfig-vim'
 endif
 
 call plug#end()

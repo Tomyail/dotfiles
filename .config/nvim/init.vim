@@ -15,7 +15,6 @@ set fileencodings=utf-8,sjis,euc-jp,latin
 set encoding=utf-8
 set title
 set autoindent
-set background=dark
 set nobackup
 set hlsearch
 set showcmd
@@ -26,6 +25,8 @@ set expandtab
 "let loaded_matchparen = 1
 set shell=zsh
 set backupskip=/tmp/*,/private/tmp/*
+" enable mouse for resize window
+set mouse=a
 
 " incremental substitution (neovim)
 if has('nvim')
@@ -43,12 +44,7 @@ set lazyredraw
 "set mat=2
 " Ignore case when searching
 set ignorecase
-" Be smart when using tabs ;)
-set smarttab
-" indents
 filetype plugin indent on
-set shiftwidth=2
-set tabstop=2
 set ai "Auto indent
 set si "Smart indent
 set nowrap "No Wrap lines
@@ -113,35 +109,7 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 " Imports "{{{
 " ---------------------------------------------------------------------
 runtime ./plug.vim
-if has("unix")
-  " run  system will slow down nvim startup, so i disable it 
-  " let s:uname = system("uname -s")
-  " Do Mac stuff
-  " if s:uname == "Darwin\n"
-    " runtime ./macos.vim
-  " endif
-endif
-
 runtime ./maps.vim
-"}}}
-
-" Syntax theme "{{{
-" ---------------------------------------------------------------------
-
-" true color
-if exists("&termguicolors") && exists("&winblend")
-  syntax enable
-  set termguicolors
-  set winblend=0
-  set wildoptions=pum
-  set pumblend=5
-  set background=dark
-  " Use NeoSolarized
-  let g:neosolarized_termtrans=1
-  runtime ./colors/NeoSolarized.vim
-  colorscheme NeoSolarized
-endif
-
 "}}}
 
 " Extras "{{{
