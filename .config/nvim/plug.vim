@@ -23,41 +23,31 @@ if has("nvim")
   Plug 'kristijanhusak/defx-git'
   Plug 'kristijanhusak/defx-icons'
   Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-
-
   " snippet
   Plug 'L3MON4D3/LuaSnip'
-
   " core lsp
   Plug 'neovim/nvim-lspconfig'
-
   " core code complete
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/cmp-buffer'
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-cmdline'
-
   Plug 'windwp/nvim-autopairs'
   Plug 'windwp/nvim-ts-autotag'
-
-
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
-  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-
+  " Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   " lib utils
   Plug 'nvim-lua/plenary.nvim'
-
   " search like fzf
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-
   Plug 'nvim-telescope/telescope-frecency.nvim'
   Plug 'tami5/sqlite.lua'
-
   " for comment
-  Plug 'b3nj5m1n/kommentary'
-
+  Plug 'tpope/vim-commentary'
+  Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+  Plug 'RRethy/nvim-treesitter-textsubjects'
   Plug 'christoomey/vim-tmux-navigator'
 endif
 

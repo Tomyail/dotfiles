@@ -26,6 +26,18 @@ require'nvim-treesitter.configs'.setup {
     "html",
     "scss"
   },
+  -- nvim-treesitter-textsubjects
+  textsubjects = {
+        enable = true,
+        keymaps = {
+            ['.'] = 'textsubjects-smart',
+            [';'] = 'textsubjects-container-outer',
+        }
+    },
+  -- JoosepAlviste/nvim-ts-context-commentstring
+  context_commentstring = {
+    enable = true
+    },
   textobjects = {
     select = {
       enable = true,
