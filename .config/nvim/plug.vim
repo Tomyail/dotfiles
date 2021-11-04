@@ -57,6 +57,7 @@ if has("nvim")
   Plug 'akinsho/toggleterm.nvim'
   Plug 'Mofiqul/dracula.nvim'
   Plug 'editorconfig/editorconfig-vim'
+  Plug 'chentau/marks.nvim'
 endif
 
 call plug#end()
