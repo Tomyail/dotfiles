@@ -1,3 +1,9 @@
+
+if exists('g:vscode')
+	finish
+endif
+
+
 lua <<EOF
 require('gitsigns').setup {
   signs = {

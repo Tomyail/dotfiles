@@ -1,5 +1,4 @@
 if !exists('g:loaded_nvim_treesitter')
-  echom "Not loaded treesitter"
   finish
 endif
 
@@ -22,7 +21,7 @@ require'nvim-treesitter.configs'.setup {
     "json5",
     "yaml",
     "toml",
-    
+
     "html",
     "scss"
   },
@@ -42,7 +41,7 @@ require'nvim-treesitter.configs'.setup {
     select = {
       enable = true,
 
-      -- Automatically jump forward to textobj, similar to targets.vim 
+      -- Automatically jump forward to textobj, similar to targets.vim
       lookahead = true,
 
       keymaps = {

@@ -20,10 +20,10 @@ if has("nvim")
   Plug 'folke/lsp-colors.nvim'
   Plug 'lukas-reineke/indent-blankline.nvim'
   " file explorer
-  " Plug 'kristijanhusak/defx-git'
-  " Plug 'kristijanhusak/defx-icons'
-  " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'kyazdani42/nvim-tree.lua'
+  Plug 'kristijanhusak/defx-git'
+  Plug 'kristijanhusak/defx-icons'
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  " Plug 'kyazdani42/nvim-tree.lua'
   " snippet
   Plug 'L3MON4D3/LuaSnip'
 
@@ -56,8 +56,10 @@ if has("nvim")
   Plug 'https://gitlab.com/yorickpeterse/nvim-window.git'
   Plug 'akinsho/toggleterm.nvim'
   Plug 'Mofiqul/dracula.nvim'
-  Plug 'editorconfig/editorconfig-vim'
   Plug 'chentau/marks.nvim'
+
+  Plug 'editorconfig/editorconfig-vim'
+  " Plug 'sbdchd/neoformat'
 endif
 
 call plug#end()

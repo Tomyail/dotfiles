@@ -1,5 +1,9 @@
 
 
+if exists('g:vscode')
+	finish
+endif
+
 lua << EOF
 local saga = require 'lspsaga'
 

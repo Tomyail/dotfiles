@@ -1,3 +1,8 @@
+
+if exists('g:vscode')
+	finish
+endif
+
 lua <<EOF
 require'marks'.setup {
   -- whether to map keybinds or not. default true

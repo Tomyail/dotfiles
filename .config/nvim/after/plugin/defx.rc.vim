@@ -1,15 +1,9 @@
 if !exists('g:loaded_defx') | finish | endif
 
-" Define mappings
-"cnoreabbrev sf Defx -listed -new
-"      \ -columns=indent:mark:icon:icons:filename:git:size
-"      \ -buffer-name=tab`tabpagenr()`<CR>
-nnoremap <silent>sf :<C-u>Defx -listed -resume 
+nnoremap <silent>sf :<C-u>Defx -listed -resume
       \ -split=vertical -winwidth=40 -direction=topleft
-      \ -columns=mark:indent:icons:space:filename:git
-      \ -buffer-name=tab`tabpagenr()`
-      \ `expand('%:p:h')` -search=`expand('%:p')`<CR>
-nnoremap <silent>fi :<C-u>Defx -new `expand('%:p:h')` -search=`expand('%:p')`<CR>
+      \ -columns=mark:indent:icons:space:filename
+      \ `getcwd()` -search-recursive=`expand('%:p')`<CR>
 
 autocmd FileType defx call s:defx_my_settings()
 	function! s:defx_my_settings() abort
@@ -28,7 +22,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  " \ defx#do_action('open')
     nnoremap <silent><buffer><expr> <CR>
     \  defx#do_action('drop')
-    " 进入主目录 
+    " 进入主目录
     nnoremap <silent><buffer><expr> ~
 	  \ defx#do_action('cd')
 
@@ -45,13 +39,13 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('rename')
 
 
-    " 复制选中文件的目录 
+    " 复制选中文件的目录
      nnoremap <silent><buffer><expr> yy
 	  \ defx#do_action('yank_path')
 
 
 
-     " 打开操作 
+     " 打开操作
     nnoremap <silent><buffer><expr> <C-t>
 	  \ defx#do_action('drop','tabe')
     nnoremap <silent><buffer><expr> <C-v>
@@ -70,7 +64,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  \ defx#do_action('new_multiple_files')
 
 
-      " 多选一个文件 
+      " 多选一个文件
 	  nnoremap <silent><buffer><expr> t
 	  \ defx#do_action('toggle_select') . 'j'
     " 多选多个文件
@@ -84,7 +78,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  nnoremap <silent><buffer><expr> C
 	  \ defx#do_action('toggle_columns',
 	  \                'mark:indent:icon:filename:type:size:time')
-    
+
     " 退出
     nnoremap <silent><buffer><expr> q
 	  \ defx#do_action('quit')
@@ -94,7 +88,7 @@ autocmd FileType defx call s:defx_my_settings()
 	  nnoremap <silent><buffer><expr> ;
 	  \ defx#do_action('repeat')
 
-    " 改变 vim 当前面目录 
+    " 改变 vim 当前面目录
 	  nnoremap <silent><buffer><expr> cd
 	  \ defx#do_action('change_vim_cwd')
 

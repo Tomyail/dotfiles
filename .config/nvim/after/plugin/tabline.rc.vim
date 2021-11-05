@@ -1,3 +1,10 @@
+
+
+if exists('g:vscode')
+	finish
+endif
+
+"
 " Description: My custom tabline settings
 
 function MyTabLine()

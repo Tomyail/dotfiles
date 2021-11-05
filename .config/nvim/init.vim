@@ -1,3 +1,11 @@
+
+if exists('g:vscode')
+
+	runtime ./plug.vs.vim
+  runtime ./maps.vim
+	finish
+endif
+
 " Fundamentals "{{{
 " ---------------------------------------------------------------------
 
@@ -16,14 +24,13 @@ set encoding=utf-8
 set title
 set autoindent
 set nobackup
-set hlsearch
 set showcmd
 set cmdheight=1
 set laststatus=2
 set scrolloff=10
 set expandtab
 "let loaded_matchparen = 1
-set shell=zsh
+" set shell=zsh
 set backupskip=/tmp/*,/private/tmp/*
 " enable mouse for resize window
 set mouse=a
