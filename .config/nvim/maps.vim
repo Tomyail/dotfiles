@@ -32,6 +32,10 @@ vnoremap <silent> # :<C-U>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 "-----------------------------
+" Source
+nnoremap <leader>r :source $MYVIMRC<CR>
+nnoremap <leader>e :e $MYVIMRC<CR>
+"-----------------------------
 " Tabs
 
 " Open current directory

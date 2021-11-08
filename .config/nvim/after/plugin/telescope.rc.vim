@@ -1,6 +1,6 @@
 if !exists('g:loaded_telescope') | finish | endif
 
-" vscode like 
+" vscode like
 nnoremap <silent> <leader>ls <cmd>Telescope file_browser<cr>
 nnoremap <silent> <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <silent> <leader>fg <cmd>Telescope live_grep<cr>
@@ -24,6 +24,11 @@ telescope.setup{
       },
     },
   },
+  pickers = {
+	  buffers= {
+		  sort_mru = true
+		  }
+	  },
   extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching

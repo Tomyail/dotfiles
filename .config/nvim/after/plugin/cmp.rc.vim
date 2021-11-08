@@ -56,7 +56,7 @@ local luasnip = require("luasnip")
           fallback()
         end
       end, { "i", "s" }),
-    
+
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
