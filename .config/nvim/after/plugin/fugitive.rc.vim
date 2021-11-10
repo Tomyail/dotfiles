@@ -9,6 +9,8 @@ if !exists('*fugitive#statusline')
   set statusline+=%{fugitive#statusline()}
 endif
 
-nmap <leader>gh :diffget //3<CR>
+" 3 is remote change, means yours(u)
 nmap <leader>gu :diffget //2<CR>
+" 2 is local change, means mine(m)
+nmap <leader>gm :diffget //3<CR>
 nmap <leader>gst :G<CR>
