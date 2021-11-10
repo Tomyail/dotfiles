@@ -1,5 +1,5 @@
 if exists('g:vscode')
-runtime ./plug.vs.vim
+  runtime ./plug.vs.vim
   runtime ./maps.vim
   finish
 endif

@@ -1,6 +1,7 @@
 
 if exists('g:vscode')
 	finish
+
 endif
 " Status line
 if !exists('*fugitive#statusline')

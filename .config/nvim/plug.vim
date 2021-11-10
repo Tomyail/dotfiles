@@ -1,16 +1,10 @@
+call plug#begin()
 if has("nvim")
   let g:plug_home = stdpath('data') . '/plugged'
-endif
-
-call plug#begin()
-
-if has("nvim")
-
   " plug for git
   Plug 'tpope/vim-fugitive'
   Plug 'tpope/vim-rhubarb'
   Plug 'lewis6991/gitsigns.nvim'
-
   " ui
   Plug 'hoob3rt/lualine.nvim'
   Plug 'kyazdani42/nvim-web-devicons'
@@ -26,7 +20,6 @@ if has("nvim")
   " Plug 'kyazdani42/nvim-tree.lua'
   " snippet
   Plug 'L3MON4D3/LuaSnip'
-
   " core lsp
   Plug 'neovim/nvim-lspconfig'
   " core code complete
@@ -47,11 +40,9 @@ if has("nvim")
   " for comment
   Plug 'tpope/vim-commentary'
   Plug 'JoosepAlviste/nvim-ts-context-commentstring'
-
   Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
   " Plug 'nvim-treesitter/nvim-treesitter-textobjects'
   Plug 'RRethy/nvim-treesitter-textsubjects'
-
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'https://gitlab.com/yorickpeterse/nvim-window.git'
   Plug 'akinsho/toggleterm.nvim'
@@ -60,10 +51,10 @@ if has("nvim")
   Plug 'gruvbox-community/gruvbox'
   Plug 'chentau/marks.nvim'
   " Plug 'ThePrimeagen/harpoon'
-
   Plug 'editorconfig/editorconfig-vim'
   " Plug 'sbdchd/neoformat'
 endif
-
 call plug#end()
+
+
 

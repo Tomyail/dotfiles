@@ -9,16 +9,12 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 lua <<EOF
   local cmp = require'cmp'
   local lspkind = require'lspkind'
-
-
   local has_words_before = function()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
     return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
   end
 
 local luasnip = require("luasnip")
-
-
   cmp.setup({
     snippet = {
       expand = function(args)
@@ -34,7 +30,6 @@ local luasnip = require("luasnip")
         behavior = cmp.ConfirmBehavior.Replace,
         select = true
       }),
-
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
@@ -46,7 +41,6 @@ local luasnip = require("luasnip")
           fallback()
         end
       end, { "i", "s" }),
-
       ["<S-Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
@@ -56,7 +50,6 @@ local luasnip = require("luasnip")
           fallback()
         end
       end, { "i", "s" }),
-
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
@@ -67,7 +60,6 @@ local luasnip = require("luasnip")
       format = lspkind.cmp_format({with_text = false, maxwidth = 80})
     }
   })
-
   -- Use buffer source for `/`.
   cmp.setup.cmdline('/', {
     sources = {
@@ -83,7 +75,6 @@ local luasnip = require("luasnip")
       { name = 'cmdline' }
     })
   })
-
 
   -- If you want insert `(` after select function or method item
   -- local cmp_autopairs = require('nvim-autopairs.completion.cmp')

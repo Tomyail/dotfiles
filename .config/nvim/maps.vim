@@ -1,11 +1,9 @@
 " Description: Keymaps
-
 let mapleader=","
 nnoremap <S-C-p> "0p
 " Delete without yank
 nnoremap <leader>d "_d
 " nnoremap x "_x
-
 " Increment/decrement
 nnoremap + <C-a>
 nnoremap - <C-x>
@@ -33,33 +31,32 @@ vnoremap <silent> # :<C-U>
 
 "-----------------------------
 " Source
-nnoremap <leader>r :source $MYVIMRC<CR>
-nnoremap <leader>e :e $MYVIMRC<CR>
+nnoremap rr :source $MYVIMRC<CR>
+nnoremap re :e $MYVIMRC<CR>
 "-----------------------------
 " Tabs
 
-" Open current directory
-nmap te :tabedit
-nmap <S-Tab> :tabprev<Return>
-nmap <Tab> :tabnext<Return>
+map <leader>tn :tabnext<cr>
+map <leader>tp :tabprevious<cr>
+map <leader>to :tabonly<cr>
+map <leader>tm :tabmove
+
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
+" nmap te :tabedit
+" nmap <S-Tab> :tabprev<CR>
+" nmap <Tab> :tabnext<CR>
 
 "------------------------------
 " Windows
 
 " Split window
-nmap sx :split<Return><C-w>w
-nmap sv :vsplit<Return><C-w>w
+nmap sx :split<CR><C-w>w
+nmap sv :vsplit<CR><C-w>w
 " Move window
-nmap <leader>w <C-w>w
-map s<left> <C-w>h
-map s<up> <C-w>k
-map s<down> <C-w>j
-map s<right> <C-w>l
-map sh <C-w>h
-map sk <C-w>k
-map sj <C-w>j
-map sl <C-w>l
-" Resize window
+" nmap <leader>w <C-w>w
+" Reize window
 nmap <C-w><left> <C-w><
 nmap <C-w><right> <C-w>>
 nmap <C-w><up> <C-w>+

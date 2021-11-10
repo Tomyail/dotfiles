@@ -9,9 +9,18 @@ require'nvim-treesitter.configs'.setup {
     disable = {},
   },
   indent = {
-    enable = false,
+    enable = true,
     disable = {},
   },
+  incremental_selection = {
+	  enable = true,
+	  keymaps = {
+		init_selection = "gnn",
+        node_incremental = "grn",
+        scope_incremental = "grc",
+        node_decremental = "grm",
+		  }
+	  },
   ensure_installed = {
     "javascript",
     "tsx",
@@ -23,7 +32,8 @@ require'nvim-treesitter.configs'.setup {
     "toml",
 
     "html",
-    "scss"
+    "scss",
+	"vim"
   },
   -- nvim-treesitter-textsubjects
   textsubjects = {
