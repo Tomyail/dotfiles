@@ -56,7 +56,8 @@ if has("nvim")
   Plug 'https://gitlab.com/yorickpeterse/nvim-window.git'
   Plug 'akinsho/toggleterm.nvim'
   " Plug 'Mofiqul/dracula.nvim'
-  Plug 'morhetz/gruvbox'
+  " Plug 'Tomyail/gruvbox'
+  Plug 'gruvbox-community/gruvbox'
   Plug 'chentau/marks.nvim'
   " Plug 'ThePrimeagen/harpoon'
 

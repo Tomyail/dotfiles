@@ -1,6 +1,6 @@
 " Description: Keymaps
 
-let mapleader=" "
+let mapleader=","
 nnoremap <S-C-p> "0p
 " Delete without yank
 nnoremap <leader>d "_d
