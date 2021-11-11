@@ -56,5 +56,3 @@ if has("nvim")
 endif
 call plug#end()
 
-
-

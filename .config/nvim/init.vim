@@ -32,6 +32,7 @@ set completeopt=menuone,noinsert,noselect
 set cmdheight=2
 
 set updatetime=50
+set timeoutlen=500
 
 set colorcolumn=80
 
@@ -104,6 +105,6 @@ au BufNewFile,BufRead *.mdx set filetype=markdown
 " autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 
 syntax enable
+
 runtime ./plug.vim
 runtime ./maps.vim
-

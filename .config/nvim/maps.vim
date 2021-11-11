@@ -31,7 +31,7 @@ vnoremap <silent> # :<C-U>
 
 "-----------------------------
 " Source
-nnoremap rr :source $MYVIMRC<CR>
+nnoremap rr :runtime! $MYVIMRC ./after/**/*.vim ./after/**/*.vim<CR>
 nnoremap re :e $MYVIMRC<CR>
 "-----------------------------
 " Tabs
