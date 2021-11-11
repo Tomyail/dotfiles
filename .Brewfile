@@ -37,6 +37,7 @@ brew  'gnupg'
 brew  'openssh'
 brew 'wget'
 
+brew 'asdf'
 
 # 磁盘空间查看工具
 # brew 'ncdu'
