@@ -7,35 +7,18 @@
 1. 安装 [yadm](https://yadm.io/docs/install)
 2. 克隆项目到本地: yadm clone git@github.com:Tomyail/dotfiles.git
 
-
 后续脚本更新只要 yadm pull 就好了, yadm bootstrap 可以重新触发安装流程
 
 
 ## 主要配置
 
-* vim
-* zsh + oh-my-zsh
-* git 
-* tmux
-* 主题
-* * https://draculatheme.com/
-
-
 ### vim
 
-来自 https://github.com/Tomyail/vimrc
+vim lsp 依赖的几个 npm 依赖包:
+
+```bash
+npm i -g prettier eslint_d diagnostic-languageserver typescript typescript-language-server vim-language-server
+```
 
 ### tmux
 
-包含插件:
-
-* [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm): tmux 插件管理
-* [Tmux Resurrect](https://github.com/tmux-plugins/tmux-resurrect#key-bindings): tmux session 保存
-
-第一次使用 tmux 需要 
-```
-# 更新配置
-tmux source ~/.tmux.conf
-# 安装插件
-prefix+ I
-```
