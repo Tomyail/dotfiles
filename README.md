@@ -20,5 +20,12 @@ vim lsp 依赖的几个 npm 依赖包:
 npm i -g prettier eslint_d diagnostic-languageserver typescript typescript-language-server vim-language-server
 ```
 
+
+defx 以来python3
+```bash
+pip3 install --user pynvim
+
+```
+
 ### tmux
 
