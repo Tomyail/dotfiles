@@ -47,7 +47,7 @@ set laststatus=2
 " set shell=zsh
 set backupskip=/tmp/*,/private/tmp/*
 " enable mouse for resize window
-set mouse=a
+" set mouse=a
 
 " incremental substitution (neovim)
 if has('nvim')
