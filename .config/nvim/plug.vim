@@ -53,6 +53,7 @@ if has("nvim")
   " Plug 'ThePrimeagen/harpoon'
   Plug 'editorconfig/editorconfig-vim'
   " Plug 'sbdchd/neoformat'
+  Plug 'tpope/vim-surround'
 endif
 call plug#end()
 
