@@ -46,14 +46,13 @@ if has("nvim")
   Plug 'christoomey/vim-tmux-navigator'
   Plug 'https://gitlab.com/yorickpeterse/nvim-window.git'
   Plug 'akinsho/toggleterm.nvim'
-  " Plug 'Mofiqul/dracula.nvim'
-  " Plug 'Tomyail/gruvbox'
   Plug 'gruvbox-community/gruvbox'
   Plug 'chentau/marks.nvim'
   " Plug 'ThePrimeagen/harpoon'
   Plug 'editorconfig/editorconfig-vim'
-  " Plug 'sbdchd/neoformat'
   Plug 'tpope/vim-surround'
+  Plug 'mfussenegger/nvim-dap'
+  Plug 'Pocco81/DAPInstall.nvim'
 endif
 call plug#end()
 
