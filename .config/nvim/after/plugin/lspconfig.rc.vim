@@ -1,8 +1,5 @@
-if !exists('g:lspconfig')
-lspc  finish
-endif
-
 lua << EOF
+return
 --vim.lsp.set_log_level("debug")
 EOF
 

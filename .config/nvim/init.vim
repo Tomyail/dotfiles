@@ -107,4 +107,9 @@ au BufNewFile,BufRead *.mdx set filetype=markdown
 syntax enable
 
 runtime ./plug.vim
+
+lua << EOF
+	require "user.lsp"
+EOF
+
 runtime ./maps.vim
