@@ -1,20 +1,20 @@
-if !exists('g:loaded_telescope') | finish | endif
+-- nnoremap <silent> <leader>ls <cmd>Telescope file_browser<cr>
+-- nnoremap <silent> <leader>fo <cmd>lua require('telescope.builtin').oldfiles({only_cwd=true})<cr>
+-- nnoremap <silent> <leader>ff <cmd>Telescope find_files<cr>
+-- nnoremap <silent> <leader>fg <cmd>Telescope live_grep<cr>
+-- nnoremap <silent> <leader>fb <cmd>Telescope buffers<cr>
+-- nnoremap <silent> <leader>fc <cmd>Telescope commands<cr>
+-- nnoremap <silent> <leader>fr <Cmd>Telescope frecency frecency <CR>
 
-" vscode like
-nnoremap <silent> <leader>ls <cmd>Telescope file_browser<cr>
-nnoremap <silent> <leader>fo <cmd>lua require('telescope.builtin').oldfiles({only_cwd=true})<cr>
-nnoremap <silent> <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <silent> <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <silent> <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <silent> <leader>fc <cmd>Telescope commands<cr>
-nnoremap <silent> <leader>fr <Cmd>Telescope frecency frecency <CR>
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+  return
+end
 
-lua << EOF
 function telescope_buffer_dir()
   return vim.fn.expand('%:p:h')
 end
 
-local telescope = require('telescope')
 local actions = require('telescope.actions')
 
 telescope.setup{
@@ -112,6 +112,5 @@ telescope.setup{
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('frecency')
 
-EOF
 
 

@@ -19,6 +19,7 @@ if not status_ok then
 	return
 end
 
+vim.o.hidden = true
 toggleterm.setup({
 	size = 20,
 	open_mapping = [[<c-\>]],

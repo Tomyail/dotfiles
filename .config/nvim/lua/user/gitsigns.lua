@@ -1,12 +1,10 @@
+local status_ok, gitsigns = pcall(require, "gitsigns")
+if not status_ok then
+  return
+end
 
-if exists('g:vscode')
-	finish
-endif
 
-" highlight link GitSignsCurrentLineBlame Visual
-lua <<EOF
-
-require('gitsigns').setup {
+gitsigns.setup {
   signs = {
     add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
     change       = {hl = 'GitSignsChange', text = '│', numhl='GitSignsChangeNr', linehl='GitSignsChangeLn'},
@@ -70,6 +68,3 @@ require('gitsigns').setup {
     enable = true
   },
 }
-
-EOF
-

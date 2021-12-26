@@ -1,8 +1,3 @@
-if exists('g:vscode')
-	finish
-endif
-
-lua <<EOF
 -- Setup nvim-cmp.
 local status_ok, npairs = pcall(require, "nvim-autopairs")
 if not status_ok then
@@ -36,4 +31,3 @@ if not cmp_status_ok then
   return
 end
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
-EOF

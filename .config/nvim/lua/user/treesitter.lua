@@ -1,8 +1,3 @@
-if !exists('g:loaded_nvim_treesitter')
-  finish
-endif
-
-lua <<EOF
 
 
 local status_ok, configs = pcall(require, "nvim-treesitter.configs")
@@ -77,4 +72,3 @@ configs.setup {
 
 -- local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 --  parser_config.tsx.used_by = { "javascript", "typescript.tsx" }
-EOF
