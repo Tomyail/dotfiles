@@ -80,6 +80,7 @@ return packer.startup(function(use)
   use 'hrsh7th/cmp-cmdline'
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
+  use 'ray-x/lsp_signature.nvim'
 
   use 'nvim-lua/plenary.nvim'
 
@@ -91,6 +92,7 @@ return packer.startup(function(use)
   use 'numToStr/Comment.nvim' -- Easily comment stuff
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use {'nvim-treesitter/nvim-treesitter', run= 'TSUpdate' }
+  -- use 'nvim-treesitter/playground'
 
   use 'RRethy/nvim-treesitter-textsubjects'
 
