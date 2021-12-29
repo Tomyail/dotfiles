@@ -109,6 +109,9 @@ return packer.startup(function(use)
   use 'folke/tokyonight.nvim'
   use  'lewis6991/impatient.nvim'
 
+	-- use 'ggandor/lightspeed.nvim'
+
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all useins
   if PACKER_BOOTSTRAP then
