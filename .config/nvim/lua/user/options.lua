@@ -33,6 +33,7 @@ local options = {
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
+	shell= "/bin/bash"											 -- nvim_tree will slow without this  https://github.com/kyazdani42/nvim-tree.lua/issues/172#issuecomment-943909692
 }
 
 vim.opt.shortmess:append "c"

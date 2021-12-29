@@ -110,6 +110,7 @@ return packer.startup(function(use)
   use  'lewis6991/impatient.nvim'
 
 	-- use 'ggandor/lightspeed.nvim'
+	use 'unblevable/quick-scope'
 
 
   -- Automatically set up your configuration after cloning packer.nvim
