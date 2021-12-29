@@ -1,5 +1,4 @@
 -- vim.cmd[[colorscheme gruvbox]]
--- vim.cmd[[highlight Normal guibg=none]]
 
 vim.cmd [[
 try
@@ -9,3 +8,4 @@ catch /^Vim\%((\a\+)\)\=:E185/
   set background=dark
 endtry
 ]]
+ vim.cmd[[highlight Normal guibg=none]]
