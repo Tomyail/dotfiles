@@ -115,6 +115,7 @@ return packer.startup(function(use)
 	-- use 'ggandor/lightspeed.nvim'
 	use 'unblevable/quick-scope'
 	use 'ThePrimeagen/harpoon'
+	use 'nathangrigg/vim-beancount'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all useins
