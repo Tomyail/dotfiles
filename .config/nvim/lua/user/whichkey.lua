@@ -181,6 +181,12 @@ local mappings = {
     h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
     v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
   },
+
+	m = {
+		name = "Mark",
+		a = {"<cmd>lua require('harpoon.mark').add_file()<cr>", "Add mark"},
+		m = {"<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Toggle mark menu"},
+	}
 }
 
 which_key.setup(setup)

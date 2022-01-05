@@ -92,7 +92,8 @@ return packer.startup(function(use)
   use 'numToStr/Comment.nvim' -- Easily comment stuff
   use 'JoosepAlviste/nvim-ts-context-commentstring'
   use {'nvim-treesitter/nvim-treesitter', run= 'TSUpdate' }
-  -- use 'nvim-treesitter/playground'
+	use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use 'nvim-treesitter/playground'
 
   use 'RRethy/nvim-treesitter-textsubjects'
 
@@ -113,7 +114,7 @@ return packer.startup(function(use)
 
 	-- use 'ggandor/lightspeed.nvim'
 	use 'unblevable/quick-scope'
-
+	use 'ThePrimeagen/harpoon'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all useins
