@@ -158,3 +158,4 @@ alias vim="nvim"
 
 #lazygit for yadm   https://github.com/jesseduffield/lazygit/discussions/1201
 alias ly="lazygit -ucd ~/.local/share/yadm/lazygit -w ~ -g ~/.local/share/yadm/repo.git"
+alias lg="lazygit"
