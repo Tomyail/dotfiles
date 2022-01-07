@@ -429,7 +429,7 @@ bind r source-file ~/.tmux.conf
 
 
 unbind _
-bind x split-window -h
+bind x split-window -v
 
 unbind -
-bind v split-window -v
+bind v split-window -h
