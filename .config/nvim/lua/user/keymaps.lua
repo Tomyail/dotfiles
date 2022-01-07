@@ -67,6 +67,10 @@ keymap("n", "sf", ":NvimTreeFindFileToggle<CR>",opts)
 -- disable default map
 vim.g.tmux_navigator_no_mappings = 1
 
+-- search selected text via Telescope live_grep
+-- https://www.reddit.com/r/neovim/comments/p8wtmn/comment/h9ty0s2/?utm_source=share&utm_medium=web2x&context=3
+keymap('v',"<leader><leader>",'"zy:Telescope live_grep default_text=<C-r>z<CR>', opts)
+
 --nnoremap <silent> {Left-Mapping} :TmuxNavigateLeft<cr>
 --nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
 --nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
