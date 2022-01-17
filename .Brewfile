@@ -45,6 +45,7 @@ brew 'asdf'
 
 brew 'ruby'
 brew 'pyenv'
+brew 'java'
 
 
 cask 'iterm2'
