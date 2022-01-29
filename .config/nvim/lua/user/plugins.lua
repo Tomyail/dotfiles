@@ -113,6 +113,7 @@ return packer.startup(function(use)
   use 'folke/tokyonight.nvim'
   use  'lewis6991/impatient.nvim'
 
+  use 'phaazon/hop.nvim'
 	use 'ggandor/lightspeed.nvim'
 	use 'unblevable/quick-scope'
 	use 'ThePrimeagen/harpoon'
@@ -120,6 +121,7 @@ return packer.startup(function(use)
 	use 'nathangrigg/vim-beancount'
 
 	use 'brglng/vim-im-select'
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all useins
