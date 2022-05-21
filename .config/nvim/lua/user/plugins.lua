@@ -41,6 +41,7 @@ packer.init {
 -- Install your useins here
 return packer.startup(function(use)
 
+  use 'github/copilot.vim'
 	use 'moll/vim-bbye'
   use 'antoinemadec/FixCursorHold.nvim' -- This is needed to fix lsp doc highlight
   use 'akinsho/bufferline.nvim'
@@ -79,6 +80,7 @@ return packer.startup(function(use)
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/cmp-copilot'
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
   use 'ray-x/lsp_signature.nvim'

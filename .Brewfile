@@ -85,6 +85,7 @@ cask 'clashx'
 cask 'qlmarkdown'
 cask 'quicklook-json'
 cask 'quicklook-csv'
+cask 'syntax-highlight'
 
 cask 'font-fira-code'
 cask 'font-ibm-plex'
