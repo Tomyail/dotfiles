@@ -1,6 +1,7 @@
 require "user.options"
 require "user.keymaps"
 require "user.plugins"
+require 'user.notify'
 require "user.theme"
 require "user.cmp"
 require "user.lsp"
@@ -20,3 +21,4 @@ require "user.alpha"
 require "user.hop"
 require "user.whichkey"
 require "user.autocommands"
+require "user.copilot"
