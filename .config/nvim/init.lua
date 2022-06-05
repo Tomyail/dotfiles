@@ -20,4 +20,3 @@ require "user.alpha"
 require "user.hop"
 require "user.whichkey"
 require "user.autocommands"
-
