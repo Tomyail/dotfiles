@@ -125,7 +125,6 @@ sources = {
 	{ name = "luasnip" },
 	{ name = "buffer" },
 	{ name = "path" },
-  { name = 'nvim_lua' }
 	-- { name = "copilot" },
 },
 confirm_opts = {
