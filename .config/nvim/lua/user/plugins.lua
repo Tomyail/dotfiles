@@ -82,6 +82,7 @@ return packer.startup(function(use)
   use 'hrsh7th/cmp-cmdline'
   use 'hrsh7th/cmp-copilot'
   use 'hrsh7th/cmp-nvim-lua'
+  use 'RRethy/vim-illuminate'
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
   use 'ray-x/lsp_signature.nvim'
