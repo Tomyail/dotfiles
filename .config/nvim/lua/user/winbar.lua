@@ -94,10 +94,10 @@ M.get_winbar = function()
     end
   end
 
-  local status_ok, _ = pcall(vim.api.nvim_set_option_value, "winbar", value, { scope = "local" })
-  if not status_ok then
-    return
-  end
+  -- local status_ok, _ = pcall(vim.api.nvim_set_option_value, "winbar", value, { scope = "local" })
+  -- if not status_ok then
+  --   return
+  -- end
 end
 
 return M

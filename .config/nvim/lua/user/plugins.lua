@@ -149,6 +149,8 @@ return packer.startup(function(use)
   use 'brglng/vim-im-select'
 
   use 'norcalli/nvim-colorizer.lua'
+	use 'karb94/neoscroll.nvim'
+	use 'matbme/JABS.nvim'
 
 
   -- Automatically set up your configuration after cloning packer.nvim

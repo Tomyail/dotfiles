@@ -17,6 +17,8 @@ local servers = {
   "yamlls",
   -- "bashls",
   "clangd",
+  "eslint",
+  "volar",
 }
 
 local settings = {
@@ -56,6 +58,7 @@ end
 local opts = {}
 
 for _, server in pairs(servers) do
+  vim.notify(server.. " set to ")
   opts = {
     on_attach = require("user.lsp.handlers").on_attach,
     capabilities = require("user.lsp.handlers").capabilities,
@@ -79,6 +82,11 @@ for _, server in pairs(servers) do
   if server == "emmet_ls" then
     local emmet_ls_opts = require "user.lsp.settings.emmet_ls"
     opts = vim.tbl_deep_extend("force", emmet_ls_opts, opts)
+  end
+
+  if server == "volar" then
+    local volar_opts= require "user.lsp.settings.volar"
+    opts = vim.tbl_deep_extend("force",volar_opts, opts)
   end
 
   lspconfig[server].setup(opts)

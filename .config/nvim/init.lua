@@ -24,3 +24,5 @@ require "user.alpha"
 require "user.hop"
 require "user.whichkey"
 require "user.copilot"
+require 'user.neoscroll'
+require 'user.jabs'
