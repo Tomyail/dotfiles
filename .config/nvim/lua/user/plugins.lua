@@ -61,7 +61,6 @@ return packer.startup(function(use)
 
   use 'folke/lsp-colors.nvim'
 
-
   use 'rcarriga/nvim-notify'
 
   use 'kristijanhusak/defx-git'
@@ -133,8 +132,11 @@ return packer.startup(function(use)
   use 'editorconfig/editorconfig-vim'
   use 'tpope/vim-surround'
 
-  use 'mfussenegger/nvim-dap'
-  use 'Pocco81/DAPInstall.nvim'
+-- DAP
+  use "mfussenegger/nvim-dap"
+  use "theHamsta/nvim-dap-virtual-text"
+  use "rcarriga/nvim-dap-ui"
+  use "Pocco81/DAPInstall.nvim"
 
   use 'folke/tokyonight.nvim'
   use 'lewis6991/impatient.nvim'
@@ -151,6 +153,9 @@ return packer.startup(function(use)
   use 'norcalli/nvim-colorizer.lua'
 	use 'karb94/neoscroll.nvim'
 	use 'matbme/JABS.nvim'
+	use 'windwp/nvim-spectre'
+	use "MattesGroeger/vim-bookmarks"
+
 
 
   -- Automatically set up your configuration after cloning packer.nvim
