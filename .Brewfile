@@ -89,6 +89,9 @@ cask 'syntax-highlight'
 
 cask 'font-fira-code'
 cask 'font-ibm-plex'
+
+brew  'yabai'
+brew  'skhd'
 cask 'spacelauncher'
 
 mas 'Keynote', id: 409183694
