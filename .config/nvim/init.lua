@@ -27,3 +27,5 @@ require "user.copilot"
 require 'user.neoscroll'
 require 'user.jabs'
 require 'user.bookmark'
+require 'user.trouble'
+require 'user.symbol-outline'
