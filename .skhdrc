@@ -110,15 +110,15 @@ shift + alt - l : yabai -m window --swap east
 
 # fast focus desktop
 # cmd + alt - x : yabai -m space --focus recent
-ctrl - h : yabai -m space --focus 1
-ctrl - j : yabai -m space --focus 2
-ctrl - k : yabai -m space --focus 3
-ctrl - l : yabai -m space --focus 4
+ctrl + alt - h : yabai -m space --focus 1
+ctrl + alt - j : yabai -m space --focus 2
+ctrl + alt - k : yabai -m space --focus 3
+ctrl + alt - l : yabai -m space --focus 4
 
-ctrl - y : yabai -m space --focus 5
-ctrl - u : yabai -m space --focus 6
-ctrl - i : yabai -m space --focus 7
-ctrl - o : yabai -m space --focus 8
+ctrl + alt - y : yabai -m space --focus 5
+ctrl + alt - u : yabai -m space --focus 6
+ctrl + alt - i : yabai -m space --focus 7
+ctrl + alt - o : yabai -m space --focus 8
 
 # send window to desktop and follow focus
 # shift + cmd - x : yabai -m window --space next; yabai -m space --focus next
