@@ -89,6 +89,7 @@ cask 'syntax-highlight'
 
 cask 'font-fira-code'
 cask 'font-ibm-plex'
+cask 'spacelauncher'
 
 mas 'Keynote', id: 409183694
 mas 'Numbers', id: 409203825
