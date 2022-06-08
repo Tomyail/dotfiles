@@ -83,10 +83,10 @@ alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
 
 # swap managed window
-shift + alt - h : yabai -m window --swap west
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - l : yabai -m window --swap east
+# shift + alt - h : yabai -m window --swap west
+# shift + alt - j : yabai -m window --swap south
+# shift + alt - k : yabai -m window --swap north
+# shift + alt - l : yabai -m window --swap east
 
 # move managed window
 # shift + cmd - h : yabai -m window --warp east
@@ -122,14 +122,15 @@ ctrl + alt - o : yabai -m space --focus 8
 
 # send window to desktop and follow focus
 # shift + cmd - x : yabai -m window --space next; yabai -m space --focus next
-shift + ctrl - h : yabai -m window --space  1; yabai -m space --focus 1
-shift + ctrl - j : yabai -m window --space  2; yabai -m space --focus 2
-shift + ctrl - k : yabai -m window --space  3; yabai -m space --focus 3
-shift + ctrl - l : yabai -m window --space  4; yabai -m space --focus 4
-shift + ctrl - y : yabai -m window --space  5; yabai -m space --focus 5
-shift + ctrl - u : yabai -m window --space  6; yabai -m space --focus 6
-shift + ctrl - i : yabai -m window --space  7; yabai -m space --focus 7
-shift + ctrl - o : yabai -m window --space  8; yabai -m space --focus 8
+shift + alt - h : yabai -m window --space  1; yabai -m space --focus 1
+shift + alt - j : yabai -m window --space  2; yabai -m space --focus 2
+shift + alt - k : yabai -m window --space  3; yabai -m space --focus 3
+shift + alt - l : yabai -m window --space  4; yabai -m space --focus 4
+
+shift + alt - y : yabai -m window --space  5; yabai -m space --focus 5
+shift + alt - u : yabai -m window --space  6; yabai -m space --focus 6
+shift + alt - i : yabai -m window --space  7; yabai -m space --focus 7
+shift + alt - o : yabai -m window --space  8; yabai -m space --focus 8
 
 # focus monitor
 # ctrl + alt - x  : yabai -m display --focus prev

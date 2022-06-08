@@ -10,3 +10,6 @@
 [submodule ".config/tmux"]
 	path = .config/tmux
 	url = https://github.com/gpakosz/.tmux
+[submodule ".config/dracula/alacritty"]
+	path = .config/dracula/alacritty
+	url = /Users/lixuexin03/.config/alacritty
