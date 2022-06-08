@@ -5,6 +5,7 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap 'homebrew/cask-drivers'
 tap "homebrew/cask-versions"
+tap "koekeishiya/formulae"
 
 
 brew 'mas' # Mac App Store manager
@@ -49,15 +50,15 @@ brew 'java'
 
 
 cask 'iterm2'
-cask 'wechat' # 聊天软件，微信
+#cask 'wechat' # 聊天软件，微信
 # cask 'wechatwork' # 聊天软件，企业微信
-cask 'visual-studio-code' #  开发 ide，vscode
-cask 'notion'
+# cask 'visual-studio-code' #  开发 ide，vscode
+# cask 'notion'
 # cask 'docker'
 # cask 'charles'
 # cask 'postman'
-cask 'youdaodict'
-cask 'karabiner-elements'
+# cask 'youdaodict'
+# cask 'karabiner-elements'
 # cask 'tencent-lemon'
 # cask 'vnc-viewer'
 # cask 'neteasemusic'
@@ -75,12 +76,12 @@ cask 'hiddenbar'
 # cask 'anki'
 # cask 'onedrive'
 # cask 'ngrok'
-cask 'rectangle'
+# cask 'rectangle'
 # cask 'dbeaver-community'
 # cask 'alacritty'
 cask 'keka'
 # cask 'cyberduck'
-cask 'clashx'
+# cask 'clashx'
 # Quicklook
 cask 'qlmarkdown'
 cask 'quicklook-json'
@@ -94,7 +95,7 @@ brew  'yabai'
 brew  'skhd'
 cask 'spacelauncher'
 
-mas 'Keynote', id: 409183694
-mas 'Numbers', id: 409203825
+# mas 'Keynote', id: 409183694
+# mas 'Numbers', id: 409203825
 
 
