@@ -18,7 +18,8 @@ local servers = {
   -- "bashls",
   "clangd",
   "eslint",
-  "volar",
+  -- "volar", -- for vue 3
+  "vuels", -- for vue 2
 }
 
 local settings = {
