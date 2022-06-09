@@ -45,14 +45,14 @@ cmp.setup({
     ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
     ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
     ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    ["<ESC>"] = cmp.mapping.close(),
+    ["<ESC>"] = cmp.mapping.abort(),
     ["<C-e>"] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
     ["<CR>"] = cmp.mapping.confirm({
       -- behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
+      select = false,
     }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
