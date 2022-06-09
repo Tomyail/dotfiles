@@ -46,6 +46,16 @@ if not status_ok then
 	return
 end
 
+local gps_ok, gps = pcall(require, "nvim-gps")
+local bar_c
+if gps_ok then
+	bar_c = {
+		{ gps.get_location, cond = gps.is_available },
+	}
+else
+	bar_c = {}
+end
+
 local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80
 end
@@ -64,7 +74,7 @@ local diff = {
 	"diff",
 	colored = false,
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-  cond = hide_in_width
+	cond = hide_in_width,
 }
 
 local mode = {
@@ -108,16 +118,21 @@ end
 lualine.setup({
 	options = {
 		icons_enabled = true,
-		theme = "auto",
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline","defx" },
+		-- theme = "auto",
+		theme = "dracula",
+  component_separators = { left = '', right = ''},
+    section_separators = { left = '', right = ''},
+  -- section_separators = { left = '', right = '' },
+  -- component_separators = { left = '', right = '' },
+		-- component_separators = { left = "", right = "" },
+		-- section_separators = { left = "", right = "" },
+		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline", "defx" },
 		always_divide_middle = true,
 	},
 	sections = {
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
-		lualine_c = {},
+		lualine_c = bar_c,
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_y = { location },

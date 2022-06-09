@@ -172,6 +172,7 @@ return packer.startup(function(use)
 		"zbirenbaum/copilot-cmp",
 		after = { "copilot.lua", "nvim-cmp" },
 	})
+use("SmiteshP/nvim-gps")
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all useins
 	if PACKER_BOOTSTRAP then
