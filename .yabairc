@@ -48,5 +48,9 @@ yabai -m config window_gap                   06
 # apps to not manage (ignore)
 yabai -m rule --add app="^System Preferences$" manage=off
 yabai -m rule --add app="^系统偏好设置$" manage=off
+yabai -m rule --add app="^大象$" manage=off
+yabai -m rule --add app="^微信$" manage=off
+yabai -m rule --add app="^DeepL$" manage=off
+# yabai -m rule --add app="^Alacritty$" manage=on border=off
 
 echo "yabai configuration loaded.."
