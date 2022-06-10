@@ -29,3 +29,5 @@ require 'user.bookmark'
 require 'user.trouble'
 require 'user.symbol-outline'
 require 'user.gps'
+require 'user.cybu'
+
