@@ -83,8 +83,12 @@ return packer.startup(function(use)
 	-- use("hrsh7th/cmp-copilot")
 	use("hrsh7th/cmp-nvim-lua")
 	use("RRethy/vim-illuminate")
+
+	-- for edit
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-ts-autotag")
+	use("RRethy/nvim-treesitter-endwise")
+
 	use("ray-x/lsp_signature.nvim")
 	use({
 		"tzachar/cmp-tabnine",
