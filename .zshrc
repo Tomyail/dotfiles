@@ -107,3 +107,5 @@ fi
 . "$HOME/.cargo/env"
 . /usr/local/opt/asdf/asdf.sh
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+. /usr/local/opt/asdf/libexec/asdf.sh

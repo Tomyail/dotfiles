@@ -20,6 +20,7 @@ local servers = {
   "eslint",
   -- "volar", -- for vue 3
   "vuels", -- for vue 2
+  "elixirls",
 }
 
 local settings = {

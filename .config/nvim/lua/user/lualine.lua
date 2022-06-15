@@ -66,7 +66,7 @@ local diagnostics = {
 	sections = { "error", "warn" },
 	symbols = { error = " ", warn = " " },
 	colored = false,
-	update_in_insert = false,
+	update_in_insert = true,
 	always_visible = true,
 }
 
