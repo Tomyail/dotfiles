@@ -91,5 +91,10 @@ for _, server in pairs(servers) do
     opts = vim.tbl_deep_extend("force",volar_opts, opts)
   end
 
+  if server == "vuels" then
+    local volar_opts= require "user.lsp.settings.vuels"
+    opts = vim.tbl_deep_extend("force",volar_opts, opts)
+  end
+
   lspconfig[server].setup(opts)
 end
