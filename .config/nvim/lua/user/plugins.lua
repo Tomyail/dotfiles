@@ -163,19 +163,19 @@ return packer.startup(function(use)
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 	use("simrat39/symbols-outline.nvim")
-	use({
-		"zbirenbaum/copilot.lua",
-		event = "InsertEnter",
-		config = function()
-			vim.schedule(function()
-				require("copilot").setup()
-			end)
-		end,
-	})
-	use({
-		"zbirenbaum/copilot-cmp",
-		after = { "copilot.lua", "nvim-cmp" },
-	})
+	-- use({
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		vim.schedule(function()
+	-- 			require("copilot").setup()
+	-- 		end)
+	-- 	end,
+	-- })
+	-- use({
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	after = { "copilot.lua", "nvim-cmp" },
+	-- })
 	use({
 		"ghillb/cybu.nvim",
 		branch = "v1.x", -- won't receive breaking changes

@@ -54,7 +54,7 @@ export NVM_COMPLETION=true
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras z zsh-autosuggestions zsh-nvm)
+plugins=(git git-extras z zsh-autosuggestions zsh-nvm docker docker-compose)
 
 # User configuration
 

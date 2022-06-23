@@ -8,4 +8,7 @@ export GEM_HOME="$HOME/.gem"
 export PIP_BIN="/Users/leosun/Library/Python/3.9/bin"
 # 把 gem 的运行程序加进来
 export PATH="$GEM_HOME/bin:$PATH"
-export PATH="$PIP_BIN:$PATH"
+
+
+# ansible support
+export PATH="/Users/lixuexin03/Library/Python/3.9/bin/:$PATH":
