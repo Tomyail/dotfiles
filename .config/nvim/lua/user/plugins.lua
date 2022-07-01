@@ -163,6 +163,7 @@ return packer.startup(function(use)
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 	use("simrat39/symbols-outline.nvim")
+	use('tmux-plugins/vim-tmux-focus-events')
 	-- use({
 	-- 	"zbirenbaum/copilot.lua",
 	-- 	event = "InsertEnter",

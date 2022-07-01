@@ -419,8 +419,9 @@ set -g @resurrect-processes 'node'
 #setw -g mode-keys vi
 
 # 设置可以用鼠标拖动 https://stackoverflow.com/questions/11832199/tmux-set-g-mouse-mode-on-doesnt-work
-
 set -g mouse on
+set -g focus-events on
+set -s focus-events on
 
 # Make `Ctrl+A R` reload the config file
 unbind r
