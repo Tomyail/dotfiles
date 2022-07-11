@@ -31,5 +31,6 @@ require 'user.symbol-outline'
 require 'user.gps'
 require 'user.cybu'
 require 'user.snippet'
+require 'user.leap'
 
 

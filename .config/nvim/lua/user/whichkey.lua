@@ -86,7 +86,6 @@ local mappings = {
 	--   "Buffers",
 	-- },
 	["/"] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', "Comment" },
-	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["q"] = { "<cmd>q!<CR>", "Quit" },
 	-- ["q"] = { '<cmd>lua require("user.functions").smart_quit()<CR>', "Quit" },
@@ -98,6 +97,11 @@ local mappings = {
 	},
 	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
 	["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
+	e = {
+		name = "Explorer",
+		["e"] = { "<cmd>NvimTreeToggle<cr>", "Open" },
+		["f"] = { "<cmd>NvimTreeFindFileToggle<cr>", "Find" },
+	},
 	d = {
 		name = "Debug",
 		b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
@@ -264,7 +268,6 @@ local m_mappings = {
 	x = { "<cmd>BookmarkClearAll<cr>", "Clear All" },
 	u = { '<cmd>lua require("harpoon.ui").toggle_quick_menu()<cr>', "Harpoon UI" },
 }
-
 
 -- local ctrl_opts = {
 -- 	mode = "n", -- NORMAL mode

@@ -142,10 +142,12 @@ return packer.startup(function(use)
 	use("Pocco81/DAPInstall.nvim")
 
 	use("folke/tokyonight.nvim")
+	use("shaunsingh/nord.nvim")
 	use("lewis6991/impatient.nvim")
 
 	use("phaazon/hop.nvim")
 	use("ggandor/lightspeed.nvim")
+	use("ggandor/leap.nvim")
 	use("unblevable/quick-scope")
 	use("ThePrimeagen/harpoon")
 
@@ -163,7 +165,7 @@ return packer.startup(function(use)
 		requires = "kyazdani42/nvim-web-devicons",
 	})
 	use("simrat39/symbols-outline.nvim")
-	use('tmux-plugins/vim-tmux-focus-events')
+	use("tmux-plugins/vim-tmux-focus-events")
 	-- use({
 	-- 	"zbirenbaum/copilot.lua",
 	-- 	event = "InsertEnter",
