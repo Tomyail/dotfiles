@@ -100,7 +100,8 @@ local mappings = {
 	e = {
 		name = "Explorer",
 		["e"] = { "<cmd>NvimTreeToggle<cr>", "Open" },
-		["f"] = { "<cmd>NvimTreeFindFileToggle<cr>", "Find" },
+		["f"] = { "<cmd>NvimTreeFindFile<cr>", "Find" },
+		["o"] = { "<cmd>NvimTreeCollapseKeepBuffers<cr>", "Collapses" },
 	},
 	d = {
 		name = "Debug",

@@ -28,6 +28,8 @@ vim.cmd [[
 
 -- exit win if nvimtree is the only win
 vim.cmd "autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif"
+vim.cmd "autocmd InsertLeave * !im-select com.apple.keylayout.ABC"
+vim.cmd "autocmd InsertEnter * !im-select com.apple.keylayout.ABC"
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
   callback = function()
