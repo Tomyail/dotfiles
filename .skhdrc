@@ -83,10 +83,10 @@ alt - k : yabai -m window --focus north
 alt - l : yabai -m window --focus east
 
 # swap managed window
-# shift + alt - h : yabai -m window --swap west
-# shift + alt - j : yabai -m window --swap south
-# shift + alt - k : yabai -m window --swap north
-# shift + alt - l : yabai -m window --swap east
+shift + ctrl - h : yabai -m window --swap west
+shift + ctrl - j : yabai -m window --swap south
+shift + ctrl - k : yabai -m window --swap north
+shift + ctrl - l : yabai -m window --swap east
 
 # move managed window
 # shift + cmd - h : yabai -m window --warp east
@@ -174,7 +174,7 @@ alt - c : yabai -m window --toggle float;\
 #           yabai -m window --toggle topmost;\
 #           yabai -m window --toggle pip
 
-# balance size of windows
+# balance size of windows (equal)
 shift + alt - 0 : yabai -m space --balance
 
 #  monitor

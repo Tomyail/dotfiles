@@ -56,6 +56,9 @@ yabai -m rule --add app="^SpaceLauncher$" manage=off
 yabai -m rule --add app="^网易云音乐$" manage=off
 yabai -m rule --add app="^Logseq$" manage=off
 yabai -m rule --add app="^印象笔记$" manage=off
-# yabai -m rule --add app="^Alacritty$" manage=on border=off
 
-echo "yabai configuration loaded.."
+
+# only tile following app
+# https://github.com/koekeishiya/yabai/issues/727
+# yabai -m rule --add app!="^Alacritty$" manage=off
+# yabai -m rule --add app!="^Google Chrome$" manage=off
