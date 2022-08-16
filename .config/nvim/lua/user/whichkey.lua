@@ -159,6 +159,18 @@ local mappings = {
 			"Diff",
 		},
 	},
+	D = {
+		name = "find under directory",
+		f = {
+			"<cmd>lua require('user.functions').find_file_under_cursor_dir()<cr>",
+			"find file",
+		},
+		F = {
+
+			"<cmd>lua require('user.functions').find_text_under_cursor_dir()<cr>",
+			"find text",
+    },
+	},
 
 	l = {
 		name = "LSP",
