@@ -40,7 +40,7 @@ packer.init({
 
 -- Install your useins here
 return packer.startup(function(use)
-	-- use 'github/copilot.vim'
+	use("lewis6991/impatient.nvim")
 	use("moll/vim-bbye")
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("akinsho/bufferline.nvim")
@@ -80,7 +80,6 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-cmdline")
-	-- use("hrsh7th/cmp-copilot")
 	use("hrsh7th/cmp-nvim-lua")
 	use("RRethy/vim-illuminate")
 
@@ -143,7 +142,6 @@ return packer.startup(function(use)
 
 	use("folke/tokyonight.nvim")
 	use("shaunsingh/nord.nvim")
-	use("lewis6991/impatient.nvim")
 
 	use("phaazon/hop.nvim")
 	use("ggandor/lightspeed.nvim")
@@ -166,19 +164,18 @@ return packer.startup(function(use)
 	})
 	use("simrat39/symbols-outline.nvim")
 	use("tmux-plugins/vim-tmux-focus-events")
-	-- use({
-	-- 	"zbirenbaum/copilot.lua",
-	-- 	event = "InsertEnter",
-	-- 	config = function()
-	-- 		vim.schedule(function()
-	-- 			require("copilot").setup()
-	-- 		end)
-	-- 	end,
-	-- })
-	-- use({
-	-- 	"zbirenbaum/copilot-cmp",
-	-- 	after = { "copilot.lua", "nvim-cmp" },
-	-- })
+	--[[ use("github/copilot.vim") ]]
+	-- use("hrsh7th/cmp-copilot")
+	use({
+		"zbirenbaum/copilot.lua",
+		event = { "VimEnter" },
+		config = function()
+			vim.defer_fn(function()
+				require("user.copilot")
+			end, 100)
+		end,
+	})
+	use("zbirenbaum/copilot-cmp")
 	use({
 		"ghillb/cybu.nvim",
 		branch = "v1.x", -- won't receive breaking changes
@@ -186,9 +183,10 @@ return packer.startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons" }, --optional
 	})
 	use("SmiteshP/nvim-gps")
+	use("dstein64/vim-startuptime")
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all useins
-	if PACKER_BOOTSTRAP then
-		require("packer").sync()
-	end
+	--[[ if PACKER_BOOTSTRAP then ]]
+	--[[ 	require("packer").sync() ]]
+	--[[ end ]]
 end)
