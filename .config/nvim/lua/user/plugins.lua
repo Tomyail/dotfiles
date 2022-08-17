@@ -41,6 +41,7 @@ packer.init({
 -- Install your useins here
 return packer.startup(function(use)
 	use("lewis6991/impatient.nvim")
+	use("nathom/filetype.nvim")
 	use("moll/vim-bbye")
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("akinsho/bufferline.nvim")
