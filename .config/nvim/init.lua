@@ -21,7 +21,7 @@ require "user.project"
 require "user.impatient"
 require "user.indentline"
 require "user.alpha"
-require "user.hop"
+--[[ require "user.hop" ]]
 require "user.whichkey"
 require 'user.neoscroll'
 require 'user.jabs'

@@ -143,8 +143,8 @@ return packer.startup(function(use)
 	use("folke/tokyonight.nvim")
 	use("shaunsingh/nord.nvim")
 
-	use("phaazon/hop.nvim")
-	use("ggandor/lightspeed.nvim")
+	--[[ use("phaazon/hop.nvim") ]]
+	--[[ use("ggandor/lightspeed.nvim") ]]
 	use("ggandor/leap.nvim")
 	use("unblevable/quick-scope")
 	use("ThePrimeagen/harpoon")

@@ -71,14 +71,14 @@ vim.g.tmux_navigator_no_mappings = 1
 -- https://www.reddit.com/r/neovim/comments/p8wtmn/comment/h9ty0s2/?utm_source=share&utm_medium=web2x&context=3
 keymap('v',"<leader><leader>",'"zy:Telescope live_grep default_text=<C-r>z<CR>', opts)
 
-keymap('n', 'ss', "<cmd>lua require'hop'.hint_char2({})<cr>", {})
-keymap('n', ',,', "<cmd>lua require'hop'.hint_char2({})<cr>", {})
-keymap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
-keymap('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
-keymap('o', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {})
-keymap('o', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {})
-keymap('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {})
-keymap('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {})
+--[[ keymap('n', 'ss', "<cmd>lua require'hop'.hint_char2({})<cr>", {}) ]]
+--[[ keymap('n', ',,', "<cmd>lua require'hop'.hint_char2({})<cr>", {}) ]]
+--[[ keymap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {}) ]]
+--[[ keymap('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {}) ]]
+--[[ keymap('o', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {}) ]]
+--[[ keymap('o', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {}) ]]
+--[[ keymap('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {}) ]]
+--[[ keymap('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {}) ]]
 
 keymap('n', '<leader>u', "<cmd>source ~/.config/nvim/lua/user/snippet.lua<cr>", {})
 
