@@ -380,7 +380,7 @@ set -g @continuum-restore 'on'
 
 # https://github.com/tmux-plugins/tmux-resurrect/blob/master/docs/restoring_programs.md
 
-set -g @resurrect-processes 'node'
+# set -g @resurrect-processes 'node'
 
 # -- custom variables ----------------------------------------------------------
 
