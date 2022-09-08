@@ -18,6 +18,8 @@ export HISTSIZE='32768';
 export HISTFILESIZE="${HISTSIZE}";
 # Omit duplicates and commands that begin with a space from history.
 export HISTCONTROL='ignoreboth';
+# timestamp format
+export HISTTIMEFORMAT="%Y-%m-%d %T"
 
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8';

@@ -15,11 +15,11 @@ end
 
 copilot.setup({
 	cmp = {
-		enabled = true,
+		enabled = false,
 		method = "getCompletionsCycling",
 	},
 	panel = { -- no config options yet
-		enabled = true,
+		enabled = false,
 	},
 	ft_disable = { "markdown" },
 	-- plugin_manager_path = vim.fn.stdpath "data" .. "/site/pack/packer",
