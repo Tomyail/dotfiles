@@ -187,6 +187,13 @@ return packer.startup(function(use)
 	})
 	use("SmiteshP/nvim-gps")
 	use("dstein64/vim-startuptime")
+
+	use({
+		"fgheng/winbar.nvim",
+		--[[ cond = function() ]]
+		--[[ 	return vim.fn.has("nvim-0.8") == 1 ]]
+		--[[ end, ]]
+	})
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all useins
 	--[[ if PACKER_BOOTSTRAP then ]]
