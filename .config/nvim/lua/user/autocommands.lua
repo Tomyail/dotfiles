@@ -36,8 +36,8 @@ vim.cmd [[
 --[[     end ]]
 --[[   end ]]
 --[[ }) ]]
-vim.cmd "autocmd InsertLeave * !im-select com.apple.keylayout.ABC"
-vim.cmd "autocmd InsertEnter * !im-select com.apple.keylayout.ABC"
+vim.cmd "autocmd InsertLeave * silent! !im-select com.apple.keylayout.ABC"
+vim.cmd "autocmd InsertEnter * silent! !im-select com.apple.keylayout.ABC"
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
   callback = function()
