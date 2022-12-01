@@ -1,8 +1,6 @@
 [".config/nvim"]
-    type = "archive"
-    url = "https://github.com/Tomyail/nvim_conf/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
+    type = "git-repo"
+    url = "https://github.com/Tomyail/nvim_conf.git"
     refreshPeriod = "168h"
 [".config/dracula/gnome-terminal"]
     type = "archive"
