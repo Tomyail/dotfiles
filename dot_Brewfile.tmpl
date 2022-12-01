@@ -1,0 +1,40 @@
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "homebrew/services"
+{{ if eq .chezmoi.os "darwin" }}
+tap 'homebrew/cask-drivers'
+tap "homebrew/cask-versions"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "koekeishiya/formulae"
+{{ end }}
+
+
+brew 'tmux'
+
+# search tools
+brew 'fd'
+brew 'fzf'
+brew  'grep'
+brew 'the_silver_searcher'
+brew 'ripgrep'
+
+brew 'bash'
+
+{{ if eq .chezmoi.os "darwin" }}
+brew 'bash-completion'
+{{ end }}
+brew 'zsh'
+brew 'starship'
+
+brew 'vim'
+brew 'nvim'
+
+brew 'git'
+brew 'git-lfs'
+brew 'git-extras'
+brew 'lazygit'
+
+{{ if eq .chezmoi.os "darwin" }}
+cask 'font-ibm-plex'
+{{ end }}

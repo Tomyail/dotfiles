@@ -1,0 +1,43 @@
+[".config/nvim"]
+    type = "archive"
+    url = "https://github.com/Tomyail/nvim_conf/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".config/dracula/gnome-terminal"]
+    type = "archive"
+    url = "https://github.com/dracula/gnome-terminal/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".config/dracula/alacritty"]
+    type = "archive"
+    url = "https://github.com/dracula/alacritty/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".config/dracula/iterm"]
+    type = "archive"
+    url = "https://github.com/dracula/iterm/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".config/dracula/terminal-app"]
+    type = "archive"
+    url = "https://github.com/dracula/terminal-app/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".fonts/Blex Mono Nerd Font Complete Mono.ttf"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/IBMPlexMono/Mono/complete/Blex%20Mono%20Nerd%20Font%20Complete%20Mono.ttf"
+    refreshPeriod = "168h"
+[".fonts/Blex Mono Bold Nerd Font Complete Mono.ttf"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/IBMPlexMono/Mono/complete/Blex%20Mono%20Bold%20Nerd%20Font%20Complete%20Mono.ttf"
+    refreshPeriod = "168h"
+[".fonts/Blex Mono Italic Nerd Font Complete Mono.ttf"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/IBMPlexMono/Mono/complete/Blex%20Mono%20Italic%20Nerd%20Font%20Complete%20Mono.ttf"
+    refreshPeriod = "168h"
+
