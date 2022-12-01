@@ -172,4 +172,23 @@ function M.find_file_under_cursor_dir()
 	-- 	})
 end
 
+function M.get_running_mode()
+	local allowed_mode = { "basic", "enhanced", "deluxe" }
+	local running_mode = os.getenv("NVIM_RUNNING_MODE")
+	local function has_value(tab, val)
+		for index, value in ipairs(tab) do
+			if value == val then
+				return true
+			end
+		end
+		return false
+	end
+
+	if not has_value(allowed_mode, running_mode) then
+		running_mode = "basic"
+	end
+
+	return running_mode
+end
+
 return M

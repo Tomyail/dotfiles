@@ -5,7 +5,7 @@ try
   colorscheme tokyonight
 		" colorscheme nord
 catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme default
+  colorscheme habamax
   set background=dark
 endtry
 ]]

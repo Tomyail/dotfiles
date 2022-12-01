@@ -18,6 +18,9 @@ vim.g.maplocalleader = ","
 --   term_mode = "t",
 --   command_mode = "c",
 
+
+-- my favorite
+
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -25,15 +28,20 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- Navigate buffers
+keymap("n", "<S-l>", ":bnext<CR>", opts)
+keymap("n", "<S-h>", ":bprevious<CR>", opts)
+
+-- search selected text via Telescope live_grep
+-- https://www.reddit.com/r/neovim/comments/p8wtmn/comment/h9ty0s2/?utm_source=share&utm_medium=web2x&context=3
+keymap('v',"<leader><leader>",'"zy:Telescope live_grep default_text=<C-r>z<CR>', opts)
+
+
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
-
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
@@ -60,40 +68,10 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
--- nvm tree
-keymap("n", "sf", ":NvimTreeFindFileToggle<CR>",opts)
-
 -- tmux
 -- disable default map
 vim.g.tmux_navigator_no_mappings = 1
 
--- search selected text via Telescope live_grep
--- https://www.reddit.com/r/neovim/comments/p8wtmn/comment/h9ty0s2/?utm_source=share&utm_medium=web2x&context=3
-keymap('v',"<leader><leader>",'"zy:Telescope live_grep default_text=<C-r>z<CR>', opts)
-
---[[ keymap('n', 'ss', "<cmd>lua require'hop'.hint_char2({})<cr>", {}) ]]
---[[ keymap('n', ',,', "<cmd>lua require'hop'.hint_char2({})<cr>", {}) ]]
---[[ keymap('n', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {}) ]]
---[[ keymap('n', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {}) ]]
---[[ keymap('o', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {}) ]]
---[[ keymap('o', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, inclusive_jump = true })<cr>", {}) ]]
---[[ keymap('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>", {}) ]]
---[[ keymap('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>", {}) ]]
 
 keymap('n', '<leader>u', "<cmd>source ~/.config/nvim/lua/user/snippet.lua<cr>", {})
 
--- vim.api.nvim_set_keymap("i", "<C-n>", "<Plug>luasnip-next-choice", {})
--- vim.api.nvim_set_keymap("s", "<C-n>", "<Plug>luasnip-next-choice", {})
--- vim.api.nvim_set_keymap("i", "<C-p>", "<Plug>luasnip-prev-choice", {})
--- vim.api.nvim_set_keymap("s", "<C-p>", "<Plug>luasnip-prev-choice", {})
---nnoremap <silent> {Left-Mapping} :TmuxNavigateLeft<cr>
---nnoremap <silent> {Down-Mapping} :TmuxNavigateDown<cr>
---nnoremap <silent> {Up-Mapping} :TmuxNavigateUp<cr>
---nnoremap <silent> {Right-Mapping} :TmuxNavigateRight<cr>
---nnoremap <silent> {Previous-Mapping} :TmuxNavigatePrevious<cr>
--- Terminal --
--- Better terminal navigation
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)

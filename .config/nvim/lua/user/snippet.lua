@@ -1,4 +1,7 @@
-local ls = require("luasnip")
+local status_ok, ls = pcall(require, "luasnip")
+if not status_ok then
+  return
+end
 -- some shorthands...
 local s = ls.snippet
 local sn = ls.snippet_node
@@ -530,7 +533,7 @@ require("luasnip.loaders.from_vscode").load({ include = { "python" } }) -- Load 
 require("luasnip.loaders.from_vscode").load({ paths = { "./my-snippets" } }) -- Load snippets from my-snippets folder
 
 -- You can also use lazy loading so snippets are loaded on-demand, not all at once (may interfere with lazy-loading luasnip itself).
-require("luasnip.loaders.from_vscode").lazy_load() -- You can pass { paths = "./my-snippets/"} as well
+--[[ require("luasnip.loaders.from_vscode").lazy_load() -- You can pass { paths = "./my-snippets/"} as well ]]
 
 -- You can also use snippets in snipmate format, for example <https://github.com/honza/vim-snippets>.
 -- The usage is similar to vscode.
