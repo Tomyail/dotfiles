@@ -1,0 +1,52 @@
+#!/bin/sh
+
+for file in ~/.{path,exports,aliases,functions,evals,extra}; do
+	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
+
+# install brew
+if ! command -v brew >/dev/null 2>&1; then
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+brew bundle --global -v
+
+{{ if eq .chezmoi.os "linux" }}
+sudo apt-get install build-essential -y
+{{ end }}
+
+if [ -z "$ZSH" ]; then
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+autosuggestions="$ZSH/custom/plugins/zsh-autosuggestions"
+if [ ! -e "$autosuggestions" ]; then
+  echo "install zsh-autosuggestions plugin"
+    # 安装 zsh-autosuggestions 插件
+  git clone  --depth 1 https://github.com/zsh-users/zsh-autosuggestions "$autosuggestions"
+fi
+
+nvm="$ZSH/custom/plugins/zsh-nvm"
+if [ ! -e "$nvm" ]; then
+  echo "install zsh-nvm plugin"
+    # 安装 zsh-nvms 插件
+  git clone  --depth 1 https://github.com/lukechilds/zsh-nvm "$nvm"
+fi
+
+# install oh my tmux
+tmux="$HOME/.tmux"
+if [ ! -e "$tmux" ]; then
+cd 
+git clone --depth 1 https://github.com/gpakosz/.tmux.git
+ln -s -f .tmux/.tmux.conf
+cd -
+fi
+
+# install tmux plugins mamanger
+tpm="$HOME/.tmux/plugins/tpm"
+if [ ! -e "$tpm" ]; then
+    echo "install tmux plugins manager"
+    git clone --depth 1 https://github.com/tmux-plugins/tpm "$tpm"
+fi
+
+
