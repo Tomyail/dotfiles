@@ -16,7 +16,7 @@ sudo apt-get install build-essential -y
 {{ end }}
 
 if [ -z "$ZSH" ]; then
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --keep-zshrc
 fi
 
 autosuggestions="$ZSH/custom/plugins/zsh-autosuggestions"
