@@ -27,6 +27,13 @@ brew 'bash-completion'
 brew 'zsh'
 brew 'starship'
 
+# tmux os clippboard support
+{{ if eq .chezmoi.os "darwin" }}
+brew 'reattach-to-user-namespace'
+{{ elseif eq .chezmoi.os "linux" }}
+brew 'xclip'
+{{ end }}
+
 brew 'vim'
 brew 'nvim'
 
