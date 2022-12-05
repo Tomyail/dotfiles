@@ -320,7 +320,7 @@ tmux_conf_theme_clock_style="24"
 #   - false (default)
 # on macOS, this requires installing reattach-to-user-namespace, see README.md
 # on Linux, this requires xsel or xclip
-tmux_conf_copy_to_os_clipboard=false
+tmux_conf_copy_to_os_clipboard=true
 
 
 # -- user customizations -------------------------------------------------------
@@ -330,12 +330,12 @@ tmux_conf_copy_to_os_clipboard=false
 #set -g history-limit 10000
 
 # start with mouse mode enabled
-#set -g mouse on
+set -g mouse on
 
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
-#set -g status-keys vi
-#set -g mode-keys vi
+set -g status-keys vi
+set -g mode-keys vi
 
 # replace C-b by C-a instead of using both prefixes
 # set -gu prefix2
@@ -415,19 +415,8 @@ set -g @continuum-restore 'on'
 # unbind C-b
 # bind C-a send-prefix
 
-# Use Vim shortcuts
-#setw -g mode-keys vi
-
-# 设置可以用鼠标拖动 https://stackoverflow.com/questions/11832199/tmux-set-g-mouse-mode-on-doesnt-work
-set -g mouse on
 set -g focus-events on
 set -s focus-events on
-
-# Make `Ctrl+A R` reload the config file
-unbind r
-bind r source-file ~/.tmux.conf
-
-
 
 unbind _
 bind x split-window -v
