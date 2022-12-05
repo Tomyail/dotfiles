@@ -13,11 +13,11 @@ tap "koekeishiya/formulae"
 brew 'tmux'
 
 # search tools
-brew 'fd'
-brew 'fzf'
-brew  'grep'
-brew 'the_silver_searcher'
-brew 'ripgrep'
+## brew 'fd'
+## brew 'fzf'
+## brew  'grep'
+## brew 'the_silver_searcher'
+## brew 'ripgrep'
 
 brew 'bash'
 
@@ -30,12 +30,12 @@ brew 'starship'
 # tmux os clippboard support
 {{ if eq .chezmoi.os "darwin" }}
 brew 'reattach-to-user-namespace'
-{{ elseif eq .chezmoi.os "linux" }}
+{{ else if eq .chezmoi.os "linux" }}
 brew 'xclip'
 {{ end }}
 
-brew 'vim'
-brew 'nvim'
+## brew 'vim'
+## brew 'nvim'
 
 brew 'git'
 brew 'git-lfs'
