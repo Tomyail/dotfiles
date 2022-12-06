@@ -180,9 +180,22 @@
 
 [init]
 	defaultBranch = main
+{{ if eq .chezmoi.username "lixuexin03" }}
+[user]
+	name = lixuexin03
+	email = REDACTED_WORK_EMAIL 
+
+[credential]
+	helper = 
+	helper = /usr/local/bin/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+{{ else }}
 [user]
 	name = Leo sun
 	email = REDACTED_PERSONAL_EMAIL
+{{ end }}
+
 [pull]
 	rebase = true
 [filter "lfs"]
@@ -190,3 +203,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+
+
