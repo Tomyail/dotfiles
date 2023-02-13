@@ -92,3 +92,14 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 {{ else }}
 {{ end }}
 
+
+
+{{ if eq .chezmoi.username "lixuexin03" }}
+# bun completions
+[ -s "/Users/lixuexin03/.bun/_bun" ] && source "/Users/lixuexin03/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+{{ else }}
+{{ end }}
