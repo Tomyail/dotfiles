@@ -190,6 +190,16 @@
 	helper = /usr/local/bin/git-credential-manager
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+{{ else if eq .chezmoi.username "lixuexin"}}
+[user]
+	name = Leo sun
+	email = tomyail1989@gmail.com
+
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true
 {{ else }}
 [user]
 	name = Leo sun
