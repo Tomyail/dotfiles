@@ -33,9 +33,9 @@ font:
     x: 0
     y: 0
 window:
-  decorations: 'none'
+  decorations: 'buttonless'
   opacity: 0.88
-  startup_mode: 'SimpleFullscreen'
+  # startup_mode: 'SimpleFullscreen'
   padding:
     x: 2
     y: 2
