@@ -33,7 +33,11 @@ font:
     x: 0
     y: 0
 window:
+{{ if eq .chezmoi.os "darwin" }}
   decorations: 'buttonless'
+{{ else if eq .chezmoi.os "linux" }}
+{{ else }}
+{{ end }}
   opacity: 0.88
   # startup_mode: 'SimpleFullscreen'
   padding:
@@ -58,6 +62,8 @@ key_bindings:
 #
 # You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
 # Entries in shell.args are passed unmodified as arguments to the shell.
+
+# ubuntu 如果启动不起来请检查zsh tmux 是否存在。另外 linux 别使用 brew 的 tmux, 使用 apt 安装的 tmux 。 否则查找 .tmux.config 似乎有问题
 shell:
   program: /bin/zsh
   args:
