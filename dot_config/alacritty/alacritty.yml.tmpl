@@ -10,7 +10,7 @@ font:
   normal:
     family: 'BlexMono Nerd Font Mono'
     # Style can be specified to pick a specific face.
-    style: Book
+    style: Regular
 
   # The bold font face
   bold:
@@ -33,11 +33,9 @@ font:
     x: 0
     y: 0
 window:
-{{ if eq .chezmoi.os "darwin" }}
+
   decorations: 'buttonless'
-{{ else if eq .chezmoi.os "linux" }}
-{{ else }}
-{{ end }}
+
   opacity: 0.88
   # startup_mode: 'SimpleFullscreen'
   padding:
@@ -54,6 +52,17 @@ key_bindings:
   - { key: Key0, mods: Control, action: ResetFontSize }
   - { key: Equals, mods: Control, action: IncreaseFontSize }
   - { key: Minus, mods: Control, action: DecreaseFontSize }
+
+  - { key: LBracket,    mods: Alt|Shift,      chars: "\x7B"              }
+  - { key: RBracket,    mods: Alt|Shift,      chars: "\x7D"              }
+  - { key: LBracket,    mods: Alt,            chars: "\x5B"              }
+  - { key: RBracket,    mods: Alt,            chars: "\x5D"              }
+  - { key: Semicolon,   mods: Alt,            chars: "\x40"              }
+  - { key: Apostrophe,  mods: Alt,            chars: "\x23"              }
+  - { key: Caret,       mods: Alt,            chars: "\x60"              }
+  - { key: Key5,        mods: Alt,            chars: "\x7E"              }
+    # nvim github coplit
+  # - { key: ], mods: Alt, chars: "\x1b\x5d" }
   # - { key: Add, mods: Control, action: IncreaseFontSize }
   # - { key: Subtract, mods: Control, action: DecreaseFontSize }
   # - { key: N, mods: Control, action: SpawnNewInstance }
