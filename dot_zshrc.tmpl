@@ -87,19 +87,11 @@ for file in ~/.{path,exports,aliases,functions,evals,extra}; do
 done;
 unset file;
 
-{{ if eq .chezmoi.os "darwin" }}
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-{{ else }}
-{{ end }}
 
 
 
-{{ if eq .chezmoi.username "lixuexin03" }}
-# bun completions
-[ -s "/Users/lixuexin03/.bun/_bun" ] && source "/Users/lixuexin03/.bun/_bun"
+# Auto-start or attach to tmux session
+if [ -z "$TMUX" ] && { [ "$TERM" = "xterm-256color" ] || [ "$TERM" = "alacritty" ]; }; then
+  tmux attach || tmux
+fi
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-{{ else }}
-{{ end }}
