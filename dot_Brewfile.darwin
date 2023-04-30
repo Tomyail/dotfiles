@@ -16,4 +16,7 @@ brew 'git'
 brew 'git-lfs'
 brew 'git-extras'
 brew 'lazygit'
+
+brew 'nvim'
+
 cask 'font-ibm-plex'

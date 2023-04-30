@@ -13,3 +13,5 @@ brew 'lazygit'
 
 brew 'ripgrep'
 brew 'fzf'
+
+brew 'nvim'
