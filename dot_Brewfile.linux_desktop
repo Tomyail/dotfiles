@@ -9,9 +9,12 @@ brew 'xclip'
 brew 'git'
 brew 'git-lfs'
 brew 'git-extras'
-brew 'lazygit'
 
 brew 'ripgrep'
 brew 'fzf'
 
 brew 'nvim'
+
+brew 'lazygit'
+brew 'gitui'
+

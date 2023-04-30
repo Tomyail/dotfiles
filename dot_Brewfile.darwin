@@ -15,8 +15,10 @@ brew 'reattach-to-user-namespace'
 brew 'git'
 brew 'git-lfs'
 brew 'git-extras'
-brew 'lazygit'
 
 brew 'nvim'
+
+brew 'lazygit'
+brew 'gitui'
 
 cask 'font-ibm-plex'
