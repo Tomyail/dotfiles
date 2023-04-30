@@ -1,5 +1,7 @@
 {{ if eq .chezmoi.os "linux" }}
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 # change ubuntu gnome terminal color
 eval `dircolors ~/.dir_colors/dircolors`
@@ -9,4 +11,8 @@ eval `dircolors ~/.dir_colors/dircolors`
 # todo https://github.com/starship/starship/issues/1736
 if command -v starship >/dev/null 2>&1; then
         eval "$(starship init zsh)"
+fi
+
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+  . "$HOME/.asdf/asdf.sh"
 fi
