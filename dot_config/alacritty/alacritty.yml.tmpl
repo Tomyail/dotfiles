@@ -34,8 +34,6 @@ font:
     y: 0
 window:
 
-  decorations: 'buttonless'
-
   opacity: 0.88
   # startup_mode: 'SimpleFullscreen'
   padding:
@@ -75,7 +73,3 @@ key_bindings:
 # ubuntu 如果启动不起来请检查zsh tmux 是否存在。另外 linux 别使用 brew 的 tmux, 使用 apt 安装的 tmux 。 否则查找 .tmux.config 似乎有问题
 shell:
   program: /bin/zsh
-  args:
-    - -l
-    - -c
-    - 'tmux attach || tmux'
