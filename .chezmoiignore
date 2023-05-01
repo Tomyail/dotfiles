@@ -1,1 +1,10 @@
 .oh-my-zsh/cache
+
+README.md
+
+
+.config/ibus/rime/build
+.config/ibus/rime/*.userdb
+.config/ibus/rime/installation.yaml
+.config/ibus/rime/user.yaml
+
