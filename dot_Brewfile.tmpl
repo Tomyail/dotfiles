@@ -2,5 +2,10 @@
 {{   include "dot_Brewfile.darwin" }}
 {{ end }}
 {{ if eq .chezmoi.os "linux" }}
-{{   include "dot_Brewfile.linux_desktop" }}
+	{{ if eq .desktop_or_server "server" }}
+	{{   include "dot_Brewfile.linux_server" }}
+	{{ end }}
+	{{ if eq .desktop_or_server "desktop" }}
+	{{   include "dot_Brewfile.linux_desktop" }}
+	{{ end }}
 {{ end }}

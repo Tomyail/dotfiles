@@ -418,12 +418,11 @@ bind s split-window -v
 unbind -
 
 
-
-
-set-option -g default-command "reattach-to-user-namespace -l $SHELL"
-
 bind v split-window -h
 
+{{ if eq .chezmoi.os "darwin" }}
+set-option -g default-command "reattach-to-user-namespace -l $SHELL"
+{{ end }}
 
 set-option -g status-interval 5
 set-option -g automatic-rename on

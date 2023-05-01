@@ -34,11 +34,13 @@ sudo apt-get install build-essential -y
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
   . "$HOME/.asdf/asdf.sh"
 
+  {{ if eq .desktop_or_server "desktop" }}
 	if ! command -v node >/dev/null; then
 		asdf plugin add nodejs
 		asdf install nodejs latest:18
 		asdf global nodejs latest:18
 	fi
+	{{ end }}
 fi
 
 
