@@ -78,3 +78,13 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+
+{{ if eq .desktop_or_server "desktop" }}
+[".config/ibus/rime"]
+    type = "archive"
+    url = "https://github.com/ssnhd/rime/archive/refs/heads/master.zip"
+    exact = true
+    stripComponents = 2
+    refreshPeriod = "168h"
+    include = ["*/配置文件/**"]
+{{ end }}
