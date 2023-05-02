@@ -19,12 +19,15 @@ brew 'navi'
 brew 'thefuck'
 brew 'romkatv/powerlevel10k/powerlevel10k'
 
+
 {{ if eq .chezmoi.os "darwin" }}
 ## tap "homebrew/cask-drivers"
 ## tap "homebrew/cask-versions"
 ## tap "homebrew/cask"
+# https://github.com/Homebrew/homebrew-cask-fonts/tree/master/Casks
+# it seems the font can only install for darwin, linux will skiped
   tap "homebrew/cask-fonts"
-  cask 'font-ibm-plex'
+  cask 'font-blex-mono-nerd-font'
   tap "koekeishiya/formulae"
   brew 'skhd'
   brew 'yabai'
