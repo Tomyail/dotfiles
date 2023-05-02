@@ -19,7 +19,12 @@ if ! command -v brew >/dev/null 2>&1; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+{{ if and (eq .desktop_or_server "server") (not .brew_for_server) }}
+sudo apt-get update && sudo apt-get install $(grep -v '^#' .pkg | tr '\n' ' ')
+{{ else }}
 brew bundle --global -v
+{{ end }}
+
 
 {{ if eq .chezmoi.os "linux" }}
 
