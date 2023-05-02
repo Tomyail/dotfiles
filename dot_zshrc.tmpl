@@ -88,7 +88,11 @@ if [ -z "$TMUX" ] && { [ "$TERM" = "xterm-256color" ] || [ "$TERM" = "alacritty"
 fi
 
 
-source $(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme
+POWERLEVEL10K_PATH="$(brew --prefix)/opt/powerlevel10k/powerlevel10k.zsh-theme"
+if [ -f "$POWERLEVEL10K_PATH" ]; then
+  source "$POWERLEVEL10K_PATH"
+fi
+unset POWERLEVEL10K_PATH
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
