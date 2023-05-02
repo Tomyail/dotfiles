@@ -34,12 +34,15 @@ brew 'romkatv/powerlevel10k/powerlevel10k'
   brew 'reattach-to-user-namespace'
   brew 'gitui'
   cask 'squirrel'
+  cask 'alacritty'
 {{ end }}
 
 {{ if eq .chezmoi.os "linux" }}
   {{ if eq .desktop_or_server "desktop" }}
   brew 'xclip'
   brew 'gitui'
+  ## alacritty can only build from source on linux
+  ## cask 'alacritty'
   {{ end }}
 
   {{ if eq .desktop_or_server "server" }}
