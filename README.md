@@ -9,17 +9,19 @@ desktop for daily use and server for cloud and home server.
 
 ## what's included
 
-* nerdFont: IBMBlexMono
-* git: version control
 * brew: cross platform package manager
-* tmux: terminal multiplexer
-* nvim config(desktop only): text editor
-* zsh: shell
-    * oh-my-zsh
-    * zsh-syntax-highlighting
-    * zsh-autosuggestions
-    * powerlevel10k
-* yabai and skhd(macos desktop only): window manager
+    * nvim config(desktop only): text editor
+    * zsh: shell
+        * oh-my-zsh
+        * zsh-syntax-highlighting
+        * zsh-autosuggestions
+        * powerlevel10k
+    * yabai and skhd(macos desktop only): window manager
+    * tmux: terminal multiplexer
+    * lazygit
+    * git: version control
+    * rime: input
+    * nerdFont: IBMBlexMono
 * asdf: programming language version manager
 
 ## How to install
