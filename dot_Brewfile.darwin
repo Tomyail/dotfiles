@@ -27,3 +27,5 @@ cask 'font-ibm-plex'
 brew 'romkatv/powerlevel10k/powerlevel10k'
 
 brew 'exa'
+
+brew 'bat'
