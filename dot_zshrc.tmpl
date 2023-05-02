@@ -84,7 +84,7 @@ done;
 unset file;
 
 # Auto-start or attach to tmux session
-if [ -z "$TMUX" ] && { [ "$TERM" = "xterm-256color" ] || [ "$TERM" = "alacritty" ]; }; then
+if [ -z "$TMUX" ] && { [ "$TERM" = "alacritty" ]; }; then
   tmux attach || tmux
 fi
 
