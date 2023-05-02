@@ -1,12 +1,22 @@
-
 {{ if eq .desktop_or_server "desktop" }}
-[".config/ibus/rime"]
-    type = "archive"
-    url = "https://github.com/ssnhd/rime/archive/refs/heads/master.zip"
-    exact = true
-    stripComponents = 2
-    refreshPeriod = "168h"
-    include = ["*/配置文件/**"]
+  {{ if eq .chezmoi.os "linux" }}
+    [".config/ibus/rime"]
+        type = "archive"
+        url = "https://github.com/ssnhd/rime/archive/refs/heads/master.zip"
+        exact = true
+        stripComponents = 2
+        refreshPeriod = "168h"
+        include = ["*/配置文件/**"]
+  {{ end }}
+  {{ if eq .chezmoi.os "darwin" }}
+    ["Library/Rime"]
+        type = "archive"
+        url = "https://github.com/ssnhd/rime/archive/refs/heads/master.zip"
+        exact = true
+        stripComponents = 2
+        refreshPeriod = "168h"
+        include = ["*/配置文件/**"]
+  {{ end }}
 [".config/nvim"]
     type = "git-repo"
     url = "https://github.com/Tomyail/nvim_conf.git"
@@ -35,18 +45,21 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
-[".fonts/Blex Mono Nerd Font Complete Mono.ttf"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/IBMPlexMono/Mono/complete/Blex%20Mono%20Nerd%20Font%20Complete%20Mono.ttf"
-    refreshPeriod = "168h"
-[".fonts/Blex Mono Bold Nerd Font Complete Mono.ttf"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/IBMPlexMono/Mono/complete/Blex%20Mono%20Bold%20Nerd%20Font%20Complete%20Mono.ttf"
-    refreshPeriod = "168h"
-[".fonts/Blex Mono Italic Nerd Font Complete Mono.ttf"]
-    type = "file"
-    url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/IBMPlexMono/Mono/complete/Blex%20Mono%20Italic%20Nerd%20Font%20Complete%20Mono.ttf"
-    refreshPeriod = "168h"
+
+{{ if eq .chezmoi.os "linux" }}
+  [".fonts/Blex Mono Nerd Font Complete Mono.ttf"]
+      type = "file"
+      url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/IBMPlexMono/Mono/complete/Blex%20Mono%20Nerd%20Font%20Complete%20Mono.ttf"
+      refreshPeriod = "168h"
+  [".fonts/Blex Mono Bold Nerd Font Complete Mono.ttf"]
+      type = "file"
+      url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/IBMPlexMono/Mono/complete/Blex%20Mono%20Bold%20Nerd%20Font%20Complete%20Mono.ttf"
+      refreshPeriod = "168h"
+  [".fonts/Blex Mono Italic Nerd Font Complete Mono.ttf"]
+      type = "file"
+      url = "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/IBMPlexMono/Mono/complete/Blex%20Mono%20Italic%20Nerd%20Font%20Complete%20Mono.ttf"
+      refreshPeriod = "168h"
+{{ end }}
 {{ end }}
 [".oh-my-zsh"]
     type = "git-repo"

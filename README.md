@@ -28,6 +28,10 @@ before install: git curl zsh
 
 `sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail`
 
+change ~/.config/chezmoi/chezmoi.toml
+
+
+
 ##  Inspiration
 
 * https://safjan.com/top-popular-zsh-plugins-on-github-2023/
