@@ -7,12 +7,6 @@ fi
 eval `dircolors ~/.dir_colors/dircolors`
 {{ end }}
 
-# 配置 starship 主题
-# todo https://github.com/starship/starship/issues/1736
-if command -v starship >/dev/null 2>&1; then
-        eval "$(starship init zsh)"
-fi
-
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
   . "$HOME/.asdf/asdf.sh"
 fi
