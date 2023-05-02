@@ -22,3 +22,6 @@ brew 'lazygit'
 brew 'gitui'
 
 cask 'font-ibm-plex'
+
+
+brew 'romkatv/powerlevel10k/powerlevel10k'

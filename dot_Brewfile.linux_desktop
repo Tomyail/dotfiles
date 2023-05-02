@@ -18,3 +18,4 @@ brew 'nvim'
 brew 'lazygit'
 brew 'gitui'
 
+brew 'romkatv/powerlevel10k/powerlevel10k'
