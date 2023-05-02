@@ -17,7 +17,9 @@ desktop for daily use and server for cloud and home server.
         * zsh-autosuggestions
         * powerlevel10k
     * yabai and skhd(macos desktop only): window manager
-    * tmux: terminal multiplexer
+    * tmux: terminal multiplexer( oh my tmux)
+        * tpm The TPM bindings differ slightly from upstream: installing plugins: <prefix> + I uninstalling plugins: <prefix> + Alt + u updating plugins: <prefix> + u
+            * vim-tmux-navigator: window manager
     * lazygit
     * git: version control
     * rime: input
