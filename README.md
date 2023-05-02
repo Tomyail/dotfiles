@@ -9,6 +9,7 @@ desktop for daily use and server for cloud and home server.
 
 ## what's included
 
+* nerdFont: IBMBlexMono
 * git: version control
 * brew: cross platform package manager
 * tmux: terminal multiplexer
