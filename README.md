@@ -9,6 +9,8 @@ desktop for daily use and server for cloud and home server.
 
 ## what's included
 
+chsh -s $(which zsh)
+
 * brew: cross platform package manager
     * nvim config(desktop only): text editor
     * zsh: shell
