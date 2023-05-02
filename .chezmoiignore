@@ -8,3 +8,8 @@ README.md
 .config/ibus/rime/installation.yaml
 .config/ibus/rime/user.yaml
 
+
+Library/Rime/build
+Library/Rime/*.userdb
+Library/Rime/installation.yaml
+Library/Rime/user.yaml
