@@ -21,3 +21,5 @@ brew 'gitui'
 brew 'romkatv/powerlevel10k/powerlevel10k'
 
 brew 'exa'
+
+brew 'bat'
