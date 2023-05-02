@@ -1,11 +1,44 @@
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "homebrew/services"
+brew 'tmux'
+brew 'bash'
+brew 'zsh'
+brew 'git'
+brew 'git-lfs'
+brew 'git-extras'
+brew 'nvim'
+brew 'lazygit'
+brew 'ripgrep'
+brew 'fzf'
+brew 'bat'
+brew 'fd'
+brew 'exa'
+brew 'ranger'
+brew 'navi'
+brew 'thefuck'
+brew 'romkatv/powerlevel10k/powerlevel10k'
+
 {{ if eq .chezmoi.os "darwin" }}
-{{   include "dot_Brewfile.darwin" }}
+## tap "homebrew/cask-drivers"
+## tap "homebrew/cask-versions"
+## tap "homebrew/cask"
+  tap "homebrew/cask-fonts"
+  cask 'font-ibm-plex'
+  tap "koekeishiya/formulae"
+  brew 'skhd'
+  brew 'yabai'
+  brew 'reattach-to-user-namespace'
+  brew 'gitui'
 {{ end }}
+
 {{ if eq .chezmoi.os "linux" }}
-	{{ if eq .desktop_or_server "server" }}
-	{{   include "dot_Brewfile.linux_server" }}
-	{{ end }}
-	{{ if eq .desktop_or_server "desktop" }}
-	{{   include "dot_Brewfile.linux_desktop" }}
-	{{ end }}
+  {{ if eq .desktop_or_server "desktop" }}
+  brew 'xclip'
+  brew 'gitui'
+  {{ end }}
+
+  {{ if eq .desktop_or_server "server" }}
+  brew 'xclip'
+  {{ end }}
 {{ end }}

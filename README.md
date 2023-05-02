@@ -23,6 +23,8 @@ desktop for daily use and server for cloud and home server.
 
 ## How to install
 
+before install: git curl zsh
+
 `sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail`
 
 ##  Inspiration
