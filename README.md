@@ -9,7 +9,6 @@ desktop for daily use and server for cloud and home server.
 
 ## what's included
 
-chsh -s $(which zsh)
 
 * brew: cross platform package manager
     * nvim config(desktop only): text editor
@@ -31,6 +30,11 @@ chsh -s $(which zsh)
 ## How to install
 
 before install: git curl zsh
+
+zsh should be the default shell:
+```
+chsh -s $(which zsh)
+```
 
 `sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail`
 
