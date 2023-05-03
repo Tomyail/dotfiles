@@ -10,6 +10,25 @@ desktop for daily use and server for cloud and home server.
 ## what's included
 
 
+|                                                                               | macos(with brew) | linux(desktop with brew) | linux(server with brew) | linux(server without brew) |
+|-------------------------------------------------------------------------------|------------------|--------------------------|-------------------------|----------------------------|
+| tmux                                                                          | ✅                | ✅                        | ✅                       | ✅                          |
+| tpm                                                                           | ✅                | ✅                        | ✅                       | ✅                          |
+| ohmytmux                                                                      | ✅                | ✅                        | ✅                       | ✅                          |
+| [vimrc](https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim) | ✅                | ✅                        | ✅                       | ✅                          |
+| nvim                                                                          | ✅                | ✅                        | ✅                       | ❌                          |
+| nvim_config                                                                   | ✅                | ✅                        | ❌                       | ❌                          |
+| dracula theme                                                                 | ✅                | ✅                        | ❌                       | ❌                          |
+| lazygit                                                                       | ✅                | ✅                        | ✅                       | ❌                          |
+| p10k                                                                          | ✅                | ✅                        | ✅                       | ❌                          |
+| alacritty                                                                     | ✅                | ❌                        | ❌                       | ❌                          |
+| IBMPlexMono Nerd Font                                                         | ✅                | ✅                        | ❌                       | ❌                          |
+| asdf                                                                          | ✅                | ✅                        | ✅                       | ✅                          |
+| zsh                                                                           | ✅                | ✅                        | ✅                       | ✅                          |
+| ohmyzsh                                                                       | ✅                | ✅                        | ✅                       |                            |
+| zsh-syntax-highlighting                                                       | ✅                | ✅                        | ✅                       |                            |
+| zsh-autosuggestions                                                           | ✅                | ✅                        | ✅                       |                            |
+
 * brew: cross platform package manager
     * nvim config(desktop only): text editor
     * zsh: shell
