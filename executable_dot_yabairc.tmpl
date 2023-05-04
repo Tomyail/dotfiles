@@ -1,0 +1,145 @@
+#!/usr/bin/env sh
+
+set -x
+
+# ====== Variables =============================
+
+declare -A gaps
+declare -A color
+
+gaps["top"]="4"
+gaps["bottom"]="24"
+gaps["left"]="4"
+gaps["right"]="4"
+gaps["inner"]="4"
+
+# the scripting-addition must be loaded manually if
+# you are running yabai on macOS Big Sur. Uncomment
+# the following line to have the injection performed
+# when the config is executed during startup.
+#
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+#
+# see this wiki page for information:
+#  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
+#
+# https://github.com/julian-heng/yabai-config/blob/master/yabairc
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# mission-control desktop labels
+yabai -m space 1 --label code
+yabai -m space 2 --label web
+yabai -m space 3 --label mail
+yabai -m space 4 --label notes
+yabai -m space 5 --label re
+yabai -m space 6 --label media
+yabai -m space 7 --label social
+yabai -m space 8 --label games
+
+
+
+# only tile following app
+# https://github.com/koekeishiya/yabai/issues/727
+# yabai -m rule --add app!="^(Alacritty|qutebrowser)$"  manage=off
+
+# window rules
+yabai -m rule --add app="^Mail$" space=mail
+yabai -m rule --add app="^(Safari|Google Chrome)$" space=web
+yabai -m rule --add app="^(Notes|Logseq)$" space=notes
+yabai -m rule --add app="^ida64$" space=re
+yabai -m rule --add app="^Transmission$" space=media
+yabai -m rule --add app="^(Spotify|NetEaseMusic)$" space=media
+# yabai -m rule --add app="^(Discord)$" space=social grid=1:1:0:0:1:1 manage=off
+yabai -m rule --add app="^(大象|WeChat)$" space=social manage=off
+yabai -m rule --add app="^Steam$" space=games manage=off
+yabai -m rule --add app="^(Calculator|System Preferences|Archive Utility|System Settings)$" manage=off
+yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
+
+
+# signals
+yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
+yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
+
+
+# specific space settings
+yabai -m config --space mail  layout stack
+yabai -m config --space games layout float
+
+
+# global settings
+yabai -m config                             \
+    mouse_follows_focus         off         \
+    focus_follows_mouse         off         \
+    window_shadow               off         \
+    window_topmost              off         \
+    window_border               on          \
+    window_border_blur          off         \
+    window_border_width         4           \
+    active_window_border_color  0xf000ff00  \
+    normal_window_border_color  0x00ffffff  \
+    insert_feedback_color       0xff0000ff  \
+    window_opacity              off         \
+    active_window_opacity       1.0         \
+    normal_window_opacity       0.92        \
+    split_ratio                 0.50        \
+    auto_balance                off         \
+    window_origin_display       default     \
+    window_placement            second_child\
+    window_opacity_duration     0.0         \
+    mouse_modifier              fn          \
+    mouse_action1               move        \
+    mouse_action2               resize      \
+    mouse_drop_action           swap        \
+    layout                      bsp         \
+    top_padding                 "${gaps["top"]}"\
+    bottom_padding              "${gaps["bottom"]}"\
+    left_padding                "${gaps["left"]}"\
+    right_padding               "${gaps["right"]}"\
+    window_gap                  "${gaps["inner"]}"
+
+# apps to not manage (ignore)
+# yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+# yabai -m rule --add app="^访达$"  manage=off
+# yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+# yabai -m rule --add app="^Safari浏览器$"  manage=off
+# yabai -m rule --add label="System Preferences" app="^System Preferences$" title=".*" manage=off
+# yabai -m rule --add app="^System Preferences$" manage=off
+# yabai -m rule --add app="^系统偏好设置$" manage=off
+# yabai -m rule --add label="App Store" app="^App Store$" manage=off
+# yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
+# yabai -m rule --add label="活动监视器" app="^活动监视器$" manage=off
+# yabai -m rule --add label="日历" app="^日历$" manage=off
+# yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+# yabai -m rule --add app="^词典$" manage=off
+# yabai -m rule --add app="^系统信息$" manage=off
+# yabai -m rule --add app="^提醒事项$" manage=off
+# yabai -m rule --add label="Software Update" title="Software Update" manage=off
+# yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+#
+# yabai -m rule --add app="^微信$" manage=off
+# yabai -m rule --add app="^Telegram$" manage=off
+# yabai -m rule --add app="^邮件$" manage=off
+# yabai -m rule --add app="^DeepL$" manage=off
+# # yabai -m rule --add app="^OmniFocus$" manage=off
+# yabai -m rule --add app="^SpaceLauncher$" manage=off
+# yabai -m rule --add app="^网易云音乐$" manage=off
+# # yabai -m rule --add app="^Logseq$" manage=off
+# yabai -m rule --add app="^印象笔记$" manage=off
+# yabai -m rule --add app="^n8n$" manage=off
+# yabai -m rule --add app="^Reeder$" manage=off
+# yabai -m rule --add app="^Google Chrome Canary$" manage=off
+# yabai -m rule --add app="^DBeaver$" manage=off
+# yabai -m rule --add app="^ClashX$" manage=off
+
+
+# yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" manage=off
+# yabai -m rule --add app="^大象$" manage=off
+# yabai -m rule --add app="^文枢$" manage=off
+
+
+
+
+
+set +x
