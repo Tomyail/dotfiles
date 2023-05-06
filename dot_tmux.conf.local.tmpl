@@ -98,7 +98,7 @@ tmux_conf_theme_focused_pane_bg="$tmux_conf_theme_colour_2"
 # pane border style, possible values are:
 #   - thin (default)
 #   - fat
-tmux_conf_theme_pane_border_style=thin
+tmux_conf_theme_pane_border_style=fat
 
 # pane borders colours:
 tmux_conf_theme_pane_border="$tmux_conf_theme_colour_2"
@@ -420,9 +420,9 @@ unbind -
 
 bind v split-window -h
 
-{{ if eq .chezmoi.os "darwin" }}
+
 set-option -g default-command "reattach-to-user-namespace -l $SHELL"
-{{ end }}
+
 
 set-option -g status-interval 5
 set-option -g automatic-rename on
