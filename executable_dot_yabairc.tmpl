@@ -7,7 +7,6 @@ set -x
 declare -A gaps
 declare -A color
 
-gaps["top"]="4"
 gaps["bottom"]="24"
 gaps["left"]="4"
 gaps["right"]="4"
@@ -29,14 +28,13 @@ sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 
 # mission-control desktop labels
-yabai -m space 1 --label code
-yabai -m space 2 --label web
-yabai -m space 3 --label mail
-yabai -m space 4 --label notes
-yabai -m space 5 --label re
+yabai -m space 1 --label dev
+yabai -m space 2 --label browse
+yabai -m space 3 --label tools
+yabai -m space 4 --label work
+yabai -m space 5 --label others
 yabai -m space 6 --label media
 yabai -m space 7 --label social
-yabai -m space 8 --label games
 
 
 
@@ -45,27 +43,49 @@ yabai -m space 8 --label games
 # yabai -m rule --add app!="^(Alacritty|qutebrowser)$"  manage=off
 
 # window rules
-yabai -m rule --add app="^Mail$" space=mail
-yabai -m rule --add app="^(Safari|Google Chrome)$" space=web
-yabai -m rule --add app="^(Notes|Logseq)$" space=notes
-yabai -m rule --add app="^ida64$" space=re
-yabai -m rule --add app="^Transmission$" space=media
+yabai -m rule --add app="^(Mail|OmniFocus|ChatGPT|Notes|Logseq)$" space=tools
+# yabai -m rule --add app="^ChatGPT$" manage=off space=tools
+
+yabai -m rule --add app="^(Safari|Google Chrome|Google Chrome Canary)$" space=browse
 yabai -m rule --add app="^(Spotify|NetEaseMusic)$" space=media
 # yabai -m rule --add app="^(Discord)$" space=social grid=1:1:0:0:1:1 manage=off
-yabai -m rule --add app="^(大象|WeChat)$" space=social manage=off
-yabai -m rule --add app="^Steam$" space=games manage=off
-yabai -m rule --add app="^(Calculator|System Preferences|Archive Utility|System Settings)$" manage=off
-yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
-
+yabai -m rule --add app="^(大象|WeChat)$"  manage=off space=social
+yabai -m rule --add app="^(Calculator|System Preferences|Archive Utility|System Settings)$" manage=off space=others
+# yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
 
 # signals
 yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
 yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
 
+# add 20 padding to the top and 0 padding to the bottom of every space located on the main display
+# yabai -m config external_bar main:20:0
+# apps not managed
+yabai -m rule --add label="System Preferences" app="^System Preferences$" manage=off
+yabai -m rule --add label="Finder" app="^Finder$" manage=off
+yabai -m rule --add label="App Store" app="^App Store$" manage=off
+yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
+yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
+yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+yabai -m rule --add label="mpv" app="^mpv$" manage=off
+yabai -m rule --add label="The Unarchiver" app="^The Unarchiver$" manage=off
+yabai -m rule --add label="Transmission" app="^Transmission$" manage=off
+yabai -m rule --add label="Colorpicker" app="^Colorpicker$" manage=off
+yabai -m rule --add label="iTerm2 settings" app="^iTerm2$" title="^Preferences" manage=off
+yabai -m rule --add label="Spark" app="^Spark$" title!="^Spark" manage=off
+yabai -m rule --add label="Hammerspoon" app="^Hammerspoon$" manage=off
+yabai -m rule --add label="SSH Tunnel Manager" app="^SSH Tunnel Manager$" manage=off
+yabai -m rule --add label="ImageOptim" app="^ImageOptim$" manage=off
+yabai -m rule --add label="AppCleaner" app="^AppCleaner$" manage=off
+yabai -m rule --add label="Pika" app="^Pika$" manage=off
 
 # specific space settings
-yabai -m config --space mail  layout stack
-yabai -m config --space games layout float
+yabai -m config --space dev layout bsp
+yabai -m config --space browse layout bsp
+yabai -m config --space tools layout stack
+yabai -m config --space work layout float
+yabai -m config --space others layout float
+yabai -m config --space media layout stack
+yabai -m config --space social layout float
 
 
 # global settings
@@ -93,7 +113,7 @@ yabai -m config                             \
     mouse_action2               resize      \
     mouse_drop_action           swap        \
     layout                      bsp         \
-    top_padding                 "${gaps["top"]}"\
+    top_padding                 40          \
     bottom_padding              "${gaps["bottom"]}"\
     left_padding                "${gaps["left"]}"\
     right_padding               "${gaps["right"]}"\
