@@ -2,10 +2,11 @@
   {{ if eq .chezmoi.os "linux" }}
     [".config/ibus/rime"]
         type = "archive"
-        url = "https://github.com/iDvel/rime-ice/archive/refs/heads/main.zip"
+        url = "https://github.com/ssnhd/rime/archive/refs/heads/master.zip"
         exact = true
-        stripComponents = 1
+        stripComponents = 2
         refreshPeriod = "24h"
+        include = ["*/配置文件/**"]
   {{ end }}
   {{ if eq .chezmoi.os "darwin" }}
     ["Library/Rime"]
