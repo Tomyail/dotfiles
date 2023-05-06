@@ -2,20 +2,18 @@
   {{ if eq .chezmoi.os "linux" }}
     [".config/ibus/rime"]
         type = "archive"
-        url = "https://github.com/ssnhd/rime/archive/refs/heads/master.zip"
+        url = "https://github.com/iDvel/rime-ice/archive/refs/heads/main.zip"
         exact = true
-        stripComponents = 2
-        refreshPeriod = "168h"
-        include = ["*/配置文件/**"]
+        stripComponents = 1
+        refreshPeriod = "24h"
   {{ end }}
   {{ if eq .chezmoi.os "darwin" }}
     ["Library/Rime"]
         type = "archive"
-        url = "https://github.com/ssnhd/rime/archive/refs/heads/master.zip"
+        url = "https://github.com/iDvel/rime-ice/archive/refs/heads/main.zip"
         exact = true
-        stripComponents = 2
-        refreshPeriod = "168h"
-        include = ["*/配置文件/**"]
+        stripComponents = 1
+        refreshPeriod = "24h"
   {{ end }}
 [".config/nvim"]
     type = "git-repo"
