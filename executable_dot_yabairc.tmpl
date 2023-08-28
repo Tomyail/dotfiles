@@ -7,7 +7,7 @@ set -x
 declare -A gaps
 declare -A color
 
-gaps["bottom"]="24"
+gaps["bottom"]="4"
 gaps["left"]="4"
 gaps["right"]="4"
 gaps["inner"]="4"
@@ -30,7 +30,7 @@ yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 # mission-control desktop labels
 yabai -m space 1 --label dev
 yabai -m space 2 --label browse
-yabai -m space 3 --label tools
+yabai -m space 3 --label utils
 yabai -m space 4 --label others
 yabai -m space 5 --label media
 yabai -m space 6 --label social
@@ -42,14 +42,14 @@ yabai -m space 6 --label social
 # yabai -m rule --add app!="^(Alacritty|qutebrowser)$"  manage=off
 
 # window rules
-yabai -m rule --add app="^(Mail|OmniFocus|ChatGPT|Notes|Logseq)$" space=tools
+# yabai -m rule --add app="^(Mail|OmniFocus|ChatGPT|Notes|Logseq)$" space=tools
 # yabai -m rule --add app="^ChatGPT$" manage=off space=tools
 
 yabai -m rule --add app="^(Safari|Google Chrome|Google Chrome Canary)$" space=browse
-yabai -m rule --add app="^(Spotify|NetEaseMusic)$" space=media
+# yabai -m rule --add app="^(Spotify|NetEaseMusic)$" space=media
 # yabai -m rule --add app="^(Discord)$" space=social grid=1:1:0:0:1:1 manage=off
-yabai -m rule --add app="^(大象|WeChat)$"  manage=off space=social
-yabai -m rule --add app="^(Calculator|System Preferences|Archive Utility|System Settings)$" manage=off space=others
+yabai -m rule --add app="^(大象|WeChat)$"  manage=off
+# yabai -m rule --add app="^(Calculator|System Preferences|Archive Utility|System Settings)$" manage=off space=others
 # yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
 
 # signals
@@ -80,8 +80,8 @@ yabai -m rule --add label="Pika" app="^Pika$" manage=off
 # specific space settings
 yabai -m config --space dev layout bsp
 yabai -m config --space browse layout bsp
-yabai -m config --space tools layout stack
-yabai -m config --space others layout float
+yabai -m config --space utils layout bsp
+yabai -m config --space others layout bsp
 yabai -m config --space media layout stack
 yabai -m config --space social layout float
 
@@ -111,7 +111,7 @@ yabai -m config                             \
     mouse_action2               resize      \
     mouse_drop_action           swap        \
     layout                      bsp         \
-    top_padding                 20          \
+    top_padding                 4          \
     bottom_padding              "${gaps["bottom"]}"\
     left_padding                "${gaps["left"]}"\
     right_padding               "${gaps["right"]}"\
