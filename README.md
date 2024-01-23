@@ -48,6 +48,10 @@ desktop for daily use and server for cloud and home server.
 
 ## How to install
 
+```
+xcode-select --install
+```
+
 before install: git curl zsh
 
 zsh should be the default shell:
