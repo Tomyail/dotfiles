@@ -4,8 +4,6 @@
 sudo -v
 
 
-# TODO warning if .desktop_or_server not exist
-
 for file in ~/.{path,exports,aliases,functions,evals,extra}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
