@@ -8,12 +8,6 @@
     type = "git-repo"
     url = "https://github.com/Tomyail/nvim_conf.git"
     refreshPeriod = "24h"
-[".config/dracula/gnome-terminal"]
-    type = "archive"
-    url = "https://github.com/dracula/gnome-terminal/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "168h"
 [".config/dracula/alacritty"]
     type = "archive"
     url = "https://github.com/dracula/alacritty/archive/master.tar.gz"
