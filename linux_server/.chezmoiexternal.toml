@@ -1,7 +1,3 @@
-[".config/nvim"]
-    type = "git-repo"
-    url = "https://github.com/Tomyail/nvim_conf.git"
-    refreshPeriod = "24h"
 ['.vimrc']
     type = "file"
     url="https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim"
