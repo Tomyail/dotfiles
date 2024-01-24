@@ -50,18 +50,20 @@ desktop for daily use and server for cloud and home server.
 
 ```
 xcode-select --install
+
+# mac_home|mac_offie|linux_server|ubuntu_desktop
+export CHEZMOI_SCENE=mac_home
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
 ```
 
-before install: git curl zsh
 
+chezmoi dir:  `~/.config/chezmoi/chezmoi.toml`
 zsh should be the default shell:
 ```
 chsh -s $(which zsh)
 ```
 
-`sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail`
 
-change ~/.config/chezmoi/chezmoi.toml
 
 
 
