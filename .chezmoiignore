@@ -17,3 +17,13 @@ Library/Rime/installation.yaml
 Library/Rime/user.yaml
 
 
+
+{{- if ne .scene "ubuntu_desktop" }}
+dot_dir_colors
+.dir_colors
+{{- end }}
+
+{{- if ne .scene "linux_server" }}
+dot_pkg
+.pkg
+{{- end}}
