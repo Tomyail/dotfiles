@@ -1,0 +1,19 @@
+[".config/nvim"]
+    type = "git-repo"
+    url = "https://github.com/Tomyail/nvim_conf.git"
+    refreshPeriod = "24h"
+['.vimrc']
+    type = "file"
+    url="https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim"
+    refreshPeriod = "168h"
+[".tmux"]
+    type = "archive"
+    url = "https://github.com/gpakosz/.tmux/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".tmux/plugins/tpm"]
+    type = "archive"
+    stripComponents = 1
+    url = "https://github.com/tmux-plugins/tpm/archive/master.tar.gz"
+    refreshPeriod = "168h"

@@ -1,0 +1,163 @@
+#!/usr/bin/env sh
+
+set -x
+
+# ====== Variables =============================
+
+declare -A gaps
+declare -A color
+
+gaps["bottom"]="4"
+gaps["left"]="4"
+gaps["right"]="4"
+gaps["inner"]="4"
+
+# the scripting-addition must be loaded manually if
+# you are running yabai on macOS Big Sur. Uncomment
+# the following line to have the injection performed
+# when the config is executed during startup.
+#
+# for this to work you must configure sudo such that
+# it will be able to run the command without password
+#
+# see this wiki page for information:
+#  - https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)
+#
+# https://github.com/julian-heng/yabai-config/blob/master/yabairc
+sudo yabai --load-sa
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+
+# mission-control desktop labels
+yabai -m space 1 --label dev
+yabai -m space 2 --label browse
+yabai -m space 3 --label utils
+yabai -m space 4 --label others
+yabai -m space 5 --label media
+yabai -m space 6 --label social
+
+
+
+# only tile following app
+# https://github.com/koekeishiya/yabai/issues/727
+# yabai -m rule --add app!="^(Alacritty|qutebrowser)$"  manage=off
+
+# window rules
+# yabai -m rule --add app="^(Mail|OmniFocus|ChatGPT|Notes|Logseq)$" space=tools
+# yabai -m rule --add app="^ChatGPT$" manage=off space=tools
+
+yabai -m rule --add app="^(Safari|Google Chrome|Google Chrome Canary)$" space=browse
+# yabai -m rule --add app="^(Spotify|NetEaseMusic)$" space=media
+# yabai -m rule --add app="^(Discord)$" space=social grid=1:1:0:0:1:1 manage=off
+yabai -m rule --add app="^(大象|WeChat)$"  manage=off
+# yabai -m rule --add app="^(Calculator|System Preferences|Archive Utility|System Settings)$" manage=off space=others
+# yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
+
+# signals
+yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
+yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
+
+# add 20 padding to the top and 0 padding to the bottom of every space located on the main display
+# yabai -m config external_bar main:20:0
+# apps not managed
+yabai -m rule --add label="System Preferences" app="^System Preferences$" manage=off
+yabai -m rule --add label="Finder" app="^Finder$" manage=off
+yabai -m rule --add label="App Store" app="^App Store$" manage=off
+yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
+yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
+yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+yabai -m rule --add label="mpv" app="^mpv$" manage=off
+yabai -m rule --add label="The Unarchiver" app="^The Unarchiver$" manage=off
+yabai -m rule --add label="Transmission" app="^Transmission$" manage=off
+yabai -m rule --add label="Colorpicker" app="^Colorpicker$" manage=off
+yabai -m rule --add label="iTerm2 settings" app="^iTerm2$" title="^Preferences" manage=off
+yabai -m rule --add label="Spark" app="^Spark$" title!="^Spark" manage=off
+yabai -m rule --add label="Hammerspoon" app="^Hammerspoon$" manage=off
+yabai -m rule --add label="SSH Tunnel Manager" app="^SSH Tunnel Manager$" manage=off
+yabai -m rule --add label="ImageOptim" app="^ImageOptim$" manage=off
+yabai -m rule --add label="AppCleaner" app="^AppCleaner$" manage=off
+yabai -m rule --add label="Pika" app="^Pika$" manage=off
+
+# specific space settings
+yabai -m config --space dev layout bsp
+yabai -m config --space browse layout bsp
+yabai -m config --space utils layout bsp
+yabai -m config --space others layout bsp
+yabai -m config --space media layout stack
+yabai -m config --space social layout float
+
+
+# global settings
+yabai -m config                             \
+    mouse_follows_focus         off         \
+    focus_follows_mouse         off         \
+    window_shadow               off         \
+    window_topmost              off         \
+    window_border               on          \
+    window_border_blur          off         \
+    window_border_width         4           \
+    active_window_border_color  0xf000ff00  \
+    normal_window_border_color  0x00ffffff  \
+    insert_feedback_color       0xff0000ff  \
+    window_opacity              off         \
+    active_window_opacity       1.0         \
+    normal_window_opacity       0.92        \
+    split_ratio                 0.50        \
+    auto_balance                off         \
+    window_origin_display       default     \
+    window_placement            second_child\
+    window_opacity_duration     0.0         \
+    mouse_modifier              fn          \
+    mouse_action1               move        \
+    mouse_action2               resize      \
+    mouse_drop_action           swap        \
+    layout                      bsp         \
+    top_padding                 4          \
+    bottom_padding              "${gaps["bottom"]}"\
+    left_padding                "${gaps["left"]}"\
+    right_padding               "${gaps["right"]}"\
+    window_gap                  "${gaps["inner"]}"
+
+# apps to not manage (ignore)
+# yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+# yabai -m rule --add app="^访达$"  manage=off
+# yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
+# yabai -m rule --add app="^Safari浏览器$"  manage=off
+# yabai -m rule --add label="System Preferences" app="^System Preferences$" title=".*" manage=off
+# yabai -m rule --add app="^System Preferences$" manage=off
+# yabai -m rule --add app="^系统偏好设置$" manage=off
+# yabai -m rule --add label="App Store" app="^App Store$" manage=off
+# yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
+# yabai -m rule --add label="活动监视器" app="^活动监视器$" manage=off
+# yabai -m rule --add label="日历" app="^日历$" manage=off
+# yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
+# yabai -m rule --add app="^词典$" manage=off
+# yabai -m rule --add app="^系统信息$" manage=off
+# yabai -m rule --add app="^提醒事项$" manage=off
+# yabai -m rule --add label="Software Update" title="Software Update" manage=off
+# yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+#
+# yabai -m rule --add app="^微信$" manage=off
+# yabai -m rule --add app="^Telegram$" manage=off
+# yabai -m rule --add app="^邮件$" manage=off
+# yabai -m rule --add app="^DeepL$" manage=off
+# # yabai -m rule --add app="^OmniFocus$" manage=off
+# yabai -m rule --add app="^SpaceLauncher$" manage=off
+# yabai -m rule --add app="^网易云音乐$" manage=off
+# # yabai -m rule --add app="^Logseq$" manage=off
+# yabai -m rule --add app="^印象笔记$" manage=off
+# yabai -m rule --add app="^n8n$" manage=off
+# yabai -m rule --add app="^Reeder$" manage=off
+# yabai -m rule --add app="^Google Chrome Canary$" manage=off
+# yabai -m rule --add app="^DBeaver$" manage=off
+# yabai -m rule --add app="^ClashX$" manage=off
+
+
+# yabai -m rule --add app="^Cisco AnyConnect Secure Mobility Client$" manage=off
+# yabai -m rule --add app="^大象$" manage=off
+# yabai -m rule --add app="^文枢$" manage=off
+
+
+
+
+
+set +x

@@ -200,20 +200,3 @@ function appendPath() {
     fi
 
 }
-
-function is_desktop_system() {
-  desktop_env=$(echo "$XDG_CURRENT_DESKTOP" | tr '[:upper:]' '[:lower:]')
-
-  if [ -n "$desktop_env" ]; then
-    echo "当前系统是桌面系统，桌面环境为：$desktop_env"
-    return 0
-  else
-    if ps -e | grep -qE 'gnome-session|ksmserver|startkde|xfce4-session|mate-session|cinnamon-session|lxsession|enlightenment_start|openbox|fluxbox|jwm|afterstep|trinity|blackbox'; then
-      echo "当前系统是桌面系统"
-      return 0
-    else
-      echo "当前系统不是桌面系统"
-      return 1
-    fi
-  fi
-}
