@@ -1,12 +1,3 @@
-{{ if eq .chezmoi.os "linux" }}
-if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
-# change ubuntu gnome terminal color
-eval `dircolors ~/.dir_colors/dircolors`
-{{ end }}
-
-if [ -f "$HOME/.asdf/asdf.sh" ]; then
-  . "$HOME/.asdf/asdf.sh"
-fi
+{{- if .scene -}}
+{{- include (printf "%s/.evals" .scene) -}}
+{{- end -}}

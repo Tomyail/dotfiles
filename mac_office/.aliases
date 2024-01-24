@@ -1,0 +1,20 @@
+if command -v nvim &> /dev/null; then
+  alias vim="nvim"
+fi
+
+if command -v lazygit &> /dev/null; then
+  alias lg="lazygit"
+fi
+
+if command -v exa &> /dev/null; then
+  alias l='exa'
+  alias la='exa -a'
+  alias ll='exa -lah'
+  alias ls='exa --color=auto'
+fi
+
+if command -v bat &> /dev/null; then
+  alias cat='bat --style=plain'
+fi
+
+alias up="brew update && brew upgrade && brew cu -a -y && brew cleanup && mas upgrade && ~/plum/rime-install iDvel/rime-ice:others/recipes/full"
