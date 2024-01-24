@@ -23,11 +23,11 @@ desktop for daily use and server for cloud and home server.
 | p10k                                                                          | ✅                | ✅                        | ✅                       | ❌                          |
 | alacritty                                                                     | ✅                | ❌                        | ❌                       | ❌                          |
 | IBMPlexMono Nerd Font                                                         | ✅                | ✅                        | ❌                       | ❌                          |
-| asdf                                                                          | ✅                | ✅                        | ✅                       | ✅                          |
-| zsh                                                                           | ✅                | ✅                        | ✅                       | ✅                          |
-| ohmyzsh                                                                       | ✅                | ✅                        | ✅                       |                            |
-| zsh-syntax-highlighting                                                       | ✅                | ✅                        | ✅                       |                            |
-| zsh-autosuggestions                                                           | ✅                | ✅                        | ✅                       |                            |
+| asdf                                                                          | ✅                | ✅                        | ✅                       | ❌                          |
+| zsh                                                                           | ✅                | ✅                        | ✅                       | ❌                          |
+| ohmyzsh                                                                       | ✅                | ✅                        | ✅                       | ❌                          |
+| zsh-syntax-highlighting                                                       | ✅                | ✅                        | ✅                       | ❌                          |
+| zsh-autosuggestions                                                           | ✅                | ✅                        | ✅                       | ❌                          |
 
 * brew: cross platform package manager
     * nvim config(desktop only): text editor
