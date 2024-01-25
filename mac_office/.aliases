@@ -6,3 +6,5 @@ alias ll='exa -lah'
 alias ls='exa --color=auto'
 alias cat='bat --style=plain'
 alias up="brew update && brew upgrade && brew cleanup" 
+alias ccd="~/bin/chezmoi cd"
+alias cup="~/bin/chezmoi update"
