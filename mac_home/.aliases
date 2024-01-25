@@ -1,18 +1,10 @@
-if command -v nvim &> /dev/null; then
-  alias vim="nvim"
-fi
-
-if command -v lazygit &> /dev/null; then
-  alias lg="lazygit"
-fi
-
-if command -v exa &> /dev/null; then
-  alias l='exa'
-  alias la='exa -a'
-  alias ll='exa -lah'
-  alias ls='exa --color=auto'
-fi
-
-if command -v bat &> /dev/null; then
-  alias cat='bat --style=plain'
-fi
+alias vim="nvim"
+alias lg="lazygit"
+alias l='exa'
+alias la='exa -a'
+alias ll='exa -lah'
+alias ls='exa --color=auto'
+alias cat='bat --style=plain'
+alias ccd="~/bin/chezmoi cd"
+alias cup="~/bin/chezmoi update"
+alias bup="brew update && brew bundle --global && brew upgrade"

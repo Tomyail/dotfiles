@@ -13,26 +13,23 @@ brew 'fzf'
 brew 'bat'
 brew 'fd'
 brew 'exa'
-#brew 'ranger'
-#brew 'navi'
-#brew 'thefuck'
-brew 'romkatv/powerlevel10k/powerlevel10k'
+brew 'powerlevel10k'
+brew 'reattach-to-user-namespace'
+brew 'kubectl'
+brew 'ansible'
 
 
-## tap "homebrew/cask-drivers"
-## tap "homebrew/cask-versions"
-## tap "homebrew/cask"
-# https://github.com/Homebrew/homebrew-cask-fonts/tree/master/Casks
-# it seems the font can only install for darwin, linux will skiped
 tap "homebrew/cask-fonts"
 cask 'font-blex-mono-nerd-font'
+
 tap "koekeishiya/formulae"
-#  skhd yabai and p10k need run `xcode-select --install` first if install failed
 brew 'skhd'
 brew 'yabai'
-brew 'reattach-to-user-namespace'
-brew 'gitui'
+
+
 cask 'squirrel'
 cask 'alacritty'
 cask 'git-credential-manager'
-
+cask 'postico'
+cask 'postgres-unofficial'
+cask 'lens'
