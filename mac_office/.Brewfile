@@ -15,6 +15,7 @@ brew 'fd'
 brew 'exa'
 brew 'powerlevel10k'
 brew 'reattach-to-user-namespace'
+brew 'kubectl'
 
 
 tap "homebrew/cask-fonts"
@@ -30,3 +31,4 @@ cask 'alacritty'
 cask 'git-credential-manager'
 cask 'postico'
 cask 'postgres-unofficial'
+cask 'lens'
