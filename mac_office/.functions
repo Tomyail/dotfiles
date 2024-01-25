@@ -172,10 +172,9 @@ function tre() {
 
 # 设置全局代理
 function proxyon() {
-	export HTTPS_PROXY=127.0.0.1:1080
-	export HTTP_PROXY=127.0.0.1:1080
-	git config --global https.proxy http://127.0.0.1:1080
-	git config --global https.proxy https://127.0.0.1:1080
+	export HTTPS_PROXY=http://127.0.0.1:7890
+	export HTTP_PROXY=http://127.0.0.1:7890
+  export ALL_PROXY=socks5://127.0.0.1:7890
 }
 
 
@@ -184,8 +183,7 @@ function proxyon() {
 function proxyoff() {
  unset HTTPS_PROXY
  unset HTTP_PROXY
-	git config --global --unset http.proxy
-	git config --global --unset https.proxy
+ unset ALL_PROXY
 }
 
 
