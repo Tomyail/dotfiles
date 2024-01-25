@@ -16,6 +16,7 @@ brew 'exa'
 brew 'powerlevel10k'
 brew 'reattach-to-user-namespace'
 brew 'kubectl'
+brew 'ansible'
 
 
 tap "homebrew/cask-fonts"
