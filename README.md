@@ -48,6 +48,8 @@ desktop for daily use and server for cloud and home server.
 
 ## How to install
 
+[using bitwarden cli to get the password](https://medium.com/@josemrivera/share-credentials-across-machines-using-chezmoi-and-bitwarden-4069dcb6e367)
+
 ```
 xcode-select --install
 
