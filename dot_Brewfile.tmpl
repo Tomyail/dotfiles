@@ -1,4 +1,3 @@
-{{- $evalsFile := printf "%s/.Brewfile" .scene -}}
-{{- if and .scene (lstat $evalsFile) -}}
-{{- include $evalsFile -}}
+{{- if or (eq .scene "mac_home") (eq .scene "mac_office") (eq .scene "ubuntu_desktop") -}}
+{{- include (printf "%s/.Brewfile" .scene) -}}
 {{- end -}}

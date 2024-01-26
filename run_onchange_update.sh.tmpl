@@ -1,4 +1,3 @@
-{{- $evalsFile := printf "%s/run_onchange_update.sh" .scene -}}
-{{- if and .scene (lstat $evalsFile) -}}
-{{- include $evalsFile -}}
+{{- if .scene -}}
+{{- include (printf "%s/run_onchange_update.sh" .scene) -}}
 {{- end -}}
