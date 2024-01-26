@@ -1,3 +1,4 @@
+# common tools
 tap "homebrew/bundle"
 tap "homebrew/services"
 brew 'tmux'
@@ -17,19 +18,21 @@ brew 'powerlevel10k'
 brew 'reattach-to-user-namespace'
 brew 'kubectl'
 brew 'ansible'
-
-
+# install font
 tap "homebrew/cask-fonts"
 cask 'font-blex-mono-nerd-font'
-
+# install yabai and skhd
 tap "koekeishiya/formulae"
 brew 'skhd'
 brew 'yabai'
-
-
+# install cask
 cask 'squirrel'
 cask 'alacritty'
 cask 'git-credential-manager'
 cask 'postico'
 cask 'postgres-unofficial'
 cask 'lens'
+
+
+# scene special 
+brew "unison"
