@@ -1,3 +1,4 @@
-{{- if .scene -}}
-{{- include (printf "%s/.evals" .scene) -}}
+{{- $evalsFile := printf "%s/.evals" .scene -}}
+{{- if and .scene (lstat $evalsFile) -}}
+{{- include $evalsFile -}}
 {{- end -}}
