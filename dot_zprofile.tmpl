@@ -1,5 +1,4 @@
-# Source .zshrc for non-login shells
-if [ -f "$HOME/.zshrc" ]; then
-  source "$HOME/.zshrc"
-fi
-
+{{- $evalsFile := joinPath .scene ".zprofile" -}}
+{{- if and .scene (lstat $evalsFile ) -}}
+{{- include $evalsFile -}}
+{{- end -}}

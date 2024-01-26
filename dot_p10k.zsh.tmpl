@@ -1,3 +1,4 @@
-{{- if and .scene (lstat (printf "%s/.p10k.zsh" .scene)) -}}
-{{- include (printf "%s/.p10k.zsh" .scene) -}}
+{{- $evalsFile := joinPath .scene ".p10k.zsh" -}}
+{{- if and .scene (lstat $evalsFile ) -}}
+{{- include $evalsFile -}}
 {{- end -}}
