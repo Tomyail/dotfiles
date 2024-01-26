@@ -1,3 +1,4 @@
-{{- if .scene -}}
-{{- include (printf "%s/run_once_install-packages.sh" .scene) -}}
+{{- $evalsFile := joinPath .scene "run_once_install-packages.sh" -}}
+{{- if and .scene (lstat $evalsFile ) -}}
+{{- include $evalsFile -}}
 {{- end -}}
