@@ -181,18 +181,6 @@ function proxyoff() {
 	unset ALL_PROXY
 }
 
-function appendPath() {
-	local dest="export PATH=\"${1}:\$PATH\""
-	# echo ${  grep -q "${dest}" ~/.path}
-	[ -f ~/.path ] && echo " exists."
-	if ! grep -q ${dest} ~/.path; then
-		echo success append $dest to path
-		echo ${dest} >>~/.path
-		source ~/.path
-	fi
-
-}
-
 # create_split_bw_item 创建并分割 Bitwarden 项目。 当文件内容超过 5000 个字符时，会自动分割为多个项目。
 # 最终生成的项目名称为：${name}_1, ${name}_2, ${name}_3, ...
 # 参数：
