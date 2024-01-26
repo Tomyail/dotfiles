@@ -1,3 +1,3 @@
-{{- if .scene -}}
+{{- if and .scene (lstat (printf "%s/.p10k.zsh" .scene)) -}}
 {{- include (printf "%s/.p10k.zsh" .scene) -}}
 {{- end -}}

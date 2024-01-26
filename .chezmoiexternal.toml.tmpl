@@ -1,3 +1,4 @@
-{{- if .scene -}}
+{{- if and .scene (lstat (printf "%s/.chezmoiexternal.toml" .scene)) -}}
 {{- include (printf "%s/.chezmoiexternal.toml" .scene) -}}
 {{- end -}}
+
