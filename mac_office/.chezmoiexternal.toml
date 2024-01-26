@@ -71,4 +71,10 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
+[".git-sync"]
+    type = "archive"
+    url = "https://github.com/simonthum/git-sync/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
 
