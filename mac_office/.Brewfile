@@ -33,6 +33,9 @@ cask 'postico'
 cask 'postgres-unofficial'
 cask 'lens'
 
+tap 'daipeihust/tap'
+brew 'im-select'
+
 
 # scene special 
 brew "unison"
