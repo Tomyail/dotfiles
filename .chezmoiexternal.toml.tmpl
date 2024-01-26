@@ -1,4 +1,4 @@
-{{- if and .scene (lstat (printf "%s/.chezmoiexternal.toml" .scene)) -}}
-{{- include (printf "%s/.chezmoiexternal.toml" .scene) -}}
+{{- $evalsFile := joinPath .scene ".chezmoiexternal.toml" -}}
+{{- if and .scene (lstat $evalsFile ) -}}
+{{- include $evalsFile -}}
 {{- end -}}
-
