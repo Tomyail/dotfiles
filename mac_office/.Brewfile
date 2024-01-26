@@ -32,6 +32,8 @@ cask 'git-credential-manager'
 cask 'postico'
 cask 'postgres-unofficial'
 cask 'lens'
+cask 'wechat'
+cask 'visual-studio-code'
 
 tap 'daipeihust/tap'
 brew 'im-select'
