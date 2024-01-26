@@ -1,3 +1,4 @@
-{{- if .scene -}}
-{{- include (printf "%s/.gitconfig" .scene) -}}
+{{- $evalsFile := printf "%s/.gitconfig" .scene -}}
+{{- if and .scene (lstat $evalsFile) -}}
+{{- include $evalsFile -}}
 {{- end -}}

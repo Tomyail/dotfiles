@@ -17,6 +17,11 @@ brew 'powerlevel10k'
 brew 'reattach-to-user-namespace'
 brew 'kubectl'
 brew 'ansible'
+brew 'unison'
+brew 'pm2'
+
+# docker 
+brew 'orbstack'
 
 
 tap "homebrew/cask-fonts"
