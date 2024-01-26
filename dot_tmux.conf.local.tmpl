@@ -1,4 +1,3 @@
-{{- $evalsFile := printf "%s/.tmux.conf.local" .scene -}}
-{{- if and .scene (lstat $evalsFile) -}}
-{{- include $evalsFile -}}
+{{- if .scene -}}
+{{- include (printf "%s/.tmux.conf.local" .scene) -}}
 {{- end -}}
