@@ -1,9 +1,9 @@
 alias vim="nvim"
 alias lg="lazygit"
-alias l='exa'
-alias la='exa -a'
-alias ll='exa -lah'
-alias ls='exa --color=auto'
+alias l='eza'
+alias la='eza -a'
+alias ll='eza -lah'
+alias ls='eza --color=auto'
 alias cat='bat --style=plain'
 alias ccd="~/bin/chezmoi cd"
 alias cup="~/bin/chezmoi update"
