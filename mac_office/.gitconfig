@@ -183,6 +183,13 @@
 [user]
 	name = lixuexin03
 	email = lixuexin03@meituan.com 
+
+[includeIf "gitdir:~/source/personal/"]
+  path = ~/.gitconfig_personal
+[includeIf "gitdir:~/.local"]
+  path = ~/.gitconfig_personal
+[includeIf "gitdir:~/.config"]
+  path = ~/.gitconfig_personal
 [credential]
 	helper = 
 	helper = /usr/local/bin/git-credential-manager
