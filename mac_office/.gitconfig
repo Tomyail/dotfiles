@@ -186,9 +186,9 @@
 
 [includeIf "gitdir:~/source/personal/"]
   path = ~/.gitconfig_personal
-[includeIf "gitdir:~/.local"]
+[includeIf "gitdir:~/.local/"]
   path = ~/.gitconfig_personal
-[includeIf "gitdir:~/.config"]
+[includeIf "gitdir:~/.config/"]
   path = ~/.gitconfig_personal
 [credential]
 	helper = 
