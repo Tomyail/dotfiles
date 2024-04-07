@@ -427,3 +427,5 @@ set-option -g status-interval 5
 set-option -g automatic-rename on
 # 此选项定义了自动重命名功能的格式。在这种情况下，我们使用了#{b:pane_current_path}，它将窗口名称设置为当前面板的路径的基本名称（只包含目录名，而不是完整路径）
 set-option -g automatic-rename-format '#{b:pane_current_path}'
+# https://github.com/tmux/tmux/wiki/Modifier-Keys#extended-keys
+set -s extended-keys on
