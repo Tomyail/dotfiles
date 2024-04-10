@@ -1,4 +1,4 @@
-{{- $evalsFile := joinPath .scene ".aliases" -}}
+{{- $evalsFile := joinPath .chezmoi.sourceDir .scene ".aliases" -}}
 {{- if and .scene (lstat $evalsFile ) -}}
 {{- include $evalsFile -}}
 {{- end -}}
