@@ -1,4 +1,4 @@
-{{- $evalsFile := joinPath .scene ".tmux.conf.local" -}}
+{{- $evalsFile := joinPath .chezmoi.sourceDir .scene ".tmux.conf.local" -}}
 {{- if and .scene (lstat $evalsFile ) -}}
 {{- include $evalsFile -}}
 {{- end -}}

@@ -1,4 +1,4 @@
-{{- $evalsFile := joinPath .scene "run_onchange_update.sh" -}}
+{{- $evalsFile := joinPath .chezmoi.sourceDir .scene "run_onchange_update.sh" -}}
 {{- if and .scene (lstat $evalsFile ) -}}
 {{- include $evalsFile -}}
 {{- end -}}

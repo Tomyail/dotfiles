@@ -1,4 +1,4 @@
-{{- $evalsFile := joinPath .scene "run_once_install-packages.sh" -}}
+{{- $evalsFile := joinPath .chezmoi.sourceDir .scene "run_once_install-packages.sh" -}}
 {{- if and .scene (lstat $evalsFile ) -}}
 {{- include $evalsFile -}}
 {{- end -}}
