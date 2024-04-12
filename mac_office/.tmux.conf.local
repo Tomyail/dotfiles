@@ -429,3 +429,5 @@ set-option -g automatic-rename on
 set-option -g automatic-rename-format '#{b:pane_current_path}'
 # https://github.com/tmux/tmux/wiki/Modifier-Keys#extended-keys
 set -s extended-keys on
+
+set -ag terminal-overrides ",xterm-256color:RGB"
