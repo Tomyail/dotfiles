@@ -8,6 +8,10 @@
     type = "git-repo"
     url = "https://github.com/Tomyail/nvim_conf.git"
     refreshPeriod = "24h"
+[".config/alacritty/catppuccin-frappe.toml"]
+    type = "file"
+    url = "https://github.com/catppuccin/alacritty/raw/main/catppuccin-frappe.toml"
+    refreshPeriod = "24h"
 [".config/dracula/gnome-terminal"]
     type = "archive"
     url = "https://github.com/dracula/gnome-terminal/archive/master.tar.gz"
