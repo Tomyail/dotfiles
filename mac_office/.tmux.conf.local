@@ -412,13 +412,11 @@ set -g @continuum-restore 'on'
 set -g focus-events on
 set -s focus-events on
 
-unbind _
-bind s split-window -v
-
-unbind -
-
-
-bind v split-window -h
+# unbind _
+# bind s split-window -v
+#
+# unbind -
+# bind v split-window -h
 
 
 set-option -g default-command "reattach-to-user-namespace -l $SHELL"
