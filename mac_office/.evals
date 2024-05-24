@@ -1,1 +1,2 @@
 . "$HOME/.asdf/asdf.sh"
+eval "$(zoxide init zsh)"
