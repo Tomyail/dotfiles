@@ -25,6 +25,8 @@ cask 'font-blex-mono-nerd-font'
 tap "koekeishiya/formulae"
 brew 'skhd'
 brew 'yabai'
+brew 'zoxide'
+
 # install cask
 cask 'squirrel'
 cask 'alacritty'
