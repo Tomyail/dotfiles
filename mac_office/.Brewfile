@@ -43,3 +43,4 @@ brew 'im-select'
 
 # scene special 
 brew "unison"
+brew 'atuin'
