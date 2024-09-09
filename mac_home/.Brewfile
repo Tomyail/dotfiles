@@ -34,3 +34,5 @@ cask 'git-credential-manager'
 cask 'postico'
 cask 'postgres-unofficial'
 cask 'lens'
+
+brew 'atuin'

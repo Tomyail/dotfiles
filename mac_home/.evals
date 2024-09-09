@@ -2,3 +2,7 @@ if [ -f "$HOME/.asdf/asdf.sh" ]; then
   . "$HOME/.asdf/asdf.sh"
 fi
 eval "$(zoxide init zsh)"
+
+
+. "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh)"
