@@ -100,6 +100,9 @@ ctrl + alt - up  : yabai -m display --focus recent
 ctrl + alt - down  : yabai -m display --focus recent
 
 
+shift + alt - l: if [[ $(yabai -m query --spaces --display | jq '.[-1]."has-focus"') == "false" ]]; then yabai -m space --focus next; fi
+shift + alt - h: if [[ $(yabai -m query --spaces --display | jq '.[0]."has-focus"') == "false" ]]; then yabai -m space --focus prev; fi
+
 # toggle window zoom
 # 最大化窗口
 shift+ alt - f : yabai -m window --toggle native-fullscreen
