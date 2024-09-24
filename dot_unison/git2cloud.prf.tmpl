@@ -1,6 +1,6 @@
 # Roots of the synchronization
-root = ~/source/personal/blog
-root = ~/Nextcloud/blog
+root = {{ .chezmoi.homeDir }}/source/personal/blog
+root = {{ .chezmoi.homeDir }}/Nextcloud/blog
 
 # Paths to ignore
 ignore = Name {.git}
@@ -13,6 +13,5 @@ auto = true
 batch = true
 
 
-# 如果冲突，优先使用nextcloud的数据
-prefer = ~/Nextcloud/blog
+prefer = {{ .chezmoi.homeDir }}/source/personal/blog
 
