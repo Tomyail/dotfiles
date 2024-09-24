@@ -1,0 +1,18 @@
+# Roots of the synchronization
+root = ~/source/personal/blog
+root = ~/Nextcloud/blog
+
+# Paths to ignore
+ignore = Name {.git}
+ignore = Name {node_modules}
+ignore = Name {.DS_Store}
+ignore = Name {.obsidian}
+
+# Additional options (optional)
+auto = true
+batch = true
+
+
+# 如果冲突，优先使用nextcloud的数据
+prefer = ~/Nextcloud/blog
+
