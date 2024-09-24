@@ -27,6 +27,9 @@ brew 'skhd'
 brew 'yabai'
 brew 'zoxide'
 
+tap "FelixKratz/formulae"
+brew 'borders'
+
 # install cask
 cask 'squirrel'
 cask 'alacritty'
