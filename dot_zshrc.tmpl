@@ -50,7 +50,9 @@ plugins=(git zsh-autosuggestions docker docker-compose)
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-source $ZSH/oh-my-zsh.sh
+if [ -f "$ZSH/oh-my-zsh.sh" ]; then
+  source "$ZSH/oh-my-zsh.sh"
+fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -94,7 +96,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-POWERLEVEL10K_PATH="$(brew --prefix)/share/powerlevel10k/powerlevel10k.zsh-theme"
+
+POWERLEVEL10K_PATH="$HOME/powerlevel10k/powerlevel10k.zsh-theme"
 if [ -f "$POWERLEVEL10K_PATH" ]; then
   source "$POWERLEVEL10K_PATH"
 fi

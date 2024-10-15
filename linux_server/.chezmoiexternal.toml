@@ -13,3 +13,32 @@
     stripComponents = 1
     url = "https://github.com/tmux-plugins/tpm/archive/master.tar.gz"
     refreshPeriod = "168h"
+["powerlevel10k"]
+    type = "git-repo"
+    url = "https://github.com/romkatv/powerlevel10k.git"
+    refreshPeriod = "168h"
+
+[".oh-my-zsh"]
+    type = "archive"
+    url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+    refreshPeriod = "168h"
+    exact = true
+    stripComponents = 1
+[".oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/plugins/fzf-tab"]
+    type = "archive"
+    url = "https://github.com/Aloxaf/fzf-tab/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"

@@ -1,0 +1,15 @@
+if [ -f "$HOME/.asdf/asdf.sh" ]; then
+  . "$HOME/.asdf/asdf.sh"
+fi
+
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh)"
+fi
+
+if [ -f "$HOME/.atuin/bin/env" ]; then
+  . "$HOME/.atuin/bin/env"
+fi
+
+if command -v atuin &> /dev/null; then
+  eval "$(atuin init zsh)"
+fi
