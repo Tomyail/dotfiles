@@ -1,4 +1,5 @@
 {{- $scene := default "" (env "CHEZMOI_SCENE") -}}
+{{- writeToStdout (printf "current scene is %s\n" $scene) -}}
 
 [data]
     # mac_home | mac_office | linux_server | ubuntu_desktop
