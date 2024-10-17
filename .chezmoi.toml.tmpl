@@ -1,4 +1,8 @@
 {{- $scene := default "" (env "CHEZMOI_SCENE") -}}
+{{- if eq $scene "" -}}
+    {{- $choices := list "mac_home" "mac_office" "linux_server" "ubuntu_desktop" -}}
+    {{- $scene = promptChoice "Please select your scene" $choices -}}
+{{- end -}}
 {{- writeToStdout (printf "current scene is %s\n" $scene) -}}
 
 [data]
