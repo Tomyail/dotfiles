@@ -1,38 +1,38 @@
 tap "homebrew/bundle"
 tap "homebrew/services"
-brew 'tmux'
-brew 'bash'
-brew 'zsh'
-brew 'git'
-brew 'git-lfs'
-brew 'git-extras'
-brew 'nvim'
-brew 'lazygit'
-brew 'ripgrep'
-brew 'fzf'
-brew 'bat'
-brew 'fd'
-brew 'eza'
-brew 'powerlevel10k'
-brew 'reattach-to-user-namespace'
-brew 'kubectl'
-brew 'ansible'
-brew 'zoxide'
-
-
-tap "homebrew/cask-fonts"
-cask 'font-blex-mono-nerd-font'
-
 tap "koekeishiya/formulae"
-brew 'skhd'
-brew 'yabai'
-
-
-cask 'squirrel'
-cask 'alacritty'
-cask 'git-credential-manager'
-cask 'postico'
-cask 'postgres-unofficial'
-cask 'lens'
-
-brew 'atuin'
+tap "laishulu/homebrew"
+brew "ansible"
+brew "atuin"
+brew "bash"
+brew "bat"
+brew "bitwarden-cli"
+brew "eza"
+brew "fd"
+brew "fzf"
+brew "git"
+brew "git-extras"
+brew "git-lfs"
+brew "htop"
+brew "kubernetes-cli"
+brew "lazygit"
+brew "neofetch"
+brew "neovim"
+brew "powerlevel10k"
+brew "reattach-to-user-namespace"
+brew "ripgrep"
+brew "tmux"
+brew "zoxide"
+brew "zsh"
+brew "koekeishiya/formulae/skhd"
+brew "koekeishiya/formulae/yabai"
+cask "alacritty"
+cask "font-blex-mono-nerd-font"
+cask "font-sarasa-nerd"
+cask "git-credential-manager"
+cask "lens"
+cask "orbstack"
+cask "postgres-unofficial"
+cask "postico"
+cask "squirrel"
+cask "wezterm"
