@@ -1,2 +1,4 @@
+{{- if eq .chezmoi.os "darwin" -}}
 {{- template "includeIfExists" (list .chezmoi.sourceDir "mac_shared" ".Brewfile") -}}
 {{- template "includeIfExists" (list .chezmoi.sourceDir .scene ".Brewfile") -}}
+{{- end -}}
