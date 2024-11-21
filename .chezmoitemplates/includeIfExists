@@ -1,0 +1,7 @@
+{{- $path := "" -}}
+{{- range . -}}
+    {{- $path = joinPath $path . -}}
+{{- end -}}
+{{- if lstat $path -}}
+{{- include $path -}}
+{{- end -}}
