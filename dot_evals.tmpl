@@ -1,4 +1,5 @@
-{{- $evalsFile := joinPath .chezmoi.sourceDir .scene ".evals" -}}
-{{- if and .scene (lstat $evalsFile ) -}}
-{{- include $evalsFile -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{- template "includeIfExists" (list .chezmoi.sourceDir "mac_shared" ".evals") -}}
 {{- end -}}
+
+{{- template "includeIfExists" (list .chezmoi.sourceDir .scene ".evals") -}}
