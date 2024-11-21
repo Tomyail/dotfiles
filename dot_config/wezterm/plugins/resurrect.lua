@@ -25,6 +25,7 @@ return {
 							id = string.match(id, "([^/]+)$") -- match after '/'
 							id = string.match(id, "(.+)%..+$") -- remove file extention
 							local opts = {
+								window = win:mux_window(),
 								relative = true,
 								restore_text = true,
 								on_pane_restore = resurrect.tab_state.default_on_pane_restore,

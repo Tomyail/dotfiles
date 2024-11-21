@@ -24,7 +24,6 @@ cask 'font-blex-mono-nerd-font'
 # install yabai and skhd
 tap "koekeishiya/formulae"
 brew 'skhd'
-brew 'yabai'
 brew 'zoxide'
 
 tap "FelixKratz/formulae"
