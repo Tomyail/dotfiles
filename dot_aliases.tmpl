@@ -1,4 +1,12 @@
-{{- $evalsFile := joinPath .chezmoi.sourceDir .scene ".aliases" -}}
-{{- if and .scene (lstat $evalsFile ) -}}
-{{- include $evalsFile -}}
+{{- if eq .chezmoi.os "darwin" -}}
+alias vim="nvim"
+alias lg="lazygit"
+alias l='eza'
+alias la='eza -a'
+alias ll='eza -lah'
+alias ls='eza --color=auto'
+alias cat='bat --style=plain'
+alias ccd="~/bin/chezmoi cd"
+alias cup="~/bin/chezmoi update"
+alias bup="brew update && brew bundle --global && brew upgrade"
 {{- end -}}

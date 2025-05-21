@@ -1,4 +1,0 @@
-{{- $evalsFile := joinPath .chezmoi.sourceDir .scene ".zprofile" -}}
-{{- if and .scene (lstat $evalsFile ) -}}
-{{- include $evalsFile -}}
-{{- end -}}

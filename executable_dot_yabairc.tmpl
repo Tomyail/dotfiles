@@ -1,4 +1,24 @@
-{{- $evalsFile := joinPath .chezmoi.sourceDir .scene ".yabairc" -}}
-{{- if and .scene (lstat $evalsFile ) -}}
-{{- include $evalsFile -}}
-{{- end -}}
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+
+if pgrep -x "sketchybar" > /dev/null
+then
+    # sketchybar is running
+    yabai -m config top_padding 50
+else
+    # sketchybar is not running
+    yabai -m config top_padding 6
+fi
+
+yabai -m config bottom_padding 6
+yabai -m config left_padding   6
+yabai -m config right_padding  6
+yabai -m config window_gap     6
+
+
+
+# https://github.com/FelixKratz/JankyBorders/tree/main
+if command -v borders >/dev/null 2>&1; then
+  borders active_color=0xd943ff64 inactive_color=0xff494d64 width=4.0
+fi
