@@ -19,7 +19,7 @@ if [ -f "$HOME/.atuin/bin/env" ]; then
 fi
 
 if command -v atuin &> /dev/null; then
-  eval "$(atuin init zsh)"
+  eval "$(atuin init zsh --disable-up-arrow)"
 fi
 
 if command -v direnv &> /dev/null; then
