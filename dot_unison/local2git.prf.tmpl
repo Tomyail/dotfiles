@@ -1,6 +1,6 @@
 # Roots of the synchronization
 root = {{ .chezmoi.homeDir }}/source/personal/blog/src/content
-root = {{ .chezmoi.homeDir }}/Nextcloud/blog/src/content
+root = {{ .chezmoi.homeDir }}/Documents/ObsidianPersonal/personal
 
 # Paths to ignore
 ignore = Name {.git}
@@ -14,5 +14,6 @@ batch = true
 
 
 # 如果冲突，优先使用nextcloud的数据
-force = {{ .chezmoi.homeDir }}/Nextcloud/blog/src/content
+force = {{ .chezmoi.homeDir }}/Documents/ObsidianPersonal/personal
+
 
