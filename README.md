@@ -155,6 +155,176 @@ zsh should be the default shell:
 chsh -s $(which zsh)
 ```
 
+## Chezmoi 日常维护
+
+### 基本工作流程
+
+```bash
+# 查看当前配置与实际文件的差异
+chezmoi diff
+
+# 编辑配置文件
+chezmoi edit ~/.zshrc
+
+# 添加新的配置文件到管理
+chezmoi add ~/.config/nvim/init.lua
+
+# 应用所有更改
+chezmoi apply
+
+# 进入源码目录进行git操作
+chezmoi cd
+git add .
+git commit -m "Update neovim config"
+git push
+```
+
+### 常用维护命令
+
+#### 日常操作
+```bash
+# 更新配置（从远程仓库拉取并应用）
+chezmoi update -v
+
+# 查看未管理的文件
+chezmoi unmanaged
+
+# 查看特定目录的未管理文件
+chezmoi unmanaged ~/.config ~/.ssh
+
+# 检查配置状态
+chezmoi doctor
+
+# 查看所有管理的文件
+chezmoi managed
+```
+
+#### 编辑和管理
+```bash
+# 编辑特定配置文件
+chezmoi edit ~/.gitconfig
+chezmoi edit dot_aliases.tmpl
+
+# 重新生成配置文件（当模板修改时）
+chezmoi init
+
+# 验证模板语法
+chezmoi execute-template '{{ .chezmoi.os }}/{{ .chezmoi.arch }}'
+
+# 从外部源导入文件
+chezmoi import --destination ~/.config/alacritty/alacritty.yml alacritty.yml
+```
+
+### 场景管理
+
+```bash
+# 切换环境配置
+export CHEZMOI_SCENE=mac_office
+chezmoi apply
+
+# 查看当前场景信息
+chezmoi execute-template '{{ .chezmoi.scene }}'
+
+# 针对特定环境应用配置
+chezmoi apply --include=mac_home
+chezmoi apply --exclude=linux_server
+```
+
+### 模板和数据管理
+
+```bash
+# 查看所有模板变量
+chezmoi dump --format=json
+
+# 测试模板渲染
+chezmoi execute-template --init --promptString "email=user@example.com" < .chezmoi.toml.tmpl
+
+# 查看状态数据
+chezmoi state data
+
+# 设置状态数据
+chezmoi state set --bucket=entry --key=editor --value=nvim
+```
+
+### 故障排除
+
+```bash
+# 详细模式运行以查看详细信息
+chezmoi -v apply
+
+# 检查特定文件的问题
+chezmoi diff ~/.zshrc
+
+# 查看配置文件位置
+chezmoi config
+
+# 重新初始化（谨慎使用）
+chezmoi init --force
+```
+
+### 定期维护建议
+
+#### 每周维护
+```bash
+# 1. 更新配置
+chezmoi update
+
+# 2. 检查并清理未使用的文件
+chezmoi unmanaged | grep -i backup
+
+# 3. 备份重要配置
+chezmoi archive > dotfiles-backup-$(date +%Y%m%d).tar.gz
+```
+
+#### 每月维护
+```bash
+# 1. 全面检查配置差异
+chezmoi diff
+
+# 2. 更新所有包管理器
+brew update && brew upgrade
+asdf plugin-update --all
+
+# 3. 清理不需要的包
+brew cleanup
+```
+
+### 最佳实践
+
+1. **提交前检查**: 每次提交前运行 `chezmoi diff` 确认更改
+2. **频繁提交**: 小而频繁的提交比大的提交更容易管理
+3. **使用模板**: 利用模板系统处理环境差异
+4. **定期备份**: 使用 `chezmoi archive` 定期备份配置
+5. **文档更新**: 修改配置时同步更新README文档
+
+### 配置同步到新机器
+
+```bash
+# 方法1: 快速设置（推荐）
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --purge tomyail
+
+# 方法2: 分步设置
+curl -sfL https://chezmoi.io/install.sh | sh
+chezmoi init tomyail
+chezmoi diff
+chezmoi apply
+```
+
+### 有用的别名
+
+可以添加到 `dot_aliases.tmpl`:
+
+```bash
+# Chezmoi快捷命令
+alias cz='chezmoi'
+alias czd='chezmoi diff'
+alias cza='chezmoi apply'
+alias cze='chezmoi edit'
+alias czu='chezmoi update'
+alias czc='chezmoi cd'
+alias czs='chezmoi status'
+```
+
 ## Inspiration
 
 - https://safjan.com/top-popular-zsh-plugins-on-github-2023/
