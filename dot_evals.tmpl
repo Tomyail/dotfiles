@@ -9,10 +9,6 @@ if [ -f "/opt/homebrew/bin/brew" ]; then
 fi
 
 
-if [ -f "$HOME/.asdf/asdf.sh" ]; then
-  . "$HOME/.asdf/asdf.sh"
-fi
-
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
 fi
