@@ -179,7 +179,7 @@ set -g @continuum-restore 'on'                   # 启用 tmux-continuum 自动�
 # ------------------------------------------------------------------------------
 set -g focus-events on                           # 面板获得焦点时通知 tmux
 set -s focus-events on                           # 服务器级别同样开启焦点事件
-set-option -g default-command "reattach-to-user-namespace -l $SHELL"  # 在 macOS 中保持系统剪贴板可用
+if-shell 'command -v reattach-to-user-namespace >/dev/null 2>&1' 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'  # 在 macOS 中保持系统剪贴板可用
 set-option -g status-interval 5                  # 每 5 秒刷新一次状态栏
 set-option -g automatic-rename on                # 自动根据活跃面板的路径重命名窗口
 set-option -g automatic-rename-format '#{b:pane_current_path}'  # 使用当前面板路径的目录名作为窗口名
