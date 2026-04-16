@@ -1,55 +1,109 @@
 {{- if eq .chezmoi.os "darwin" -}}
 
 # Taps
-tap "koekeishiya/formulae"     # 窗口管理工具源
-tap "laishulu/homebrew"        # 中文相关工具源
-tap "daipeihust/tap" # im-select
+tap "koekeishiya/formulae"
+tap "laishulu/homebrew"
+tap "daipeihust/tap"
+tap "derailed/k9s"
+tap "fluxcd/tap"
+tap "go-task/tap"
+tap "siderolabs/tap"
+tap "sikarugir-app/sikarugir"
+tap "xpipe-io/tap"
 
-# CLI Tools (brew)
-brew "atuin"                   # Shell 历史记录管理工具
-brew "bash"                    # Bash Shell
-brew "bat"                     # 增强版 cat 命令
-brew "bitwarden-cli"          # Bitwarden 密码管理器命令行工具
-brew "direnv"                 # 目录环境变量管理工具
-brew "eza"                    # 现代化的 ls 替代品
-brew "fd"                     # 更友好的文件查找工具
-brew "fzf"                    # 模糊查找工具
-brew "git"                    # 版本控制系统
-brew "git-extras"             # Git 扩展命令
-brew "git-lfs"                # Git 大文件存储
-brew "htop"                   # 交互式进程查看器
-brew "kubernetes-cli"         # Kubernetes 命令行工具
-brew "lazygit"                # Git 终端界面
-brew "neovim"                 # 现代化的 Vim 编辑器
-brew "powerlevel10k"          # Zsh 主题
-brew "reattach-to-user-namespace" # tmux macOS 集成
-brew "ripgrep"                # 快速搜索工具
-brew "tmux"                   # 终端复用器
-brew "zoxide"                 # 智能目录跳转工具
-brew "zsh"                    # Zsh Shell
-brew "ollama", restart_service: true  # 本地 LLM 运行工具
-brew "im-select"
+# Shell & Terminal
+brew "atuin"                        # Shell 历史记录管理
+brew "bash"                         # Bash Shell
+brew "direnv"                       # 目录环境变量管理
+brew "fzf"                          # 模糊搜索
+brew "powerlevel10k"                # Zsh 主题
+brew "reattach-to-user-namespace"   # tmux macOS 集成
+brew "tmux"                         # 终端复用器
+brew "zoxide"                       # 智能目录跳转
+brew "zsh"                          # Zsh Shell
+
+# File & Search
+brew "bat"                          # 增强版 cat
+brew "eza"                          # 增强版 ls
+brew "fd"                           # 增强版 find
+brew "moreutils"                    # 额外 Unix 工具
+brew "ripgrep"                      # 快速内容搜索
+brew "wget"                         # 文件下载
+
+# Git
+brew "git"                          # 版本控制
+brew "git-extras"                   # Git 扩展命令
+brew "git-lfs"                      # Git 大文件存储
+brew "lazygit"                      # Git TUI
+
+# Editor
+brew "neovim"                       # 现代化 Vim
+
+# Data & Config
+brew "jq"                           # JSON 处理
+brew "yq"                           # YAML 处理
+brew "minijinja-cli"                # Jinja2 模板渲染
+
+# System & DevOps
+brew "age"                          # 文件加密
+brew "chezmoi"                      # dotfiles 管理
+brew "cloudflared"                  # Cloudflare Tunnel
+brew "displayplacer"                # 显示器布局管理
+brew "dive"                         # Docker 镜像分析
+brew "ffmpeg"                       # 音视频处理
+brew "go-task"                      # 任务运行器
+brew "htop"                         # 进程查看
+brew "im-select"                    # 输入法切换（Neovim）
+brew "iperf3"                       # 网络带宽测试
+brew "mise"                         # 多语言版本管理
+brew "neofetch"                     # 系统信息展示
+brew "rclone"                       # 云存储同步
+brew "smartmontools"                # 磁盘健康检测
+brew "unison"                       # 文件同步
+brew "wimlib"                       # WIM 镜像处理
+brew "xpipe"                        # 服务器连接管理
+
+# Kubernetes & GitOps
+brew "helm"                         # Kubernetes 包管理
+brew "helmfile"                     # Helm 声明式配置
+brew "kubeconform"                  # Kubernetes 配置校验
+brew "kubectl-cnpg"                 # CloudNativePG 插件
+brew "kubernetes-cli"               # kubectl
+brew "kustomize"                    # Kubernetes 配置管理
+brew "sops"                         # 加密配置文件
+brew "stern"                        # Kubernetes 多 Pod 日志
+brew "talhelper"                    # Talos 集群配置
+brew "talosctl"                     # Talos Linux 控制
+brew "tea"                          # Gitea CLI
+brew "derailed/k9s/k9s"             # Kubernetes TUI
+brew "fluxcd/tap/flux"              # GitOps 工具
+brew "koekeishiya/formulae/skhd"    # 键盘快捷键守护进程
 
 # Applications (cask)
-cask "kitty"                  # 现代化终端模拟器
-cask "alfred"                 # 效率启动器
-cask "font-blex-mono-nerd-font" # IBM Plex Mono Nerd 字体
-cask "git-credential-manager" # Git 凭证管理器
-cask "hiddenbar"             # 菜单栏图标管理工具
-cask "orbstack"              # 容器和虚拟机管理工具
-cask "cursor"                # AI 辅助编程 IDE
-cask "postgres-unofficial"    # PostgreSQL 数据库
-cask "postico"               # PostgreSQL 客户端
-cask "wezterm"               # GPU 加速终端模拟器
-cask "visual-studio-code"    # VS Code 编辑器
-cask "nextcloud"             # 云存储客户端
-cask "omnifocus"             # 任务管理工具
-cask "telegram"              # 即时通讯工具
-cask "obsidian"              # 笔记
+cask "kitty"                        # GPU 加速终端
+cask "wezterm"                      # GPU 加速终端（备用）
+cask "tabby"                        # 跨平台终端
+cask "termius"                      # SSH 客户端
+cask "windsurf"                     # AI 辅助编程 IDE
+cask "orbstack"                     # 容器和虚拟机管理
+cask "lens"                         # Kubernetes IDE
+cask "bruno"                        # API 测试工具
+cask "xpipe-io/tap/xpipe"           # 服务器连接管理
+cask "postgres-app"                 # PostgreSQL
+cask "postico"                      # PostgreSQL 客户端
+cask "pgadmin4"                     # PostgreSQL 管理工具
+cask "db-browser-for-sqlite"        # SQLite 浏览器
+cask "hiddenbar"                    # 菜单栏图标管理
+cask "tencent-lemon"                # 系统清理
+cask "sikarugir-app/sikarugir/sikarugir" # 窗口管理
+cask "squirrel-app"                 # 鼠须管输入法
+cask "vlc"                          # 媒体播放器
+cask "horos"                        # 医学影像查看
+cask "git-credential-manager"       # Git 凭证管理
 
-# VS Code Extensions
-vscode "github.copilot"       # GitHub Copilot AI 代码助手
-vscode "github.copilot-chat"  # GitHub Copilot 聊天功能
+# Fonts
+cask "font-blex-mono-nerd-font"
+cask "laishulu/homebrew/font-sarasa-nerd"
 
 {{ if eq .chezmoi.hostname "MBP-LY46J97761-0114.local" }}
 # office mac
