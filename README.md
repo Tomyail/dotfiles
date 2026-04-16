@@ -1,10 +1,24 @@
 # dotfiles
 
-my dotfiles for macos(working), ubuntu desktop(personal project) and ubuntu server(cloud and home server).
+我的 `chezmoi` 配置现在更适合按 profile 管理，而不是只靠一个粗粒度的 scene。目标是同时覆盖两台主力 Mac、一台 Windows 上的 WSL 开发环境，以及偶尔出现的临时 Linux/macOS 开发机。
 
-dot files are separated by desktop and server.
+## Profile Model
 
-desktop for daily use and server for cloud and home server.
+当前支持的 profile：
+
+| Profile | 目标机器 | 策略 |
+|---------|----------|------|
+| `mac_home` | 家里主力 Mac | 完整 GUI + 开发环境 |
+| `mac_office` | 公司主力 Mac | 完整 GUI + 开发环境 |
+| `wsl_dev` | Windows 机器里的 WSL | 以 CLI 开发工具为主 |
+| `portable` | 临时 Debian server / mac mini | 只装基础开发工具 |
+
+设计原则：
+
+- `mac_home` / `mac_office` 是“主力机”，允许装完整 GUI 和重型工具。
+- `wsl_dev` 是“副开发环境”，强调 shell、git、tmux、nvim、lazygit 这类 CLI 工具。
+- `portable` 是“临时环境”，只保留最小但顺手的一套开发体验。
+- 主机名只处理少量例外，不再承担主要分层职责。
 
 ## what's included
 
@@ -72,6 +86,7 @@ desktop for daily use and server for cloud and home server.
 ```
 .
 ├── .chezmoi.toml.tmpl           # Chezmoi配置模板
+├── .chezmoidata/profiles.yaml   # Profile定义
 ├── .chezmoiexternal.toml.tmpl   # 外部依赖配置模板
 ├── .chezmoiignore              # 忽略文件配置
 ├── .chezmoitemplates           # 模板目录
@@ -93,23 +108,16 @@ desktop for daily use and server for cloud and home server.
 ├── dot_zprofile.tmpl       # Zsh配置文件
 ├── dot_zshrc.tmpl          # Zsh主配置文件
 ├── executable_dot_yabairc.tmpl # Yabai窗口管理配置
-├── linux_server            # Linux服务器特定配置
-├── mac_home               # Mac家庭环境配置
-├── mac_office            # Mac办公环境配置
-├── mac_shared           # Mac共享配置
 ├── private_dot_ssh      # SSH配置（私密）
-└── ubuntu_desktop       # Ubuntu桌面环境配置
+└── run_onchange_before_install_pkg.sh.tmpl # Linux包安装脚本
 
 ```
 
 ### Key Components
 
 - **环境配置**
-  - `mac_home/`: Mac家庭环境特定配置
-  - `mac_office/`: Mac办公环境特定配置
-  - `mac_shared/`: Mac共享配置
-  - `linux_server/`: Linux服务器配置
-  - `ubuntu_desktop/`: Ubuntu桌面配置
+  - `.chezmoidata/profiles.yaml`: 定义 `mac_home` / `mac_office` / `wsl_dev` / `portable`
+  - `.chezmoi.toml.tmpl`: 选择当前 profile，并写入模板数据
 
 - **Shell配置**
   - `dot_zshrc.tmpl`: Zsh主配置文件
@@ -135,6 +143,7 @@ desktop for daily use and server for cloud and home server.
 - **包管理**
   - `dot_Brewfile.tmpl`: Homebrew包管理配置
   - `dot_pkg.tmpl`: 通用包管理配置
+  - `run_onchange_before_install_pkg.sh.tmpl`: Linux包安装入口
 
 ## How to install
 
@@ -143,8 +152,8 @@ desktop for daily use and server for cloud and home server.
 ```sh
 xcode-select --install
 
-# mac_home|mac_offie|linux_server|ubuntu_desktop
-export CHEZMOI_SCENE=mac_home
+# mac_home | mac_office | wsl_dev | portable
+export CHEZMOI_PROFILE=mac_home
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
 ```
 
@@ -215,20 +224,40 @@ chezmoi execute-template '{{ .chezmoi.os }}/{{ .chezmoi.arch }}'
 chezmoi import --destination ~/.config/alacritty/alacritty.yml alacritty.yml
 ```
 
-### 场景管理
+### Profile 管理
 
 ```bash
 # 切换环境配置
-export CHEZMOI_SCENE=mac_office
+export CHEZMOI_PROFILE=mac_office
 chezmoi apply
 
-# 查看当前场景信息
-chezmoi execute-template '{{ .chezmoi.scene }}'
+# 查看当前 profile
+chezmoi execute-template '{{ .profile }}'
 
-# 针对特定环境应用配置
-chezmoi apply --include=mac_home
-chezmoi apply --exclude=linux_server
+# 兼容旧环境变量
+export CHEZMOI_SCENE=mac_office
+chezmoi apply
 ```
+
+## 推荐的分层方式
+
+继续整理模板时，建议按这四层来写：
+
+1. 通用层
+   不看 hostname，只判断命令是否存在。
+   例如：`git`、`tmux`、`nvim`、`direnv`、`atuin`、shell aliases。
+
+2. 平台层
+   只处理 `darwin` / `linux` / `windows` 差异。
+   例如：Homebrew shellenv、Rime、OrbStack、macOS GUI。
+
+3. profile 层
+   用 `mac_home` / `mac_office` / `wsl_dev` / `portable` 控制“装多重”和“装哪些”。
+
+4. 主机例外层
+   只处理极少量的公司专属或家庭专属差异。
+
+如果一个逻辑只是“主力机都要，临时机不要”，那就应该写成 profile 判断，而不是 hostname 判断。
 
 ### 模板和数据管理
 

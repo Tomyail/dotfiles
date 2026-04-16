@@ -2,6 +2,8 @@ linux_server
 mac_home
 mac_office
 ubuntu_desktop
+wsl_dev
+portable
 
 README.md
 
@@ -23,10 +25,10 @@ Library/Rime/user.yaml
 
 
 
-{{- if ne .scene "ubuntu_desktop" }}
+{{- if eq .chezmoi.os "darwin" }}
 .dir_colors
 {{- end }}
 
-{{- if ne .scene "linux_server" }}
+{{- if eq .chezmoi.os "darwin" }}
 .pkg
 {{- end}}

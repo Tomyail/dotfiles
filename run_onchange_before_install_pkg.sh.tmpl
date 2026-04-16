@@ -1,0 +1,36 @@
+#!/bin/sh
+
+set -eu
+
+PKG_FILE="$HOME/.pkg"
+
+if [ ! -f "$PKG_FILE" ]; then
+  exit 0
+fi
+
+if command -v apt-get >/dev/null 2>&1; then
+  if command -v sudo >/dev/null 2>&1 && [ "$(id -u)" -ne 0 ]; then
+    SUDO="sudo"
+  else
+    SUDO=""
+  fi
+
+  echo "Installing packages from $PKG_FILE with apt-get..."
+  $SUDO apt-get update
+  xargs $SUDO apt-get install -y < "$PKG_FILE"
+  exit 0
+fi
+
+if command -v dnf >/dev/null 2>&1; then
+  if command -v sudo >/dev/null 2>&1 && [ "$(id -u)" -ne 0 ]; then
+    SUDO="sudo"
+  else
+    SUDO=""
+  fi
+
+  echo "Installing packages from $PKG_FILE with dnf..."
+  xargs $SUDO dnf install -y < "$PKG_FILE"
+  exit 0
+fi
+
+echo "No supported package manager found for $PKG_FILE, skipping."

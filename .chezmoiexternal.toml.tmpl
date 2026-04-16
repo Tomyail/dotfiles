@@ -1,36 +1,8 @@
-{{- if eq .chezmoi.os "darwin" -}}
-["Library/Rime"]
-    type = "archive"
-    url = "https://github.com/iDvel/rime-ice/archive/refs/heads/main.zip"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "24h"
+{{- if ne .chezmoi.os "windows" }}
 [".config/nvim"]
     type = "git-repo"
     url = "https://github.com/Tomyail/nvim_conf.git"
     refreshPeriod = "24h"
-[".config/alacritty/catppuccin-frappe.toml"]
-    type = "file"
-    url = "https://github.com/catppuccin/alacritty/raw/main/catppuccin-frappe.toml"
-    refreshPeriod = "24h"
-[".config/dracula/alacritty"]
-    type = "archive"
-    url = "https://github.com/dracula/alacritty/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "168h"
-[".config/dracula/iterm"]
-    type = "archive"
-    url = "https://github.com/dracula/iterm/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "168h"
-[".config/dracula/terminal-app"]
-    type = "archive"
-    url = "https://github.com/dracula/terminal-app/archive/master.tar.gz"
-    exact = true
-    stripComponents = 1
-    refreshPeriod = "168h"
 ['.vimrc']
     type = "file"
     url="https://raw.githubusercontent.com/amix/vimrc/master/vimrcs/basic.vim"
@@ -70,10 +42,39 @@
     stripComponents = 1
     url = "https://github.com/tmux-plugins/tpm/archive/master.tar.gz"
     refreshPeriod = "168h"
-
 ["powerlevel10k"]
     type = "git-repo"
     url = "https://github.com/romkatv/powerlevel10k.git"
     refreshPeriod = "168h"
+{{ end }}
 
-{{- end -}}
+{{- if eq .chezmoi.os "darwin" }}
+["Library/Rime"]
+    type = "archive"
+    url = "https://github.com/iDvel/rime-ice/archive/refs/heads/main.zip"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "24h"
+[".config/alacritty/catppuccin-frappe.toml"]
+    type = "file"
+    url = "https://github.com/catppuccin/alacritty/raw/main/catppuccin-frappe.toml"
+    refreshPeriod = "24h"
+[".config/dracula/alacritty"]
+    type = "archive"
+    url = "https://github.com/dracula/alacritty/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".config/dracula/iterm"]
+    type = "archive"
+    url = "https://github.com/dracula/iterm/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".config/dracula/terminal-app"]
+    type = "archive"
+    url = "https://github.com/dracula/terminal-app/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+{{ end }}

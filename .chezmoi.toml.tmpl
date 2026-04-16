@@ -1,11 +1,14 @@
-{{- $scene := default "" (env "CHEZMOI_SCENE") -}}
-{{- if eq $scene "" -}}
-    {{- $choices := list "mac_home" "mac_office" "linux_server" "ubuntu_desktop" -}}
-    {{- $scene = promptChoice "Please select your scene" $choices -}}
+{{- $profile := default "" (env "CHEZMOI_PROFILE") -}}
+{{- if eq $profile "" -}}
+    {{- $profile = default "" (env "CHEZMOI_SCENE") -}}
 {{- end -}}
-{{- writeToStdout (printf "current scene is %s\n" $scene) -}}
+{{- if eq $profile "" -}}
+    {{- $choices := list "mac_home" "mac_office" "wsl_dev" "portable" -}}
+    {{- $profile = promptChoice "Please select your profile" $choices -}}
+{{- end -}}
+{{- writeToStdout (printf "current profile is %s\n" $profile) -}}
 
 [data]
-    # mac_home | mac_office | linux_server | ubuntu_desktop
-    scene = "{{ $scene }}"
-
+    # Keep scene as a compatibility alias while templates are migrated.
+    scene = "{{ $profile }}"
+    profile = "{{ $profile }}"

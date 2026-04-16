@@ -1,0 +1,24 @@
+profiles:
+  mac_home:
+    display_name: "Mac Home"
+    machine_class: "primary"
+    package_set: "full"
+    has_gui: true
+
+  mac_office:
+    display_name: "Mac Office"
+    machine_class: "primary"
+    package_set: "full"
+    has_gui: true
+
+  wsl_dev:
+    display_name: "WSL Dev"
+    machine_class: "secondary"
+    package_set: "portable"
+    has_gui: false
+
+  portable:
+    display_name: "Portable Dev"
+    machine_class: "ephemeral"
+    package_set: "portable"
+    has_gui: false

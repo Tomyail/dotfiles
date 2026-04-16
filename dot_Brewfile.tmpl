@@ -1,3 +1,5 @@
+{{- $profile := default (get . "scene") (get . "profile") -}}
+{{- $isPrimaryMac := or (eq $profile "mac_home") (eq $profile "mac_office") -}}
 {{- if eq .chezmoi.os "darwin" -}}
 
 # Taps
@@ -21,41 +23,45 @@ brew "htop"                   # 交互式进程查看器
 brew "kubernetes-cli"         # Kubernetes 命令行工具
 brew "lazygit"                # Git 终端界面
 brew "neovim"                 # 现代化的 Vim 编辑器
-brew "powerlevel10k"          # Zsh 主题
-brew "reattach-to-user-namespace" # tmux macOS 集成
 brew "ripgrep"                # 快速搜索工具
 brew "tmux"                   # 终端复用器
 brew "zoxide"                 # 智能目录跳转工具
 brew "zsh"                    # Zsh Shell
+
+{{- if ne $profile "portable" }}
+brew "powerlevel10k"          # Zsh 主题
+brew "reattach-to-user-namespace" # tmux macOS 集成
 brew "ollama", restart_service: true  # 本地 LLM 运行工具
 brew "im-select"
+{{- end }}
 
+{{- if $isPrimaryMac }}
 # Applications (cask)
 cask "kitty"                  # 现代化终端模拟器
 cask "alfred"                 # 效率启动器
 cask "font-blex-mono-nerd-font" # IBM Plex Mono Nerd 字体
 cask "git-credential-manager" # Git 凭证管理器
-cask "hiddenbar"             # 菜单栏图标管理工具
-cask "orbstack"              # 容器和虚拟机管理工具
-cask "cursor"                # AI 辅助编程 IDE
+cask "hiddenbar"              # 菜单栏图标管理工具
+cask "orbstack"               # 容器和虚拟机管理工具
+cask "cursor"                 # AI 辅助编程 IDE
 cask "postgres-unofficial"    # PostgreSQL 数据库
-cask "postico"               # PostgreSQL 客户端
-cask "wezterm"               # GPU 加速终端模拟器
-cask "visual-studio-code"    # VS Code 编辑器
-cask "nextcloud"             # 云存储客户端
-cask "omnifocus"             # 任务管理工具
-cask "telegram"              # 即时通讯工具
-cask "obsidian"              # 笔记
+cask "postico"                # PostgreSQL 客户端
+cask "wezterm"                # GPU 加速终端模拟器
+cask "visual-studio-code"     # VS Code 编辑器
+cask "nextcloud"              # 云存储客户端
+cask "omnifocus"              # 任务管理工具
+cask "telegram"               # 即时通讯工具
+cask "obsidian"               # 笔记
 
 # VS Code Extensions
 vscode "github.copilot"       # GitHub Copilot AI 代码助手
 vscode "github.copilot-chat"  # GitHub Copilot 聊天功能
+{{- end }}
 
-{{ if eq .chezmoi.hostname "MBP-LY46J97761-0114.local" }}
-# office mac
-
-{{ else if eq .chezmoi.hostname "MacBook-Pro-Home" }}
-
-{{- end -}}
+{{ if eq $profile "mac_office" }}
+# office-only packages go here
+{{ else if eq $profile "mac_home" }}
+# home-only packages go here
+{{- end }}
 
 {{- end -}}

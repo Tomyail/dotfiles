@@ -1,8 +1,16 @@
-{{- if eq .scene "linux_server" -}}
-tmux
-bash
-zsh
+{{- $profile := default (get . "scene") (get . "profile") -}}
+{{- if ne .chezmoi.os "darwin" -}}
+{{- if or (eq $profile "wsl_dev") (eq $profile "portable") -}}
 git
 git-lfs
+tmux
+zsh
+neovim
+lazygit
+ripgrep
+fd-find
+fzf
+eza
 ranger
+{{- end -}}
 {{- end -}}
