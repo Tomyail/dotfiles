@@ -30,3 +30,6 @@ Library/Rime/user.yaml
 {{- if ne .scene "linux_server" }}
 .pkg
 {{- end}}
+
+# Local machine-specific zsh configuration (not managed by chezmoi)
+.extra
