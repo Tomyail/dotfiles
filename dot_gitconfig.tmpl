@@ -126,9 +126,6 @@
 
 [commit]
 
-	# https://help.github.com/articles/signing-commits-using-gpg/
- #  gpgsign = true
-
 [diff]
 
 	# Detect copies as well as renames.
@@ -190,9 +187,12 @@
   path = ~/.gitconfig_personal
 [includeIf "gitdir:~/.config/"]
   path = ~/.gitconfig_personal
+{{- $gcm := lookPath "git-credential-manager" -}}
+{{- if $gcm }}
 [credential]
-	helper = 
-	helper = /usr/local/share/gcm-core/git-credential-manager
+	helper =
+	helper = {{ $gcm }}
+{{- end }}
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 
