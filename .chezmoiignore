@@ -33,3 +33,6 @@ Library/Rime/user.yaml
 
 # Local machine-specific zsh configuration (not managed by chezmoi)
 .extra
+
+# Claude Code configuration is machine-specific
+.claude
