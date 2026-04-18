@@ -1,4 +1,3 @@
-{{- if eq .chezmoi.os "darwin" -}}
 alias vim="nvim"
 alias lg="lazygit"
 alias l='eza'
@@ -9,4 +8,3 @@ alias cat='bat --style=plain'
 alias ccd="~/bin/chezmoi cd"
 alias cup="~/bin/chezmoi update"
 alias bup="brew update && brew bundle --global && brew upgrade"
-{{- end -}}

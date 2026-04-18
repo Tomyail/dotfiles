@@ -105,10 +105,11 @@ cask "git-credential-manager"       # Git 凭证管理
 cask "font-blex-mono-nerd-font"
 cask "laishulu/homebrew/font-sarasa-nerd"
 
-{{ if eq .chezmoi.hostname "MBP-LY46J97761-0114.local" }}
-# office mac
+{{ if eq .scene "mac_office" }}
+# office-specific packages
 
-{{ else if eq .chezmoi.hostname "MacBook-Pro-Home" }}
+{{ else if eq .scene "mac_home" }}
+# home-specific packages
 
 {{- end -}}
 

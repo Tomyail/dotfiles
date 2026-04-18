@@ -1,4 +1,3 @@
-{{- if eq .chezmoi.os "darwin" -}}
 ["Library/Rime"]
     type = "archive"
     url = "https://github.com/iDvel/rime-ice/archive/refs/heads/main.zip"
@@ -76,4 +75,3 @@
     url = "https://github.com/romkatv/powerlevel10k.git"
     refreshPeriod = "168h"
 
-{{- end -}}
