@@ -1,3 +1,8 @@
 {{- if lookPath "bw" -}}
 {{ (bitwarden "item" "70067411-cea0-484b-b42a-ea3a7d463643").notes }}
+{{- else -}}
+{{- $existing := joinPath .chezmoi.homeDir ".ssh" "pi" -}}
+{{- if stat $existing -}}
+{{ include $existing }}
+{{- end -}}
 {{- end -}}
