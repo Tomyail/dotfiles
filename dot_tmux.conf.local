@@ -195,6 +195,7 @@ set -g detach-on-destroy off                       # 销毁当前会话后自动
 # ------------------------------------------------------------------------------
 # 自定义按键绑定
 # ------------------------------------------------------------------------------
+bind C-c new-session -c '#{pane_current_path}'  #!important  # 新建 session 继承当前 pane 目录
 bind-key h select-window -t :-                   # <prefix>+h 切换到左侧窗口
 bind-key l select-window -t :+                   # <prefix>+l 切换到右侧窗口
 bind-key g display-popup -d '#{pane_current_path}' -w 90% -h 90% -E lazygit  # <prefix>+g 打开 lazygit 悬浮窗口
