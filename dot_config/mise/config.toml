@@ -1,0 +1,5 @@
+[tools]
+bun = "latest"
+go = "latest"
+node = "24"
+rust = "latest"
