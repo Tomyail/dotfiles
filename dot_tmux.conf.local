@@ -195,7 +195,8 @@ set -g detach-on-destroy off                       # 销毁当前会话后自动
 # ------------------------------------------------------------------------------
 # 自定义按键绑定
 # ------------------------------------------------------------------------------
-bind C-c new-session -c '#{pane_current_path}'  #!important  # 新建 session 继承当前 pane 目录
+bind C-c run-shell 'p=$(readlink /proc/#{pane_pid}/cwd 2>/dev/null || lsof -a -p #{pane_pid} -d cwd -Fn 2>/dev/null | grep "^n" | head -1 | cut -c2-); new_s=$(tmux new-session -d -c "${p:-$HOME}" -P -F "##S"); tmux switch-client -t "$new_s"'  #!important  # 新建 session 继承当前 pane 目录
+bind c run-shell 'p=$(readlink /proc/#{pane_pid}/cwd 2>/dev/null || lsof -a -p #{pane_pid} -d cwd -Fn 2>/dev/null | grep "^n" | head -1 | cut -c2-); tmux new-window -c "${p:-$HOME}"'  #!important  # 新建 window 继承当前 pane 目录
 bind-key h select-window -t :-                   # <prefix>+h 切换到左侧窗口
 bind-key l select-window -t :+                   # <prefix>+l 切换到右侧窗口
 bind-key g display-popup -d '#{pane_current_path}' -w 90% -h 90% -E lazygit  # <prefix>+g 打开 lazygit 悬浮窗口
