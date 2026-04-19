@@ -38,6 +38,9 @@ if [ -z "$TMUX" ] && { [ "$TERM" = "alacritty" ]; }; then
 fi
 
 
+# Let Ctrl+L pass through to tmux (used by vim-tmux-navigator)
+bindkey -r "^L"
+
 # Set editor preference - keep this at the end to prevent other configs from overriding it
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
@@ -46,4 +49,3 @@ elif command -v nvim &> /dev/null; then
 else
   export EDITOR='vim'
 fi
-
