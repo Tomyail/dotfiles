@@ -1,5 +1,5 @@
 #!/bin/bash
+# Brewfile hash: {{ include "dot_Brewfile.tmpl" | sha256sum }}
 
-# Run brew bundle --global after Brewfile is updated
 echo "Running brew bundle --global..."
 brew bundle --global || true
