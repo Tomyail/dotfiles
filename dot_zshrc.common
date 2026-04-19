@@ -1,3 +1,8 @@
+# Enable Powerlevel10k instant prompt. Must stay at the very top.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export ZSH=~/.oh-my-zsh
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -36,7 +41,6 @@ fi
 if [ -z "$TMUX" ] && { [ "$TERM" = "alacritty" ]; }; then
   tmux attach || tmux
 fi
-
 
 # Let Ctrl+L pass through to tmux (used by vim-tmux-navigator)
 bindkey -r "^L"
