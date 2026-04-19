@@ -208,4 +208,4 @@ bind-key -r y run-shell '\
 # vim-tmux-navigator 通过 TPM 异步安装，会在 oh-my-tmux 完成后覆盖 C-l 绑定，
 # 导致 oh-my-tmux 原有的 C-l（清屏+清除历史）失效（见 gpakosz/.tmux#788）。
 # 此处手动接管 C-l：在 vim/fzf 内透传按键，否则切换右侧 pane。
-bind-key -n C-l if-shell "ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?|fzf)(diff)?$'" "send-keys 'C-l'" "select-pane -R"
+bind-key -n C-l if-shell "ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?|fzf)(diff)?$'" "send-keys 'C-l'" "select-pane -R"  #!important
