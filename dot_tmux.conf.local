@@ -201,6 +201,15 @@ bind-key h select-window -t :-                   # <prefix>+h 切换到左侧窗
 bind-key l select-window -t :+                   # <prefix>+l 切换到右侧窗口
 bind-key g display-popup -d '#{pane_current_path}' -w 90% -h 90% -E lazygit  # <prefix>+g 打开 lazygit 悬浮窗口
 bind-key G display-popup -d '#{pane_current_path}' -w 90% -h 90% -E workmux dashboard       # <prefix>+G 打开 workmux dashboard
+bind-key R run-shell '\
+  target="#{window_name}"; \
+  [ -n "$target" ] || exit 0; \
+  if tmux has-session -t "$target" 2>/dev/null; then \
+    tmux display-message "session name already exists: $target"; \
+  else \
+    tmux rename-session "$target"; \
+    tmux display-message "renamed session to: $target"; \
+  fi'  # <prefix>+R 将当前 session 重命名为当前 window 名
 bind-key -r y run-shell '\
   SESSION="claude-$(echo #{pane_current_path} | md5sum | cut -c1-8)"; \
   tmux has-session -t "$SESSION" 2>/dev/null || \
