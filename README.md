@@ -163,6 +163,64 @@ zsh should be the default shell:
 chsh -s $(which zsh)
 ```
 
+## Linux / WSL
+
+### Recommended scenes
+
+- `wsl`: WSL on Ubuntu
+- `linux_server`: Ubuntu/Debian server
+
+### What gets installed on Linux
+
+For `wsl` and `linux_server`, [`run_once_install_apt_packages.sh.tmpl`](/Users/lixuexin03/.local/share/chezmoi/run_once_install_apt_packages.sh.tmpl:1) installs the base packages below with `apt`:
+
+```bash
+ca-certificates curl wget git zsh tmux ripgrep fd-find fzf jq unzip htop rsync build-essential neovim
+```
+
+On WSL, it also tries to install `wslu` so `wslview` can be used for `open`.
+
+### First run on WSL
+
+```bash
+export CHEZMOI_SCENE=wsl
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
+chsh -s $(which zsh)
+```
+
+Then restart the shell, or start a new WSL session.
+
+### First run on Ubuntu / Debian server
+
+```bash
+export CHEZMOI_SCENE=linux_server
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
+chsh -s $(which zsh)
+```
+
+### Expected result after apply
+
+- `~/.zshrc` loads `~/.zshrc.common`
+- `tmux` and TPM are pulled from `chezmoiexternal`
+- `~/.config/nvim` is pulled from the external Neovim repo
+- WSL gets `open -> wslview` and `pbcopy -> clip.exe` when those commands are available
+
+### Quick checks
+
+```bash
+chezmoi doctor
+chezmoi managed | rg 'zshrc|tmux|nvim'
+zsh --version
+tmux -V
+nvim --version
+```
+
+### Common notes
+
+- Linux and WSL do not use Homebrew or Linuxbrew.
+- `nvim`, `tmux`, and `oh-my-zsh` depend on external sources defined in `.chezmoiexternal.toml`, so first-time setup needs network access.
+- Tmux config is shared, but auto-attach behavior may differ by terminal emulator.
+
 ## Chezmoi 日常维护
 
 ### 基本工作流程
