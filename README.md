@@ -1,397 +1,170 @@
 # dotfiles
 
-my dotfiles for macOS, Ubuntu server, and WSL on Ubuntu.
+My dotfiles for macOS and Linux (Ubuntu server / WSL), managed by [chezmoi](https://chezmoi.io).
 
-Linux is managed as `apt bootstrap + Homebrew tools`. `apt` installs the system baseline, and Homebrew provides newer developer tooling such as Neovim.
+Linux uses `apt` for the system baseline and Homebrew for developer tooling. On Linux, the scene is set automatically — no selection needed. WSL-specific integrations (`wslview`, `clip.exe`) are detected at runtime.
 
-## what's included
+## What's included
 
 ### Core Tools
 
-| Tool | Description | macOS | WSL | Linux Server |
-|------|-------------|-------|-----|--------------|
-| Homebrew | 跨平台包管理器 | ✅ | ✅ | ✅ |
-| Git | 版本控制工具 | ✅ | ✅ | ✅ |
-| mise | 多语言版本管理器 | ✅ | ✅ | ✅ |
+| Tool | Description | macOS | Linux |
+|------|-------------|:-----:|:-----:|
+| Homebrew | Package manager | ✅ | ✅ |
+| Git | Version control | ✅ | ✅ |
+| mise | Multi-language version manager | ✅ | ✅ |
 
-### Shell Environment
+### Shell
 
-| Tool | Description | macOS | WSL | Linux Server |
-|------|-------------|-------|-----|--------------|
-| Zsh | 现代化Shell | ✅ | ✅ | ✅ |
-| Oh My Zsh | Zsh框架 | ✅ | ✅ | ✅ |
-| Powerlevel10k | 现代化Shell主题 | ✅ | ✅ | ✅ |
-| zsh-syntax-highlighting | 语法高亮插件 | ✅ | ✅ | ✅ |
-| zsh-autosuggestions | 自动补全插件 | ✅ | ✅ | ✅ |
+| Tool | Description | macOS | Linux |
+|------|-------------|:-----:|:-----:|
+| Zsh | Shell | ✅ | ✅ |
+| Oh My Zsh | Zsh framework | ✅ | ✅ |
+| Powerlevel10k | Shell theme | ✅ | ✅ |
+| zsh-syntax-highlighting | Syntax highlighting | ✅ | ✅ |
+| zsh-autosuggestions | Autosuggestions | ✅ | ✅ |
+| atuin | Shell history | ✅ | ✅ |
+| zoxide | Smart directory jumper | ✅ | ✅ |
 
 ### Terminal & Editor
 
-| Tool | Description | macOS | WSL | Linux Server |
-|------|-------------|-------|-----|--------------|
-| Tmux | 终端复用器 | ✅ | ✅ | ✅ |
-| TPM | Tmux插件管理器 | ✅ | ✅ | ✅ |
-| Oh My Tmux | Tmux配置框架 | ✅ | ✅ | ✅ |
-| Neovim | 现代化编辑器 | ✅ | ✅ | ✅ |
-| Neovim Config | 个人定制配置 | ✅ | ✅ | ✅ |
-| Alacritty | GPU加速终端 | ✅ | ❌ | ❌ |
+| Tool | Description | macOS | Linux |
+|------|-------------|:-----:|:-----:|
+| Tmux | Terminal multiplexer | ✅ | ✅ |
+| Neovim | Editor | ✅ | ✅ |
+| Alacritty | GPU-accelerated terminal | ✅ | ❌ |
+| WezTerm | GPU-accelerated terminal | ✅ | ❌ |
+| Kitty | Terminal emulator | ✅ | ❌ |
 
 ### Development Tools
 
-| Tool | Description | macOS | WSL | Linux Server |
-|------|-------------|-------|-----|--------------|
-| LazyGit | Git TUI工具 | ✅ | ✅ | ✅ |
-| Vimrc | Vim基础配置 | ✅ | ✅ | ✅ |
+| Tool | Description | macOS | Linux |
+|------|-------------|:-----:|:-----:|
+| LazyGit | Git TUI | ✅ | ✅ |
+| fzf | Fuzzy finder | ✅ | ✅ |
+| ripgrep | Fast search | ✅ | ✅ |
+| fd | Fast file finder | ✅ | ✅ |
+| bat | Better cat | ✅ | ✅ |
+| eza | Better ls | ✅ | ✅ |
 
-### UI & Themes
+### macOS Only
 
-| Tool | Description | macOS | WSL | Linux Server |
-|------|-------------|-------|-----|--------------|
-| Dracula Theme | 深色主题 | ✅ | 可选 | ❌ |
-| IBMPlexMono Nerd Font | 编程字体 | ✅ | 由 Windows Terminal 承担 | ❌ |
-
-### macOS Specific
-
-| Tool | Description | macOS | WSL | Linux Server |
-|------|-------------|-------|-----|--------------|
-| Yabai | 窗口管理器 | ✅ | ❌ | ❌ |
-| skhd | 快捷键守护程序 | ✅ | ❌ | ❌ |
-| Rime | 输入法 | ✅ | ❌ | ❌ |
-
-### 快捷键说明
-
-#### Tmux 插件管理
-- 安装插件: `<prefix>` + I
-- 卸载插件: `<prefix>` + Alt + u
-- 更新插件: `<prefix>` + u
-- vim-tmux-navigator: 窗口导航
+| Tool | Description |
+|------|-------------|
+| Yabai | Window manager |
+| skhd | Hotkey daemon |
 
 ## Project Structure
 
 ```
 .
-├── .chezmoi.toml.tmpl           # Chezmoi配置模板
-├── .chezmoiexternal.toml.tmpl   # 外部依赖配置模板
-├── .chezmoiignore              # 忽略文件配置
-├── .chezmoitemplates           # 模板目录
-├── dot_Brewfile.tmpl           # Homebrew包管理配置
-├── dot_aliases.tmpl            # Shell别名配置
-├── dot_config                  # 配置文件目录
-├── dot_dir_colors             # 目录颜色配置
-├── dot_evals.tmpl             # Shell评估配置
-├── dot_functions.tmpl         # Shell函数配置
-├── dot_gitconfig.tmpl         # Git配置模板
-├── dot_gitconfig_personal.tmpl # 个人Git配置模板
-├── dot_kube                   # Kubernetes配置目录
-├── dot_p10k.zsh.tmpl         # Powerlevel10k主题配置
-├── dot_pkg.tmpl              # 包管理配置
-├── dot_prettierrc            # Prettier格式化配置
-├── dot_skhdrc.tmpl          # skhd快捷键配置
-├── dot_tmux.conf.local.tmpl # Tmux本地配置
-├── dot_unison               # Unison同步配置
-├── dot_zprofile.tmpl       # Zsh配置文件
-├── dot_zshrc.tmpl          # Zsh主配置文件
-├── executable_dot_yabairc.tmpl # Yabai窗口管理配置
-├── linux_server            # Linux服务器特定配置
-├── mac_home               # Mac家庭环境配置
-├── mac_office            # Mac办公环境配置
-├── mac_shared           # Mac共享配置
-├── private_dot_ssh      # SSH配置（私密）
-├── run_once_install_apt_packages.sh.tmpl # Linux/WSL apt 基础包安装
-├── run_once_install_linuxbrew.sh.tmpl # Linux/WSL Homebrew 安装
-└── wsl                  # WSL 特定配置（预留）
-
+├── .chezmoi.toml.tmpl              # Chezmoi config template
+├── .chezmoiexternal.toml           # External dependencies (oh-my-zsh, tmux, nvim)
+├── .chezmoiignore                  # Ignored files
+├── dot_Brewfile.tmpl               # Homebrew packages
+├── dot_aliases                     # Shell aliases
+├── dot_functions                   # Shell functions
+├── dot_gitconfig.tmpl              # Git global config
+├── dot_gitconfig_personal          # Git personal identity
+├── dot_p10k.zsh                    # Powerlevel10k theme config
+├── dot_prettierrc                  # Prettier config
+├── dot_skhdrc                      # skhd hotkey config (macOS)
+├── dot_tmux.conf.local             # Tmux config
+├── dot_zshrc.common                # Shared zsh config (sourced by ~/.zshrc)
+├── executable_dot_yabairc          # Yabai window manager config (macOS)
+├── private_dot_ssh/                # SSH config (private)
+├── dot_config/
+│   ├── alacritty/                  # Alacritty terminal config
+│   ├── atuin/                      # Atuin shell history config
+│   ├── kitty/                      # Kitty terminal config
+│   ├── mise/                       # mise version manager config
+│   ├── opencode/                   # OpenCode AI editor config
+│   └── wezterm/                    # WezTerm terminal config
+├── run_once_install_apt_packages.sh.tmpl  # Install base apt packages (Linux/WSL)
+├── run_once_install_linuxbrew.sh.tmpl     # Install Homebrew on Linux/WSL
+├── run_once_setup_env_file.sh      # Pull .env from Bitwarden
+├── run_once_setup_ssh_keys.sh      # Set up SSH keys
+├── run_once_setup_zshrc.sh         # Wire ~/.zshrc to source .zshrc.common
+├── run_onchange_after_brew_bundle.sh.tmpl # Re-run brew bundle on Brewfile changes
+└── run_onchange_after_source.sh    # Re-source shell on config changes
 ```
 
-### Key Components
+## Installation
 
-- **环境配置**
-  - `mac_home/`: Mac家庭环境特定配置
-  - `mac_office/`: Mac办公环境特定配置
-  - `mac_shared/`: Mac共享配置
-  - `linux_server/`: Linux服务器配置
-  - `wsl/`: WSL 配置
-
-- **Shell配置**
-  - `dot_zshrc.tmpl`: Zsh主配置文件
-  - `dot_aliases.tmpl`: 常用别名定义
-  - `dot_functions.tmpl`: 自定义Shell函数
-  - `dot_evals.tmpl`: Shell环境变量和评估配置
-
-- **开发工具配置**
-  - `dot_gitconfig.tmpl`: Git全局配置
-  - `dot_gitconfig_personal.tmpl`: Git个人配置
-  - `dot_prettierrc`: 代码格式化配置
-  - `dot_kube/`: Kubernetes配置
-
-- **终端美化**
-  - `dot_p10k.zsh.tmpl`: Powerlevel10k主题配置
-  - `dot_dir_colors`: 目录颜色配置
-  - `dot_tmux.conf.local.tmpl`: Tmux终端复用器配置
-
-- **窗口管理**
-  - `executable_dot_yabairc.tmpl`: Yabai窗口管理器配置
-  - `dot_skhdrc.tmpl`: skhd快捷键配置
-
-- **包管理**
-  - `dot_Brewfile.tmpl`: Homebrew包管理配置
-  - `dot_pkg.tmpl`: 通用包管理配置
-
-## How to install
-
-[using bitwarden cli to get the password](https://medium.com/@josemrivera/share-credentials-across-machines-using-chezmoi-and-bitwarden-4069dcb6e367)
+Requires [Bitwarden CLI](https://bitwarden.com/help/cli/) for secrets. See [this guide](https://medium.com/@josemrivera/share-credentials-across-machines-using-chezmoi-and-bitwarden-4069dcb6e367).
 
 ```sh
-# macOS
+# macOS (will prompt: mac_home or mac_office)
 xcode-select --install
-export CHEZMOI_SCENE=mac_home
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
 
-# WSL on Ubuntu
-export CHEZMOI_SCENE=wsl
+# macOS (non-interactive)
+export CHEZMOI_SCENE=mac_home  # or mac_office
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
 
-# Ubuntu/Debian server
-export CHEZMOI_SCENE=linux_server
+# Linux (WSL or server — scene auto-detected)
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
 ```
 
-Linux and WSL first install the base system packages with `apt`, then install developer tools with Homebrew.
-
-chezmoi dir: `~/.config/chezmoi/chezmoi.toml`
-zsh should be the default shell:
+After applying, set zsh as the default shell:
 
 ```bash
 chsh -s $(which zsh)
 ```
 
-## Linux / WSL
+## Linux Details
 
-### Recommended scenes
+### What gets installed
 
-- `wsl`: WSL on Ubuntu
-- `linux_server`: Ubuntu/Debian server
+`run_once_install_apt_packages.sh.tmpl` installs the base packages:
 
-### What gets installed on Linux
-
-For `wsl` and `linux_server`, [`run_once_install_apt_packages.sh.tmpl`](/Users/lixuexin03/.local/share/chezmoi/run_once_install_apt_packages.sh.tmpl:1) installs the base packages below with `apt`:
-
-```bash
+```
 ca-certificates curl file git procps sudo wget zsh unzip build-essential
 ```
 
-On WSL, it also tries to install `wslu` so `wslview` can be used for `open`.
+On WSL (detected via `/proc/sys/kernel/osrelease`), `wslu` is also installed for `wslview`.
 
-[`run_once_install_linuxbrew.sh.tmpl`](/Users/lixuexin03/.local/share/chezmoi/run_once_install_linuxbrew.sh.tmpl:1) then installs Homebrew on Linux, and [`dot_Brewfile.tmpl`](/Users/lixuexin03/.local/share/chezmoi/dot_Brewfile.tmpl:1) manages developer tools such as `neovim`, `tmux`, `fzf`, `ripgrep`, `fd`, `jq`, and `mise`.
+`run_once_install_linuxbrew.sh.tmpl` then installs Homebrew, and `dot_Brewfile.tmpl` manages developer tools.
 
-### First run on WSL
+### Expected state after apply
 
-```bash
-export CHEZMOI_SCENE=wsl
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
-chsh -s $(which zsh)
-```
-
-Then restart the shell, or start a new WSL session.
-
-### First run on Ubuntu / Debian server
-
-```bash
-export CHEZMOI_SCENE=linux_server
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
-chsh -s $(which zsh)
-```
-
-### Expected result after apply
-
-- `~/.zshrc` loads `~/.zshrc.common`
-- `tmux` and TPM are pulled from `chezmoiexternal`
-- `~/.config/nvim` is pulled from the external Neovim repo
-- WSL gets `open -> wslview` and `pbcopy -> clip.exe` when those commands are available
+- `~/.zshrc` sources `~/.zshrc.common`
+- `tmux`, oh-my-zsh, and `~/.config/nvim` are pulled from `.chezmoiexternal.toml`
+- On WSL: `open → wslview` and `pbcopy → clip.exe` are aliased automatically if available
 
 ### Quick checks
 
 ```bash
 chezmoi doctor
 chezmoi managed | rg 'zshrc|tmux|nvim'
-zsh --version
-tmux -V
-nvim --version
+zsh --version && tmux -V && nvim --version
 ```
 
-### Common notes
+## Chezmoi Maintenance
 
-- Linux and WSL use `apt` for bootstrap and Homebrew for developer tools.
-- `nvim`, `tmux`, and `oh-my-zsh` depend on external sources defined in `.chezmoiexternal.toml`, so first-time setup needs network access.
-- Tmux config is shared, but auto-attach behavior may differ by terminal emulator.
-
-## Chezmoi 日常维护
-
-### 基本工作流程
+### Daily workflow
 
 ```bash
-# 查看当前配置与实际文件的差异
-chezmoi diff
-
-# 编辑配置文件
-chezmoi edit ~/.zshrc
-
-# 添加新的配置文件到管理
-chezmoi add ~/.config/nvim/init.lua
-
-# 应用所有更改
-chezmoi apply
-
-# 进入源码目录进行git操作
-chezmoi cd
-git add .
-git commit -m "Update neovim config"
-git push
+chezmoi diff              # See pending changes
+chezmoi edit ~/.zshrc     # Edit a managed file
+chezmoi add ~/.config/nvim/init.lua  # Track a new file
+chezmoi apply             # Apply all changes
+chezmoi update -v         # Pull from remote and apply
 ```
 
-### 常用维护命令
+### Useful commands
 
-#### 日常操作
 ```bash
-# 更新配置（从远程仓库拉取并应用）
-chezmoi update -v
-
-# 查看未管理的文件
-chezmoi unmanaged
-
-# 查看特定目录的未管理文件
-chezmoi unmanaged ~/.config ~/.ssh
-
-# 检查配置状态
-chezmoi doctor
-
-# 查看所有管理的文件
-chezmoi managed
+chezmoi unmanaged         # List untracked files
+chezmoi doctor            # Check for issues
+chezmoi managed           # List all managed files
+chezmoi execute-template '{{ .chezmoi.os }} / {{ .scene }}'  # Check current scene
 ```
 
-#### 编辑和管理
-```bash
-# 编辑特定配置文件
-chezmoi edit ~/.gitconfig
-chezmoi edit dot_aliases.tmpl
-
-# 重新生成配置文件（当模板修改时）
-chezmoi init
-
-# 验证模板语法
-chezmoi execute-template '{{ .chezmoi.os }}/{{ .chezmoi.arch }}'
-
-# 从外部源导入文件
-chezmoi import --destination ~/.config/alacritty/alacritty.yml alacritty.yml
-```
-
-### 场景管理
+### Sync to a new machine
 
 ```bash
-# 切换环境配置
-export CHEZMOI_SCENE=wsl
-chezmoi apply
-
-# 查看当前场景信息
-chezmoi execute-template '{{ .scene }}'
-
-# 查看当前平台与场景
-chezmoi execute-template '{{ .chezmoi.os }} / {{ .scene }}'
-```
-
-### 模板和数据管理
-
-```bash
-# 查看所有模板变量
-chezmoi dump --format=json
-
-# 测试模板渲染
-chezmoi execute-template --init --promptString "email=user@example.com" < .chezmoi.toml.tmpl
-
-# 查看状态数据
-chezmoi state data
-
-# 设置状态数据
-chezmoi state set --bucket=entry --key=editor --value=nvim
-```
-
-### 故障排除
-
-```bash
-# 详细模式运行以查看详细信息
-chezmoi -v apply
-
-# 检查特定文件的问题
-chezmoi diff ~/.zshrc
-
-# 查看配置文件位置
-chezmoi config
-
-# 重新初始化（谨慎使用）
-chezmoi init --force
-```
-
-### 定期维护建议
-
-#### 每周维护
-```bash
-# 1. 更新配置
-chezmoi update
-
-# 2. 检查并清理未使用的文件
-chezmoi unmanaged | grep -i backup
-
-# 3. 备份重要配置
-chezmoi archive > dotfiles-backup-$(date +%Y%m%d).tar.gz
-```
-
-#### 每月维护
-```bash
-# 1. 全面检查配置差异
-chezmoi diff
-
-# 2. 更新所有包管理器
-brew update && brew upgrade
-mise upgrade
-
-# 3. 清理不需要的包
-brew cleanup
-sudo apt-get autoremove -y
-```
-
-### 最佳实践
-
-1. **提交前检查**: 每次提交前运行 `chezmoi diff` 确认更改
-2. **频繁提交**: 小而频繁的提交比大的提交更容易管理
-3. **使用模板**: 利用模板系统处理环境差异
-4. **定期备份**: 使用 `chezmoi archive` 定期备份配置
-5. **文档更新**: 修改配置时同步更新README文档
-
-### 配置同步到新机器
-
-```bash
-# 方法1: 快速设置（推荐）
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply --purge tomyail
-
-# 方法2: 分步设置
-curl -sfL https://chezmoi.io/install.sh | sh
-chezmoi init tomyail
-chezmoi diff
-chezmoi apply
-```
-
-### 有用的别名
-
-可以添加到 `dot_aliases.tmpl`:
-
-```bash
-# Chezmoi快捷命令
-alias cz='chezmoi'
-alias czd='chezmoi diff'
-alias cza='chezmoi apply'
-alias cze='chezmoi edit'
-alias czu='chezmoi update'
-alias czc='chezmoi cd'
-alias czs='chezmoi status'
 ```
 
 ## Inspiration
