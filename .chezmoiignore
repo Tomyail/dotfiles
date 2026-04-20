@@ -20,3 +20,6 @@ Library/Rime/user.yaml
 
 # Claude Code configuration is machine-specific
 .claude
+
+# .env file is managed by run_once_setup_env_file.sh from Bitwarden
+.env

@@ -218,3 +218,99 @@ function create_bw_item() {
 	echo "{\"organizationId\":null,\"folderId\":null,\"type\":2,\"name\":\"$name\",\"notes\":\"$(sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/\\\\n/g' $file_path)\",\"favorite\":false,\"fields\":[],\"login\":null,\"secureNote\":{\"type\":0},\"card\":null,\"identity\":null}" | bw encode | bw create item
 }
 
+# claude_use 切换 Claude API 使用官方 Claude 或自定义 GLM
+# 参数：
+#   $1 - 模式选择：claude（官方）或 glm（自定义），必须指定
+# 示例：
+#   claude_use          # 显示帮助信息
+#   claude_use claude   # 使用官方 Claude（用户通过 /login 自己登录）
+#   claude_use glm      # 使用自定义 GLM API（从 .env 文件读取配置）
+function claude_use() {
+	local mode=$1
+	local env_file="$HOME/.env"
+
+	# 不加参数时显示帮助信息
+	if [ -z "$mode" ]; then
+		cat <<-'EOF'
+		📖 Claude API 模式切换帮助
+
+		用法：
+		  claude_use <模式>
+
+		可用模式：
+		  claude  - 官方 Claude（用户通过 /login 自己登录）
+		  glm     - 自定义 GLM API（从 .env 文件读取配置）
+
+		示例：
+		  claude_use claude  # 切换到官方 Claude
+		  claude_use glm     # 切换到自定义 GLM API
+
+		查看当前状态：
+		  claude_status       # 显示当前 Claude API 配置
+
+		EOF
+		return 0
+	fi
+
+	case "$mode" in
+		claude|official|official-api|official_api)
+			# 使用官方 API（用户会自己通过 /login 登录）
+			unset ANTHROPIC_AUTH_TOKEN
+			unset ANTHROPIC_BASE_URL
+			unset ANTHROPIC_API_KEY
+
+			echo "✅ Claude 已切换到官方 API 模式"
+			echo "   请确保你已完成登录操作"
+			;;
+
+		glm|custom|custom-glm)
+			# 使用自定义 GLM API
+			if [ ! -f "$env_file" ]; then
+				echo "⚠️  错误：$env_file 文件不存在"
+				return 1
+			fi
+
+			# 从 .env 文件读取配置
+			source "$env_file"
+
+			if [ -z "$ANTHROPIC_AUTH_TOKEN" ] || [ -z "$ANTHROPIC_BASE_URL" ]; then
+				echo "⚠️  错误：.env 文件中缺少必要的配置"
+				return 1
+			fi
+
+			# 清除官方配置，使用自定义配置
+			unset ANTHROPIC_API_KEY
+			export ANTHROPIC_AUTH_TOKEN="$ANTHROPIC_AUTH_TOKEN"
+			export ANTHROPIC_BASE_URL="$ANTHROPIC_BASE_URL"
+
+			echo "✅ Claude 已切换到自定义 GLM API 模式"
+			echo "   Base URL: $ANTHROPIC_BASE_URL"
+			echo "   Auth Token: ${ANTHROPIC_AUTH_TOKEN:0:20}..."
+			;;
+
+		*)
+			echo "❌ 错误：未知模式 '$mode'"
+			echo "使用方法："
+			echo "  claude_use claude  - 使用官方 Claude"
+			echo "  claude_use glm     - 使用自定义 GLM API"
+			echo "  claude_use         - 显示帮助信息"
+			return 1
+			;;
+	esac
+}
+
+# claude_status 显示当前 Claude API 配置状态
+function claude_status() {
+	echo "📊 当前 Claude API 配置状态："
+	echo ""
+
+	if [ -n "$ANTHROPIC_AUTH_TOKEN" ] && [ -n "$ANTHROPIC_BASE_URL" ]; then
+		echo "🟢 模式：自定义 GLM API"
+		echo "   Base URL: $ANTHROPIC_BASE_URL"
+		echo "   Auth Token: ${ANTHROPIC_AUTH_TOKEN:0:20}..."
+	else
+		echo "🔵 模式：官方 Claude（默认）"
+		echo "   状态：用户通过 /login 自己登录"
+	fi
+}
+
