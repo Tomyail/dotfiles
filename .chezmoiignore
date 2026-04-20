@@ -5,16 +5,6 @@ README.md
 .oh-my-zsh/cache/completions
 .oh-my-zsh/cache/grep-alias
 
-# rime for mac
-Library/Rime/build
-Library/Rime/*.userdb
-Library/Rime/installation.yaml
-Library/Rime/user.yaml
-
-# not used on mac
-.dir_colors
-.pkg
-
 # Local machine-specific zsh configuration (not managed by chezmoi)
 .extra
 
@@ -23,3 +13,19 @@ Library/Rime/user.yaml
 
 # .env file is managed by run_once_setup_env_file.sh from Bitwarden
 .env
+
+{{ if ne .chezmoi.os "darwin" }}
+# macOS-only files
+.skhdrc
+.yabairc
+Library/Rime
+.config/alacritty
+.config/kitty
+.config/wezterm
+{{ end }}
+
+{{ if ne .chezmoi.os "linux" }}
+# Linux-only files
+.dir_colors
+.pkg
+{{ end }}
