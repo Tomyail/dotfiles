@@ -1,4 +1,8 @@
 {{- $scene := default "" (env "CHEZMOI_SCENE") -}}
+{{- if and (eq $scene "") (lstat .chezmoi.configFile) -}}
+    {{- $currentConfig := fromToml (include .chezmoi.configFile) -}}
+    {{- $scene = default "" $currentConfig.data.scene -}}
+{{- end -}}
 {{- if eq $scene "" -}}
     {{- $choices := list "mac_home" "mac_office" -}}
     {{- $scene = promptChoice "Please select your scene" $choices -}}
@@ -8,4 +12,3 @@
 [data]
     # mac_home | mac_office
     scene = "{{ $scene }}"
-

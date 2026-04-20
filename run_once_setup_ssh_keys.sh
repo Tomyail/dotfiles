@@ -19,15 +19,36 @@ chmod 700 "$HOME/.ssh"
 
 write_key() {
   local path="$1"
-  local content="$2"
-  if [ -z "$content" ]; then
+  local note_id="$2"
+  local tmp
+
+  tmp="$(mktemp "${path}.tmp.XXXXXX")"
+  # Stream directly from bw to avoid mangling multiline content in shell variables.
+  if ! {
+    bw get notes "$note_id" | tr -d '\r'
+    printf '\n'
+  } > "$tmp"; then
+    rm -f "$tmp"
+    echo "Warning: failed to fetch content for $path, skipping"
+    return
+  fi
+
+  if [ ! -s "$tmp" ]; then
+    rm -f "$tmp"
     echo "Warning: empty content for $path, skipping"
     return
   fi
-  printf '%s' "$content" > "$path"
-  chmod 600 "$path"
+
+  if ! ssh-keygen -l -f "$tmp" >/dev/null 2>&1; then
+    rm -f "$tmp"
+    echo "Warning: invalid SSH key content for $path, skipping"
+    return
+  fi
+
+  chmod 600 "$tmp"
+  mv "$tmp" "$path"
   echo "Written $path"
 }
 
-write_key "$HOME/.ssh/id_rsa" "$(bw get notes c3d7b007-f796-4b2e-8706-16c4abc9d788)"
-write_key "$HOME/.ssh/pi"     "$(bw get notes 70067411-cea0-484b-b42a-ea3a7d463643)"
+write_key "$HOME/.ssh/id_rsa" "c3d7b007-f796-4b2e-8706-16c4abc9d788"
+write_key "$HOME/.ssh/pi"     "70067411-cea0-484b-b42a-ea3a7d463643"

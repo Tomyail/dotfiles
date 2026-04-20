@@ -223,7 +223,7 @@ export CHEZMOI_SCENE=mac_office
 chezmoi apply
 
 # 查看当前场景信息
-chezmoi execute-template '{{ .chezmoi.scene }}'
+chezmoi execute-template '{{ .scene }}'
 
 # 针对特定环境应用配置
 chezmoi apply --include=mac_home
