@@ -1,63 +1,61 @@
 # dotfiles
 
-my dotfiles for macos(working), ubuntu desktop(personal project) and ubuntu server(cloud and home server).
+my dotfiles for macOS, Ubuntu server, and WSL on Ubuntu.
 
-dot files are separated by desktop and server.
-
-desktop for daily use and server for cloud and home server.
+Linux is managed as server-first. Both `linux_server` and `wsl` use `apt` as the default package manager. Linuxbrew is not supported.
 
 ## what's included
 
 ### Core Tools
 
-| Tool | Description | macOS | Linux Desktop | Linux Server | Linux Server (No Brew) |
-|------|-------------|-------|---------------|--------------|----------------------|
-| Homebrew | 跨平台包管理器 | ✅ | ✅ | ✅ | ❌ |
-| Git | 版本控制工具 | ✅ | ✅ | ✅ | ✅ |
-| asdf | 多语言版本管理器 | ✅ | ✅ | ✅ | ❌ |
+| Tool | Description | macOS | WSL | Linux Server |
+|------|-------------|-------|-----|--------------|
+| Homebrew | 跨平台包管理器 | ✅ | ❌ | ❌ |
+| Git | 版本控制工具 | ✅ | ✅ | ✅ |
+| mise | 多语言版本管理器 | ✅ | ✅ | ✅ |
 
 ### Shell Environment
 
-| Tool | Description | macOS | Linux Desktop | Linux Server | Linux Server (No Brew) |
-|------|-------------|-------|---------------|--------------|----------------------|
-| Zsh | 现代化Shell | ✅ | ✅ | ✅ | ❌ |
-| Oh My Zsh | Zsh框架 | ✅ | ✅ | ✅ | ❌ |
-| Powerlevel10k | 现代化Shell主题 | ✅ | ✅ | ✅ | ❌ |
-| zsh-syntax-highlighting | 语法高亮插件 | ✅ | ✅ | ✅ | ❌ |
-| zsh-autosuggestions | 自动补全插件 | ✅ | ✅ | ✅ | ❌ |
+| Tool | Description | macOS | WSL | Linux Server |
+|------|-------------|-------|-----|--------------|
+| Zsh | 现代化Shell | ✅ | ✅ | ✅ |
+| Oh My Zsh | Zsh框架 | ✅ | ✅ | ✅ |
+| Powerlevel10k | 现代化Shell主题 | ✅ | ✅ | ✅ |
+| zsh-syntax-highlighting | 语法高亮插件 | ✅ | ✅ | ✅ |
+| zsh-autosuggestions | 自动补全插件 | ✅ | ✅ | ✅ |
 
 ### Terminal & Editor
 
-| Tool | Description | macOS | Linux Desktop | Linux Server | Linux Server (No Brew) |
-|------|-------------|-------|---------------|--------------|----------------------|
-| Tmux | 终端复用器 | ✅ | ✅ | ✅ | ✅ |
-| TPM | Tmux插件管理器 | ✅ | ✅ | ✅ | ✅ |
-| Oh My Tmux | Tmux配置框架 | ✅ | ✅ | ✅ | ✅ |
-| Neovim | 现代化编辑器 | ✅ | ✅ | ✅ | ❌ |
-| Neovim Config | 个人定制配置 | ✅ | ✅ | ❌ | ❌ |
-| Alacritty | GPU加速终端 | ✅ | ❌ | ❌ | ❌ |
+| Tool | Description | macOS | WSL | Linux Server |
+|------|-------------|-------|-----|--------------|
+| Tmux | 终端复用器 | ✅ | ✅ | ✅ |
+| TPM | Tmux插件管理器 | ✅ | ✅ | ✅ |
+| Oh My Tmux | Tmux配置框架 | ✅ | ✅ | ✅ |
+| Neovim | 现代化编辑器 | ✅ | ✅ | ✅ |
+| Neovim Config | 个人定制配置 | ✅ | ✅ | ✅ |
+| Alacritty | GPU加速终端 | ✅ | ❌ | ❌ |
 
 ### Development Tools
 
-| Tool | Description | macOS | Linux Desktop | Linux Server | Linux Server (No Brew) |
-|------|-------------|-------|---------------|--------------|----------------------|
-| LazyGit | Git TUI工具 | ✅ | ✅ | ✅ | ❌ |
-| Vimrc | Vim基础配置 | ✅ | ✅ | ✅ | ✅ |
+| Tool | Description | macOS | WSL | Linux Server |
+|------|-------------|-------|-----|--------------|
+| LazyGit | Git TUI工具 | ✅ | ✅ | ✅ |
+| Vimrc | Vim基础配置 | ✅ | ✅ | ✅ |
 
 ### UI & Themes
 
-| Tool | Description | macOS | Linux Desktop | Linux Server | Linux Server (No Brew) |
-|------|-------------|-------|---------------|--------------|----------------------|
-| Dracula Theme | 深色主题 | ✅ | ✅ | ❌ | ❌ |
-| IBMPlexMono Nerd Font | 编程字体 | ✅ | ✅ | ❌ | ❌ |
+| Tool | Description | macOS | WSL | Linux Server |
+|------|-------------|-------|-----|--------------|
+| Dracula Theme | 深色主题 | ✅ | 可选 | ❌ |
+| IBMPlexMono Nerd Font | 编程字体 | ✅ | 由 Windows Terminal 承担 | ❌ |
 
 ### macOS Specific
 
-| Tool | Description | macOS | Linux Desktop | Linux Server | Linux Server (No Brew) |
-|------|-------------|-------|---------------|--------------|----------------------|
-| Yabai | 窗口管理器 | ✅ | ❌ | ❌ | ❌ |
-| skhd | 快捷键守护程序 | ✅ | ❌ | ❌ | ❌ |
-| Rime | 输入法 | ✅ | ❌ | ❌ | ❌ |
+| Tool | Description | macOS | WSL | Linux Server |
+|------|-------------|-------|-----|--------------|
+| Yabai | 窗口管理器 | ✅ | ❌ | ❌ |
+| skhd | 快捷键守护程序 | ✅ | ❌ | ❌ |
+| Rime | 输入法 | ✅ | ❌ | ❌ |
 
 ### 快捷键说明
 
@@ -98,7 +96,8 @@ desktop for daily use and server for cloud and home server.
 ├── mac_office            # Mac办公环境配置
 ├── mac_shared           # Mac共享配置
 ├── private_dot_ssh      # SSH配置（私密）
-└── ubuntu_desktop       # Ubuntu桌面环境配置
+├── run_once_install_apt_packages.sh.tmpl # Linux/WSL apt 包安装
+└── wsl                  # WSL 特定配置（预留）
 
 ```
 
@@ -109,7 +108,7 @@ desktop for daily use and server for cloud and home server.
   - `mac_office/`: Mac办公环境特定配置
   - `mac_shared/`: Mac共享配置
   - `linux_server/`: Linux服务器配置
-  - `ubuntu_desktop/`: Ubuntu桌面配置
+  - `wsl/`: WSL 配置
 
 - **Shell配置**
   - `dot_zshrc.tmpl`: Zsh主配置文件
@@ -141,12 +140,21 @@ desktop for daily use and server for cloud and home server.
 [using bitwarden cli to get the password](https://medium.com/@josemrivera/share-credentials-across-machines-using-chezmoi-and-bitwarden-4069dcb6e367)
 
 ```sh
+# macOS
 xcode-select --install
-
-# mac_home|mac_offie|linux_server|ubuntu_desktop
 export CHEZMOI_SCENE=mac_home
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
+
+# WSL on Ubuntu
+export CHEZMOI_SCENE=wsl
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
+
+# Ubuntu/Debian server
+export CHEZMOI_SCENE=linux_server
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
 ```
+
+Linux and WSL use `apt` by default through `run_once_install_apt_packages.sh.tmpl`. Linuxbrew is intentionally not supported.
 
 chezmoi dir: `~/.config/chezmoi/chezmoi.toml`
 zsh should be the default shell:
@@ -219,15 +227,14 @@ chezmoi import --destination ~/.config/alacritty/alacritty.yml alacritty.yml
 
 ```bash
 # 切换环境配置
-export CHEZMOI_SCENE=mac_office
+export CHEZMOI_SCENE=wsl
 chezmoi apply
 
 # 查看当前场景信息
 chezmoi execute-template '{{ .scene }}'
 
-# 针对特定环境应用配置
-chezmoi apply --include=mac_home
-chezmoi apply --exclude=linux_server
+# 查看当前平台与场景
+chezmoi execute-template '{{ .chezmoi.os }} / {{ .scene }}'
 ```
 
 ### 模板和数据管理
@@ -283,10 +290,11 @@ chezmoi diff
 
 # 2. 更新所有包管理器
 brew update && brew upgrade
-asdf plugin-update --all
+mise upgrade
 
 # 3. 清理不需要的包
 brew cleanup
+sudo apt-get autoremove -y
 ```
 
 ### 最佳实践

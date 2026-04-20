@@ -4,11 +4,11 @@
     {{- $scene = default "" $currentConfig.data.scene -}}
 {{- end -}}
 {{- if eq $scene "" -}}
-    {{- $choices := list "mac_home" "mac_office" -}}
+    {{- $choices := list "mac_home" "mac_office" "wsl" "linux_server" -}}
     {{- $scene = promptChoice "Please select your scene" $choices -}}
 {{- end -}}
 {{- writeToStdout (printf "current scene is %s\n" $scene) -}}
 
 [data]
-    # mac_home | mac_office
+    # mac_home | mac_office | wsl | linux_server
     scene = "{{ $scene }}"

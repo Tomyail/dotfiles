@@ -3,7 +3,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Homebrew - support both Apple Silicon (/opt/homebrew) and Intel (/usr/local)
+# Homebrew on macOS
 for _brew_path in /opt/homebrew/bin/brew /usr/local/bin/brew; do
   if [ -f "$_brew_path" ]; then
     eval "$($_brew_path shellenv)"
@@ -11,6 +11,13 @@ for _brew_path in /opt/homebrew/bin/brew /usr/local/bin/brew; do
   fi
 done
 unset _brew_path
+
+# Detect WSL early for conditional integrations
+if grep -qi microsoft /proc/sys/kernel/osrelease 2>/dev/null; then
+  export IS_WSL=1
+else
+  export IS_WSL=0
+fi
 
 # Oh My Zsh
 export ZSH=~/.oh-my-zsh
@@ -30,7 +37,9 @@ command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
 [ -f "$HOME/.atuin/bin/env" ] && source "$HOME/.atuin/bin/env"
 command -v atuin  &>/dev/null && eval "$(atuin init zsh --disable-up-arrow)"
 command -v direnv &>/dev/null && eval "$(direnv hook zsh)"
-source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+if [[ "$OSTYPE" == darwin* ]]; then
+  source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+fi
 
 # Powerlevel10k theme
 [ -n "$HOMEBREW_PREFIX" ] && [ -f "$HOMEBREW_PREFIX/share/powerlevel10k/powerlevel10k.zsh-theme" ] \
@@ -52,4 +61,10 @@ elif command -v nvim &>/dev/null; then
   export EDITOR='nvim'
 else
   export EDITOR='vim'
+fi
+
+# WSL compatibility shims
+if [ "$IS_WSL" = "1" ]; then
+  command -v wslview >/dev/null 2>&1 && alias open='wslview'
+  command -v clip.exe >/dev/null 2>&1 && alias pbcopy='clip.exe'
 fi
