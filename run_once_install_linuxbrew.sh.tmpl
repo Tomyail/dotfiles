@@ -1,0 +1,19 @@
+#!/bin/bash
+
+{{- if and (eq .chezmoi.os "linux") (or (eq .scene "wsl") (eq .scene "linux_server")) }}
+set -eu
+
+if command -v brew >/dev/null 2>&1; then
+  echo "Homebrew already installed, skipping"
+  exit 0
+fi
+
+if ! command -v curl >/dev/null 2>&1; then
+  echo "curl is required to install Homebrew"
+  exit 1
+fi
+
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+{{- else }}
+exit 0
+{{- end }}

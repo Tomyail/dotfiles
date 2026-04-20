@@ -20,19 +20,14 @@ fi
 packages=(
   ca-certificates
   curl
-  wget
+  file
   git
+  procps
+  sudo
+  wget
   zsh
-  tmux
-  ripgrep
-  fd-find
-  fzf
-  jq
   unzip
-  htop
-  rsync
   build-essential
-  neovim
 )
 
 if grep -qi microsoft /proc/sys/kernel/osrelease 2>/dev/null; then

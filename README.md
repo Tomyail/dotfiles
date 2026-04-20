@@ -2,7 +2,7 @@
 
 my dotfiles for macOS, Ubuntu server, and WSL on Ubuntu.
 
-Linux is managed as server-first. Both `linux_server` and `wsl` use `apt` as the default package manager. Linuxbrew is not supported.
+Linux is managed as `apt bootstrap + Homebrew tools`. `apt` installs the system baseline, and Homebrew provides newer developer tooling such as Neovim.
 
 ## what's included
 
@@ -10,7 +10,7 @@ Linux is managed as server-first. Both `linux_server` and `wsl` use `apt` as the
 
 | Tool | Description | macOS | WSL | Linux Server |
 |------|-------------|-------|-----|--------------|
-| Homebrew | 跨平台包管理器 | ✅ | ❌ | ❌ |
+| Homebrew | 跨平台包管理器 | ✅ | ✅ | ✅ |
 | Git | 版本控制工具 | ✅ | ✅ | ✅ |
 | mise | 多语言版本管理器 | ✅ | ✅ | ✅ |
 
@@ -96,7 +96,8 @@ Linux is managed as server-first. Both `linux_server` and `wsl` use `apt` as the
 ├── mac_office            # Mac办公环境配置
 ├── mac_shared           # Mac共享配置
 ├── private_dot_ssh      # SSH配置（私密）
-├── run_once_install_apt_packages.sh.tmpl # Linux/WSL apt 包安装
+├── run_once_install_apt_packages.sh.tmpl # Linux/WSL apt 基础包安装
+├── run_once_install_linuxbrew.sh.tmpl # Linux/WSL Homebrew 安装
 └── wsl                  # WSL 特定配置（预留）
 
 ```
@@ -154,7 +155,7 @@ export CHEZMOI_SCENE=linux_server
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
 ```
 
-Linux and WSL use `apt` by default through `run_once_install_apt_packages.sh.tmpl`. Linuxbrew is intentionally not supported.
+Linux and WSL first install the base system packages with `apt`, then install developer tools with Homebrew.
 
 chezmoi dir: `~/.config/chezmoi/chezmoi.toml`
 zsh should be the default shell:
@@ -175,10 +176,12 @@ chsh -s $(which zsh)
 For `wsl` and `linux_server`, [`run_once_install_apt_packages.sh.tmpl`](/Users/lixuexin03/.local/share/chezmoi/run_once_install_apt_packages.sh.tmpl:1) installs the base packages below with `apt`:
 
 ```bash
-ca-certificates curl wget git zsh tmux ripgrep fd-find fzf jq unzip htop rsync build-essential neovim
+ca-certificates curl file git procps sudo wget zsh unzip build-essential
 ```
 
 On WSL, it also tries to install `wslu` so `wslview` can be used for `open`.
+
+[`run_once_install_linuxbrew.sh.tmpl`](/Users/lixuexin03/.local/share/chezmoi/run_once_install_linuxbrew.sh.tmpl:1) then installs Homebrew on Linux, and [`dot_Brewfile.tmpl`](/Users/lixuexin03/.local/share/chezmoi/dot_Brewfile.tmpl:1) manages developer tools such as `neovim`, `tmux`, `fzf`, `ripgrep`, `fd`, `jq`, and `mise`.
 
 ### First run on WSL
 
@@ -217,7 +220,7 @@ nvim --version
 
 ### Common notes
 
-- Linux and WSL do not use Homebrew or Linuxbrew.
+- Linux and WSL use `apt` for bootstrap and Homebrew for developer tools.
 - `nvim`, `tmux`, and `oh-my-zsh` depend on external sources defined in `.chezmoiexternal.toml`, so first-time setup needs network access.
 - Tmux config is shared, but auto-attach behavior may differ by terminal emulator.
 

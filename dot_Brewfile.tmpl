@@ -90,4 +90,45 @@ cask "laishulu/homebrew/font-sarasa-nerd"
 
 {{- end -}}
 
+{{- else if eq .chezmoi.os "linux" -}}
+
+# Taps
+tap "derailed/k9s"
+
+# Shell & Terminal
+brew "atuin"                        # Shell 历史记录管理
+brew "direnv"                       # 目录环境变量管理
+brew "fzf"                          # 模糊搜索
+brew "powerlevel10k"                # Zsh 主题
+brew "tmux"                         # 终端复用器
+brew "zoxide"                       # 智能目录跳转
+
+# File & Search
+brew "bat"                          # 增强版 cat
+brew "eza"                          # 增强版 ls
+brew "fd"                           # 增强版 find
+brew "ripgrep"                      # 快速内容搜索
+
+# Git & Editor
+brew "git-extras"                   # Git 扩展命令
+brew "git-lfs"                      # Git 大文件存储
+brew "lazygit"                      # Git TUI
+brew "neovim"                       # 现代化 Vim
+
+# Data & Config
+brew "jq"                           # JSON 处理
+brew "yq"                           # YAML 处理
+
+# System & DevOps
+brew "age"                          # 文件加密
+brew "bitwarden-cli"                # 密码管理 CLI（SSH 密钥注入）
+brew "chezmoi"                      # dotfiles 管理
+brew "htop"                         # 进程查看
+brew "iperf3"                       # 网络带宽测试
+brew "mise"                         # 多语言版本管理
+brew "rclone"                       # 云存储同步
+brew "smartmontools"                # 磁盘健康检测
+brew "tea"                          # Gitea CLI
+brew "derailed/k9s/k9s"             # Kubernetes TUI
+
 {{- end -}}
