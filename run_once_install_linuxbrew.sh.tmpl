@@ -14,6 +14,12 @@ if ! command -v curl >/dev/null 2>&1; then
 fi
 
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# 初始化 brew 环境，使其在当前 shell 中可用
+if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  echo "Homebrew initialized successfully"
+fi
 {{- else }}
 exit 0
 {{- end }}
