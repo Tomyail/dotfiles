@@ -9,7 +9,11 @@ if ! command -v bw &>/dev/null; then
   exit 0
 fi
 
-if ! bw status | grep -q '"status":"unlocked"'; then
+if [ -n "$BW_SESSION" ]; then
+  BW_CMD="bw --session $BW_SESSION"
+elif bw status | grep -q '"status":"unlocked"'; then
+  BW_CMD="bw"
+else
   echo "Bitwarden is locked or not logged in, skipping SSH key setup"
   exit 0
 fi
@@ -25,7 +29,7 @@ write_key() {
   tmp="$(mktemp "${path}.tmp.XXXXXX")"
   # Stream directly from bw to avoid mangling multiline content in shell variables.
   if ! {
-    bw get notes "$note_id" | tr -d '\r'
+    $BW_CMD get notes "$note_id" | tr -d '\r'
     printf '\n'
   } > "$tmp"; then
     rm -f "$tmp"

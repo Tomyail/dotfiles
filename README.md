@@ -91,25 +91,28 @@ Linux uses `apt` for the system baseline and Homebrew for developer tooling. On 
 
 ## Installation
 
-Requires [Bitwarden CLI](https://bitwarden.com/help/cli/) for secrets. See [this guide](https://medium.com/@josemrivera/share-credentials-across-machines-using-chezmoi-and-bitwarden-4069dcb6e367).
-
 ```sh
-# macOS (will prompt: mac_home or mac_office)
-xcode-select --install
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
-
-# macOS (non-interactive)
-export CHEZMOI_SCENE=mac_home  # or mac_office
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
-
-# Linux (WSL or server — scene auto-detected)
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply tomyail
+curl -fsSL https://raw.githubusercontent.com/tomyail/dotfiles/main/install.sh -o /tmp/install.sh
+bash /tmp/install.sh
 ```
 
-After applying, set zsh as the default shell:
+> **Note:** Download first, then run — the script has interactive steps (Bitwarden login/unlock) that require a real terminal and won't work via `curl | bash`.
 
-```bash
-chsh -s $(which zsh)
+The script handles everything in order:
+1. macOS: installs Xcode Command Line Tools if missing
+2. macOS/Linux: installs Homebrew if missing
+3. Linux: installs base apt packages (`curl`, `git`, `zsh`, …) before Homebrew
+4. Installs Bitwarden CLI via `brew install bitwarden-cli`, then guides you through login/unlock
+5. Installs chezmoi if missing
+6. Prompts for scene (`mac_home` / `mac_office`) on macOS; auto-sets `linux` on Linux
+7. Runs `chezmoi init --apply tomyail`
+8. Sets zsh as the default shell
+
+**Non-interactive / CI:**
+```sh
+export CHEZMOI_SCENE=mac_home   # skip the scene prompt
+export BW_SESSION=<token>       # skip the Bitwarden unlock prompt
+bash /tmp/install.sh
 ```
 
 ## Linux Details
