@@ -178,8 +178,8 @@
 [init]
 	defaultBranch = main
 [user]
-	name = lixuexin03
-	email = REDACTED_WORK_EMAIL 
+	name = {{ .gitName }}
+	email = {{ .gitEmail }}
 
 [includeIf "gitdir:~/source/personal/"]
   path = ~/.gitconfig_personal
@@ -194,7 +194,7 @@
 	helper = {{ $gcm }}
 {{- end }}
 [credential "https://github.com"]
-	username = Tomyail
+	username = {{ .gitHubUser }}
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 
