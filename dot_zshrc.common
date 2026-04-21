@@ -47,8 +47,8 @@ fi
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Auto-start or attach to tmux session
-if [ -z "$TMUX" ] && [ "$TERM" = "alacritty" ]; then
-  tmux attach || tmux
+if [ -z "$TMUX" ] && { [ "$TERM" = "alacritty" ] || [ "$IS_WSL" = "1" ]; }; then
+  tmux attach || tmux new-session
 fi
 
 # Let Ctrl+L pass through to tmux (used by vim-tmux-navigator)
