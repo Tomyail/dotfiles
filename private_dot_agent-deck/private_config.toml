@@ -13,7 +13,7 @@ mcp_default_scope = ""
   command = ""
   config_dir = ""
   dangerous_mode = true
-  allow_dangerous_mode = false
+  allow_dangerous_mode = true
   auto_mode = true
   env_file = ""
 
@@ -34,9 +34,9 @@ mcp_default_scope = ""
   env_file = ""
 
 [worktree]
-  auto_cleanup = false
-  default_enabled = false
-  default_location = ""
+  auto_cleanup = true
+  default_enabled = true
+  default_location = "~/worktrees"
 
 [global_search]
   enabled = true
@@ -46,8 +46,8 @@ mcp_default_scope = ""
   index_rate_limit = 0
 
 [logs]
-  max_size_mb = 10
-  max_lines = 10000
+  max_size_mb = 50
+  max_lines = 50000
   remove_orphans = true
   debug_level = ""
   debug_format = ""
@@ -60,12 +60,12 @@ mcp_default_scope = ""
   aggregate_interval_secs = 0
 
 [mcp_pool]
-  enabled = false
-  auto_start = false
+  enabled = true
+  auto_start = true
   port_start = 0
   port_end = 0
-  start_on_demand = false
-  shutdown_on_exit = false
+  start_on_demand = true
+  shutdown_on_exit = true
   fallback_to_stdio = true
   show_pool_status = false
   pool_all = false
@@ -87,10 +87,10 @@ mcp_default_scope = ""
   default_tool = ""
 
 [notifications]
-  enabled = false
+  enabled = true
   max_shown = 0
   show_all = false
-  minimal = false
+  minimal = true
 
 [instances]
 
@@ -145,9 +145,9 @@ mcp_default_scope = ""
   active_filter_label = ""
 
 [costs]
-  currency = ""
-  timezone = ""
-  retention_days = 0
+  currency = "CNY"
+  timezone = "Asia/Shanghai"
+  retention_days = 90
   [costs.budgets]
     daily_limit = 0.0
     weekly_limit = 0.0
