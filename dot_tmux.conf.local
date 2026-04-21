@@ -200,7 +200,6 @@ bind c run-shell 'p=$(readlink /proc/#{pane_pid}/cwd 2>/dev/null || lsof -a -p #
 bind-key h select-window -t :-                   # <prefix>+h 切换到左侧窗口
 bind-key l select-window -t :+                   # <prefix>+l 切换到右侧窗口
 bind-key g display-popup -d '#{pane_current_path}' -w 90% -h 90% -E lazygit  # <prefix>+g 打开 lazygit 悬浮窗口
-bind-key G display-popup -d '#{pane_current_path}' -w 90% -h 90% -E workmux dashboard       # <prefix>+G 打开 workmux dashboard
 bind-key R run-shell '\
   target="#{window_name}"; \
   [ -n "$target" ] || exit 0; \
