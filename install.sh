@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Bootstrap script for tomyail/dotfiles
 # Usage: curl -fsSL https://raw.githubusercontent.com/tomyail/dotfiles/main/install.sh | bash
-# Or:    bash install.sh [--scene mac_home|mac_office]
 
 set -euo pipefail
 
@@ -22,17 +21,6 @@ die()     { echo -e "${RED}✗ $*${NC}" >&2; exit 1; }
 have() { command -v "$1" &>/dev/null; }
 
 OS="$(uname -s)"
-
-# ---------------------------------------------------------------------------
-# Parse args
-# ---------------------------------------------------------------------------
-SCENE="${CHEZMOI_SCENE:-}"
-while [[ $# -gt 0 ]]; do
-  case "$1" in
-    --scene) SCENE="$2"; shift 2 ;;
-    *) die "Unknown argument: $1" ;;
-  esac
-done
 
 # ---------------------------------------------------------------------------
 # Step 1: macOS pre-requisites
@@ -190,34 +178,14 @@ else
 fi
 
 # ---------------------------------------------------------------------------
-# Step 6: Determine scene (macOS only)
-# ---------------------------------------------------------------------------
-if [[ "$OS" == "Darwin" && -z "$SCENE" ]]; then
-  echo ""
-  echo "Select your scene:"
-  echo "  1) mac_home"
-  echo "  2) mac_office"
-  read -r -p "Enter 1 or 2: " choice
-  case "$choice" in
-    1) SCENE="mac_home" ;;
-    2) SCENE="mac_office" ;;
-    *) die "Invalid choice: $choice" ;;
-  esac
-elif [[ "$OS" == "Linux" ]]; then
-  SCENE="linux"
-fi
-export CHEZMOI_SCENE="$SCENE"
-info "Scene: $SCENE"
-
-# ---------------------------------------------------------------------------
-# Step 7: Run chezmoi init --apply
+# Step 6: Run chezmoi init --apply
 # ---------------------------------------------------------------------------
 info "Running chezmoi init --apply..."
 chezmoi init --apply tomyail
 success "chezmoi apply complete"
 
 # ---------------------------------------------------------------------------
-# Step 8: Set zsh as default shell
+# Step 7: Set zsh as default shell
 # ---------------------------------------------------------------------------
 ZSH_PATH="$(which zsh 2>/dev/null || true)"
 if [[ -z "$ZSH_PATH" ]]; then

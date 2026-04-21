@@ -2,7 +2,7 @@
 
 My dotfiles for macOS and Linux (Ubuntu server / WSL), managed by [chezmoi](https://chezmoi.io).
 
-Linux uses `apt` for the system baseline and Homebrew for developer tooling. On Linux, the scene is set automatically — no selection needed. WSL-specific integrations (`wslview`, `clip.exe`) are detected at runtime.
+Linux uses `apt` for the system baseline and Homebrew for developer tooling. WSL-specific integrations (`wslview`, `clip.exe`) are detected at runtime.
 
 ## What's included
 
@@ -21,7 +21,6 @@ Linux uses `apt` for the system baseline and Homebrew for developer tooling. On 
 | Zsh | Shell | ✅ | ✅ |
 | Oh My Zsh | Zsh framework | ✅ | ✅ |
 | Powerlevel10k | Shell theme | ✅ | ✅ |
-| zsh-syntax-highlighting | Syntax highlighting | ✅ | ✅ |
 | zsh-autosuggestions | Autosuggestions | ✅ | ✅ |
 | atuin | Shell history | ✅ | ✅ |
 | zoxide | Smart directory jumper | ✅ | ✅ |
@@ -84,8 +83,7 @@ Linux uses `apt` for the system baseline and Homebrew for developer tooling. On 
 ├── run_once_setup_env_file.sh      # Pull .env from Bitwarden
 ├── run_once_setup_ssh_keys.sh      # Set up SSH keys
 ├── run_once_setup_zshrc.sh         # Wire ~/.zshrc to source .zshrc.common
-├── run_onchange_after_brew_bundle.sh.tmpl # Re-run brew bundle on Brewfile changes
-└── run_onchange_after_source.sh    # Re-source shell on config changes
+└── run_onchange_after_brew_bundle.sh.tmpl # Re-run brew bundle on Brewfile changes
 ```
 
 ## Installation
@@ -103,13 +101,11 @@ The script handles everything in order:
 3. Linux: installs base apt packages (`curl`, `git`, `zsh`, …) before Homebrew
 4. Installs Bitwarden CLI via `brew install bitwarden-cli`, then guides you through login/unlock
 5. Installs chezmoi if missing
-6. Prompts for scene (`mac_home` / `mac_office`) on macOS; auto-sets `linux` on Linux
-7. Runs `chezmoi init --apply tomyail`
-8. Sets zsh as the default shell
+6. Runs `chezmoi init --apply tomyail`
+7. Sets zsh as the default shell
 
 **Non-interactive / CI:**
 ```sh
-export CHEZMOI_SCENE=mac_home   # skip the scene prompt
 export BW_SESSION=<token>       # skip the Bitwarden unlock prompt
 bash /tmp/install.sh
 ```
@@ -139,6 +135,7 @@ On WSL (detected via `/proc/sys/kernel/osrelease`), `wslu` is also installed for
 ```bash
 chezmoi doctor
 chezmoi managed | rg 'zshrc|tmux|nvim'
+chezmoi execute-template '{{ .chezmoi.os }}'
 zsh --version && tmux -V && nvim --version
 ```
 
@@ -160,7 +157,6 @@ chezmoi update -v         # Pull from remote and apply
 chezmoi unmanaged         # List untracked files
 chezmoi doctor            # Check for issues
 chezmoi managed           # List all managed files
-chezmoi execute-template '{{ .chezmoi.os }} / {{ .scene }}'  # Check current scene
 ```
 
 ### Sync to a new machine

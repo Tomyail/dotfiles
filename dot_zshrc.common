@@ -78,8 +78,14 @@ else
   export EDITOR='vim'
 fi
 
-# WSL compatibility shims
+# Cross-platform open/paste shims
 if [ "$IS_WSL" = "1" ]; then
-  command -v wslview >/dev/null 2>&1 && alias open='wslview'
+  if command -v wslview >/dev/null 2>&1; then
+    alias open='wslview'
+  elif command -v xdg-open >/dev/null 2>&1; then
+    alias open='xdg-open'
+  fi
   command -v clip.exe >/dev/null 2>&1 && alias pbcopy='clip.exe'
+elif [[ "$OSTYPE" == linux* ]]; then
+  command -v xdg-open >/dev/null 2>&1 && alias open='xdg-open'
 fi

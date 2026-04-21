@@ -82,14 +82,6 @@ cask "codex"                        # OpenAI Codex CLI/App
 cask "font-blex-mono-nerd-font"
 cask "laishulu/homebrew/font-sarasa-nerd"
 
-{{ if eq .scene "mac_office" }}
-# office-specific packages
-
-{{ else if eq .scene "mac_home" }}
-# home-specific packages
-
-{{- end -}}
-
 {{- else if eq .chezmoi.os "linux" -}}
 
 # Taps

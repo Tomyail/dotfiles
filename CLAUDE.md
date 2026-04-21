@@ -14,29 +14,16 @@ chezmoi apply             # Apply source → $HOME
 chezmoi update            # git pull + apply
 chezmoi edit ~/.zshrc     # Edit a managed file (opens source)
 chezmoi add ~/.config/foo # Start tracking a new file
-chezmoi execute-template '{{ .chezmoi.os }} / {{ .scene }}'  # Debug template vars
 chezmoi doctor            # Diagnose issues
 ```
 
 Common aliases live in `dot_zshrc.common`, including `ccd` (chezmoi cd) and `cup` (chezmoi update). Machine-specific aliases can stay in unmanaged `~/.aliases`, which is sourced afterward so it can override shared aliases.
-
-## Scene system
-
-The `scene` data variable drives per-machine config. It is set in `.chezmoi.toml.tmpl`:
-
-- **macOS**: prompts interactively — `mac_home` or `mac_office`
-- **Linux**: auto-set to `"linux"` (no prompt needed)
-
-Override non-interactively: `export CHEZMOI_SCENE=mac_home` before running chezmoi.
-
-Scene is only used in `dot_Brewfile.tmpl` (to distinguish mac_home vs mac_office packages) and was historically used for Linux detection (now replaced by `eq .chezmoi.os "linux"`).
 
 ## Template conventions
 
 Files ending in `.tmpl` are Go templates rendered by chezmoi. Key variables:
 
 - `{{ .chezmoi.os }}` — `"darwin"` or `"linux"`
-- `{{ .scene }}` — value from chezmoi config data
 - OS-conditional blocks follow this pattern:
   ```
   {{- if eq .chezmoi.os "darwin" -}}
@@ -90,4 +77,4 @@ Key scripts:
 
 ## Brewfile structure
 
-`dot_Brewfile.tmpl` has separate sections for `darwin` and `linux` — the Linux section is a smaller subset. The `mac_office` / `mac_home` blocks inside the darwin section are currently empty placeholders for future differentiation.
+`dot_Brewfile.tmpl` has separate sections for `darwin` and `linux` — the Linux section is a smaller subset.
