@@ -119,6 +119,15 @@ function getcertnames() {
 	fi
 }
 
+# `s` with no arguments re-sources ~/.zshrc, otherwise sources the given file
+function s() {
+	if [ $# -eq 0 ]; then
+		source ~/.zshrc
+	else
+		source "$@"
+	fi
+}
+
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
 function o() {
