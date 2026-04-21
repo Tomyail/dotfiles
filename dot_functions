@@ -169,9 +169,15 @@ function tre() {
 #   proxyon 7890
 function proxyon() {
 	local port=${1:-7890}
-	export HTTPS_PROXY=http://127.0.0.1:$port
-	export HTTP_PROXY=http://127.0.0.1:$port
-	export ALL_PROXY=socks5://127.0.0.1:$port
+	local host
+	if [[ $(uname -r) == *microsoft* ]]; then
+		host=$(ip route show | grep -i default | awk '{print $3}')
+	else
+		host=127.0.0.1
+	fi
+	export HTTPS_PROXY=http://${host}:$port
+	export HTTP_PROXY=http://${host}:$port
+	export ALL_PROXY=socks5://${host}:$port
 }
 
 # 取消全局代理设置
