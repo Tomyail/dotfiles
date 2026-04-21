@@ -29,8 +29,22 @@ plugins=(git zsh-autosuggestions docker docker-compose)
 [ -f "$HOME/.path" ]      && source "$HOME/.path"
 [ -f "$HOME/.exports" ]   && source "$HOME/.exports"
 [ -f "$HOME/.functions" ] && source "$HOME/.functions"
-[ -f "$HOME/.aliases" ]   && source "$HOME/.aliases"
 [ -f "$HOME/.extra" ]     && source "$HOME/.extra"
+
+# Shared aliases
+alias vim="nvim"
+alias lg="lazygit"
+alias l='eza'
+alias la='eza -a'
+alias ll='eza -lah'
+alias ls='eza --color=auto'
+alias cat='bat --style=plain'
+alias ccd="chezmoi cd"
+alias cup="chezmoi update"
+alias bup="brew update && brew bundle --global && brew upgrade"
+
+# Machine-specific aliases can still live in ~/.aliases and override shared ones.
+[ -f "$HOME/.aliases" ]   && source "$HOME/.aliases"
 
 # Tool integrations
 command -v mise   &>/dev/null && eval "$(mise activate zsh)"

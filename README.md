@@ -62,7 +62,6 @@ Linux uses `apt` for the system baseline and Homebrew for developer tooling. On 
 ├── .chezmoiexternal.toml           # External dependencies (oh-my-zsh, tmux, nvim)
 ├── .chezmoiignore                  # Ignored files
 ├── dot_Brewfile.tmpl               # Homebrew packages
-├── dot_aliases                     # Shell aliases
 ├── dot_functions                   # Shell functions
 ├── dot_gitconfig.tmpl              # Git global config
 ├── dot_gitconfig_personal          # Git personal identity

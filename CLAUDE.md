@@ -18,7 +18,7 @@ chezmoi execute-template '{{ .chezmoi.os }} / {{ .scene }}'  # Debug template va
 chezmoi doctor            # Diagnose issues
 ```
 
-Aliases defined in `dot_aliases`: `ccd` (chezmoi cd), `cup` (chezmoi update).
+Common aliases live in `dot_zshrc.common`, including `ccd` (chezmoi cd) and `cup` (chezmoi update). Machine-specific aliases can stay in unmanaged `~/.aliases`, which is sourced afterward so it can override shared aliases.
 
 ## Scene system
 
@@ -69,6 +69,7 @@ Key scripts:
 ~/.zshrc  (unmanaged, written by run_once_setup_zshrc.sh)
   └── ~/.zshrc.common  (managed: dot_zshrc.common)
         ├── ~/.path, ~/.exports, ~/.functions, ~/.aliases, ~/.extra  (sourced if present)
+        ├── shared aliases defined directly in `dot_zshrc.common`
         └── tool inits: zoxide, atuin, direnv, orbstack (macOS)
 ```
 
