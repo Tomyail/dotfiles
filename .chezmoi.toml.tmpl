@@ -5,9 +5,9 @@
 {{- end -}}
 
 [data]
-  claudeCommand = {{ $claudeCmd | quote }}
-  gitName       = {{ promptString "Work git name" | quote }}
-  gitEmail      = {{ promptString "Work git email" | quote }}
-  gitHubUser    = {{ promptString "GitHub username" | quote }}
-  personalName  = {{ promptString "Personal git name" | quote }}
-  personalEmail = {{ promptString "Personal git email" | quote }}
+  claudeCommand    = {{ $claudeCmd | quote }}
+  isWork           = {{ promptBool "Is this company computer?" | quote }}
+  personalGitName  = {{ promptString "Personal git name" | quote }}
+  personalGitEmail = {{ promptString "Personal git email" | quote }}
+  workGitName      = {{ promptString "Work git name" | quote }}
+  workGitEmail     = {{ promptString "Work git email" | quote }}

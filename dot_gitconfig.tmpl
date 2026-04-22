@@ -57,7 +57,7 @@
 	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
 	# Remove branches that have already been merged with main.
-	# a.k.a. ‘delete merged’
+	# a.k.a. 'delete merged'
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
 	# List contributors with number of commits.
@@ -102,7 +102,7 @@
 [color]
 
 	# Use colors in Git commands that are capable of colored output when
-	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
+	# outputting to the terminal. (This is the default setting in Git >= 1.8.4.)
 	ui = auto
 
 [color "branch"]
@@ -177,24 +177,26 @@
 
 [init]
 	defaultBranch = main
-[user]
-	name = {{ .gitName }}
-	email = {{ .gitEmail }}
 
-[includeIf "gitdir:~/source/personal/"]
+[user]
+	name = {{ if .isWork }}{{ .workGitName }}{{ else }}{{ .personalGitName }}{{ end }}
+	email = {{ if .isWork }}{{ .workGitEmail }}{{ else }}{{ .personalGitEmail }}{{ end }}
+
+[includeIf "gitdir:*/personal/"]
   path = ~/.gitconfig_personal
 [includeIf "gitdir:~/.local/"]
   path = ~/.gitconfig_personal
 [includeIf "gitdir:~/.config/"]
   path = ~/.gitconfig_personal
+
 {{- $gcm := lookPath "git-credential-manager" -}}
 {{- if $gcm }}
 [credential]
 	helper =
 	helper = {{ $gcm }}
 {{- end }}
-[credential "https://github.com"]
-	username = {{ .gitHubUser }}
+[credential "https://github"]
+	username = {{ .personalGitName }}
 [credential "https://dev.azure.com"]
 	useHttpPath = true
 
@@ -205,6 +207,3 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-
-
-
