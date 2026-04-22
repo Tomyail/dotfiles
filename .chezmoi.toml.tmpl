@@ -1,5 +1,11 @@
 
+{{- $claudeCmd := "claude" -}}
+{{- if lookPath "mc" -}}
+  {{- $claudeCmd = "mc --code" -}}
+{{- end -}}
+
 [data]
+  claudeCommand = {{ $claudeCmd | quote }}
   gitName       = {{ promptString "Work git name" | quote }}
   gitEmail      = {{ promptString "Work git email" | quote }}
   gitHubUser    = {{ promptString "GitHub username" | quote }}
