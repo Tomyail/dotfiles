@@ -1,0 +1,33 @@
+#!/bin/bash
+# agent-deck-new-session: 使用当前目录创建新的 agent-deck session
+# 继承当前 session 的 group，自动启动并切换
+
+set -e
+
+TMUX_SESSION="$(tmux display-message -p '#S')"
+CURRENT_PATH="$(tmux display-message -p '#{pane_current_path}')"
+
+# 获取当前 session 的 group
+GROUP_NAME=""
+JSON_OUTPUT="$(agent-deck list -json 2>/dev/null)"
+if [ -n "$JSON_OUTPUT" ]; then
+    GROUP_NAME="$(echo "$JSON_OUTPUT" | jq -r --arg tmux "$TMUX_SESSION" '.[] | select(.tmux_session == $tmux) | .group' 2>/dev/null)"
+fi
+
+# 创建新 session
+ADD_CMD="agent-deck add -c claude"
+[ -n "$GROUP_NAME" ] && ADD_CMD="$ADD_CMD -g '$GROUP_NAME'"
+ADD_CMD="$ADD_CMD '$CURRENT_PATH'"
+
+ADD_OUTPUT="$(eval "$ADD_CMD" 2>&1)"
+NEW_SESSION="$(echo "$ADD_OUTPUT" | grep -oE 'Added session: [^ ]+' | sed 's/Added session: //')"
+
+[ -z "$NEW_SESSION" ] && exit 1
+
+# 启动并切换
+agent-deck session start "$NEW_SESSION" > /dev/null 2>&1 || true
+
+sleep 0.5
+NEW_TMUX_SESSION="$(agent-deck list -json 2>/dev/null | jq -r --arg title "$NEW_SESSION" '.[] | select(.title == $title) | .tmux_session' 2>/dev/null)"
+
+[ -n "$NEW_TMUX_SESSION" ] && [ "$NEW_TMUX_SESSION" != "null" ] && tmux switch-client -t "$NEW_TMUX_SESSION"

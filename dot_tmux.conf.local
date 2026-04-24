@@ -242,3 +242,6 @@ bind-key -T copy-mode    WheelDownPane send-keys -X scroll-down
 # macOS -> pbcopy, WSL -> iconv -f utf-8 -t utf-16le | clip.exe, Linux -> xclip
 bind-key -T copy-mode-vi MouseDragEnd1Pane if-shell 'command -v pbcopy > /dev/null 2>&1' 'send-keys -X copy-pipe-and-cancel pbcopy' 'if-shell "grep -qEi \"(microsoft|wsl)\" /proc/version 2>/dev/null" "send-keys -X copy-pipe-and-cancel \"sh -c 'iconv -f utf-8 -t utf-16le | clip.exe'\"" "send-keys -X copy-pipe-and-cancel xclip -selection clipboard"'
 bind-key -T copy-mode    MouseDragEnd1Pane if-shell 'command -v pbcopy > /dev/null 2>&1' 'send-keys -X copy-pipe-and-cancel pbcopy' 'if-shell "grep -qEi \"(microsoft|wsl)\" /proc/version 2>/dev/null" "send-keys -X copy-pipe-and-cancel \"sh -c 'iconv -f utf-8 -t utf-16le | clip.exe'\"" "send-keys -X copy-pipe-and-cancel xclip -selection clipboard"'
+
+# <prefix>+a: 使用当前目录创建新的 agent-deck session，继承当前 session 的 group
+bind-key a run-shell '~/.scripts/agent-deck-new-session'
