@@ -131,10 +131,23 @@ function s() {
 # `o` with no arguments opens the current directory, otherwise opens the given
 # location
 function o() {
-	if [ $# -eq 0 ]; then
-		open .
+	# Use wslview on WSL, otherwise use open
+	local opener
+	if [ "$IS_WSL" = "1" ] && command -v wslview >/dev/null 2>&1; then
+		opener="wslview"
+	elif command -v open >/dev/null 2>&1; then
+		opener="open"
+	elif command -v xdg-open >/dev/null 2>&1; then
+		opener="xdg-open"
 	else
-		open "$@"
+		echo "Error: No suitable opener found (tried wslview, open, xdg-open)" >&2
+		return 1
+	fi
+
+	if [ $# -eq 0 ]; then
+		$opener .
+	else
+		$opener "$@"
 	fi
 }
 
