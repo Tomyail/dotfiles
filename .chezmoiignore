@@ -9,8 +9,20 @@ README.md
 # Local machine-specific zsh configuration (not managed by chezmoi)
 .extra
 
-# Claude Code configuration is machine-specific
-.claude
+# Claude Code - ignore machine-specific directories, but allow settings.json
+.claude/backups
+.claude/cache
+.claude/file-history
+.claude/history.jsonl
+.claude/plans
+.claude/plugins
+.claude/projects
+.claude/session-env
+.claude/sessions
+.claude/shell-snapshots
+.claude/tasks
+.claude/telemetry
+# Note: .claude/settings.json and .claude/settings.local.json are managed
 
 # .env file is managed by run_once_setup_env_file.sh from Bitwarden
 .env
