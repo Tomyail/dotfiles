@@ -1,7 +1,8 @@
 {
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
-    "andrej-karpathy-skills@karpathy-skills": true
+    "andrej-karpathy-skills@karpathy-skills": true,
+    "episodic-memory@superpowers-marketplace": true
   },
   "extraKnownMarketplaces": {
     "superpowers-marketplace": {

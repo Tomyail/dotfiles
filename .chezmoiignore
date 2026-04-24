@@ -27,6 +27,11 @@ README.md
 # .env file is managed by run_once_setup_env_file.sh from Bitwarden
 .env
 
+# tmux plugins are managed by tpm (plugin manager), not chezmoi
+# Only tpm itself is managed via .chezmoiexternal.toml.tmpl
+.tmux/plugins/*
+!.tmux/plugins/tpm
+
 {{ if ne .chezmoi.os "darwin" }}
 # macOS-only files
 .skhdrc

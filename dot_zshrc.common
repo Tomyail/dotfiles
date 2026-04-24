@@ -41,6 +41,7 @@ alias ls='eza --color=auto'
 alias cat='bat --style=plain'
 alias ccd="chezmoi cd"
 alias cup="chezmoi update"
+alias crd="chezmoi re-add --exclude=dirs"
 alias bup="brew update && brew bundle --global && brew upgrade"
 
 # Machine-specific aliases can still live in ~/.aliases and override shared ones.
