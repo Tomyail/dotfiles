@@ -280,3 +280,31 @@ function claude_status() {
 	fi
 }
 
+# Git worktree helper - create worktree in default directory and switch to it
+# Usage:
+#   gwa <branch>     - create worktree for specified branch
+#   gwa              - create worktree for current branch
+# Environment:
+#   WORKTREE_ROOT    - override default worktree directory (default: ~/worktrees)
+function gwa() {
+	local root="${WORKTREE_ROOT:-$HOME/worktrees}"
+	# Get main worktree path to extract repo name
+	local main_worktree=$(command git worktree list --porcelain 2>/dev/null | head -1 | cut -d' ' -f2)
+	if [[ -z "$main_worktree" ]]; then
+		echo "Error: Not in a git repository" >&2
+		return 1
+	fi
+	local repo=$(basename "$main_worktree")
+	local branch="${1:-$(command git branch --show-current)}"
+	# Replace / with - in branch name for directory name
+	local branch_dir=${branch//\//-}
+	local worktree_path="$root/$repo-$branch_dir"
+	command git worktree add "$worktree_path" "$branch" && cd "$worktree_path"
+}
+
+# Git commit and push via Claude
+# Usage: gcP
+# Opens Claude and asks it to commit and push the current changes
+function gcP() {
+	claude "commit and push the code"
+}
