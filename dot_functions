@@ -307,3 +307,9 @@ function gwa() {
 function gcP() {
 	claude -p "commit and push the code" &
 }
+
+# Git commit via Claude (non-interactive, background)
+# Usage: gcC
+function gcC() {
+	claude -p "commit the code" &
+}
