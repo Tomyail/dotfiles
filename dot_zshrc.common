@@ -43,7 +43,7 @@ alias ccd="chezmoi cd"
 alias cup="chezmoi update"
 alias crd="chezmoi re-add --exclude=dirs"
 alias bup="brew update && brew bundle --global && brew upgrade"
-alias cld="claude --enable-auto-mode"
+alias cld="claude --dangerously-skip-permissions"
 
 # Machine-specific aliases can still live in ~/.aliases and override shared ones.
 [ -f "$HOME/.aliases" ]   && source "$HOME/.aliases"
