@@ -302,9 +302,8 @@ function gwa() {
 	command git worktree add "$worktree_path" "$branch" && cd "$worktree_path"
 }
 
-# Git commit and push via Claude (non-interactive)
+# Git commit and push via Claude (non-interactive, background)
 # Usage: gcP
-# Runs Claude in non-interactive mode to commit and push changes
 function gcP() {
-	claude -p "commit and push the code"
+	claude -p "commit and push the code" &
 }
