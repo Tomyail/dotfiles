@@ -1,5 +1,7 @@
 [tools]
 bun = "latest"
+elixir = "latest"
+erlang = "latest"
 go = "latest"
 node = "24"
 rust = "latest"

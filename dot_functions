@@ -299,7 +299,16 @@ function gwa() {
 	# Replace / with - in branch name for directory name
 	local branch_dir=${branch//\//-}
 	local worktree_path="$root/$repo-$branch_dir"
-	command git worktree add "$worktree_path" "$branch" && cd "$worktree_path"
+
+	# Check if branch exists (local or remote)
+	if git show-ref --verify --quiet "refs/heads/$branch" 2>/dev/null || \
+	   git show-ref --verify --quiet "refs/remotes/origin/$branch" 2>/dev/null; then
+		# Branch exists, checkout existing branch
+		command git worktree add "$worktree_path" "$branch" && cd "$worktree_path"
+	else
+		# Branch doesn't exist, create new branch
+		command git worktree add -b "$branch" "$worktree_path" && cd "$worktree_path"
+	fi
 }
 
 # Git commit and push via Claude (non-interactive, background)
