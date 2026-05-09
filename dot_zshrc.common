@@ -22,7 +22,7 @@ fi
 # Oh My Zsh
 export ZSH=~/.oh-my-zsh
 DISABLE_AUTO_UPDATE="true"
-plugins=(git zsh-autosuggestions docker docker-compose)
+plugins=(git zsh-autosuggestions)
 [ -f "$ZSH/oh-my-zsh.sh" ] && source "$ZSH/oh-my-zsh.sh"
 
 # Local config files
