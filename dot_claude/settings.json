@@ -1,7 +1,6 @@
 {
   "permissions": {
-    "allow": [
-    ]
+    "allow": []
   },
   "hooks": {
     "Notification": [
@@ -86,7 +85,8 @@
     "scheduler@claude-scheduler": true,
     "superpowers@claude-plugins-official": true,
     "andrej-karpathy-skills@karpathy-skills": true,
-    "episodic-memory@superpowers-marketplace": true
+    "episodic-memory@superpowers-marketplace": true,
+    "codex@openai-codex": true
   },
   "extraKnownMarketplaces": {
     "superpowers-marketplace": {
@@ -99,6 +99,12 @@
       "source": {
         "source": "github",
         "repo": "forrestchang/andrej-karpathy-skills"
+      }
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
       }
     }
   },
