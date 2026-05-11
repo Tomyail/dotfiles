@@ -1,7 +1,6 @@
 {
   "permissions": {
     "allow": [
-      "Bash(*ralph-loop*)"
     ]
   },
   "hooks": {
@@ -84,7 +83,6 @@
     ]
   },
   "enabledPlugins": {
-    "ralph-loop@claude-plugins-official": true,
     "scheduler@claude-scheduler": true,
     "superpowers@claude-plugins-official": true,
     "andrej-karpathy-skills@karpathy-skills": true,
