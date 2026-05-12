@@ -33,7 +33,6 @@ plugins=(git zsh-autosuggestions)
 
 # Shared aliases
 alias vim="nvim"
-alias lg="lazygit"
 alias l='eza'
 alias la='eza -a'
 alias ll='eza -lah'

@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Wrapper script for lazygit in tmux popup
+# Captures directory changes and syncs back to the calling pane
+
+# TMUX_PANE is passed via -e from the tmux bind-key
+ORIG_PANE="$TMUX_PANE"
+
+# Set the directory file path (same as lg() function)
+export LAZYGIT_NEW_DIR_FILE="$HOME/.config/lazygit/lastdir"
+
+# Run lazygit
+lazygit "$@"
+
+# Check if directory was changed
+if [ -f "$LAZYGIT_NEW_DIR_FILE" ]; then
+    NEW_DIR=$(<"$LAZYGIT_NEW_DIR_FILE")
+    rm -f "$LAZYGIT_NEW_DIR_FILE"
+
+    # Send cd command to the original pane if directory changed
+    if [ -n "$NEW_DIR" ] && [ -d "$NEW_DIR" ]; then
+        tmux send-keys -t "$ORIG_PANE" "cd $(printf '%q' "$NEW_DIR")" Enter
+    fi
+fi

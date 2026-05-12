@@ -1,0 +1,3 @@
+gui:
+  # Don't prompt when returning from subprocess (allows smooth directory switching)
+  promptToReturnFromSubprocess: false
