@@ -2,22 +2,45 @@
 # Wrapper script for lazygit in tmux popup
 # Captures directory changes and syncs back to the calling pane
 
-# TMUX_PANE is passed via -e from the tmux bind-key
-ORIG_PANE="$TMUX_PANE"
+# ORIG_TMUX_PANE is passed via -e from the tmux bind-key. Do not use
+# TMUX_PANE here; tmux owns that variable for the popup pane itself.
+ORIG_PANE="$ORIG_TMUX_PANE"
+LOG_FILE="$HOME/.cache/lazygit-tmux-popup.log"
+mkdir -p "$(dirname "$LOG_FILE")"
 
-# Set the directory file path (same as lg() function)
-export LAZYGIT_NEW_DIR_FILE="$HOME/.config/lazygit/lastdir"
+# Use a popup-specific file so this cannot race with a regular lg invocation.
+export LAZYGIT_NEW_DIR_FILE="${TMPDIR:-/tmp}/lazygit-lastdir-popup-$$"
+{
+    printf '[%s] start: orig_pane=%s popup_pane=%s cwd=%s lastdir=%s\n' \
+        "$(date '+%F %T')" "$ORIG_PANE" "$TMUX_PANE" "$PWD" "$LAZYGIT_NEW_DIR_FILE"
+} >>"$LOG_FILE"
 
 # Run lazygit
 lazygit "$@"
+STATUS=$?
+{
+    printf '[%s] lazygit-exit: status=%s has_lastdir=%s\n' \
+        "$(date '+%F %T')" "$STATUS" "$([ -f "$LAZYGIT_NEW_DIR_FILE" ] && echo yes || echo no)"
+} >>"$LOG_FILE"
 
 # Check if directory was changed
 if [ -f "$LAZYGIT_NEW_DIR_FILE" ]; then
     NEW_DIR=$(<"$LAZYGIT_NEW_DIR_FILE")
     rm -f "$LAZYGIT_NEW_DIR_FILE"
+    printf '[%s] new-dir: %s\n' "$(date '+%F %T')" "$NEW_DIR" >>"$LOG_FILE"
 
     # Send cd command to the original pane if directory changed
-    if [ -n "$NEW_DIR" ] && [ -d "$NEW_DIR" ]; then
-        tmux send-keys -t "$ORIG_PANE" "cd $(printf '%q' "$NEW_DIR")" Enter
+    if [ -n "$ORIG_PANE" ] && [ -n "$NEW_DIR" ] && [ -d "$NEW_DIR" ]; then
+        if tmux send-keys -t "$ORIG_PANE" C-u "cd -- $(printf '%q' "$NEW_DIR")" Enter; then
+            printf '[%s] send-keys: ok target=%s\n' "$(date '+%F %T')" "$ORIG_PANE" >>"$LOG_FILE"
+        else
+            printf '[%s] send-keys: failed target=%s\n' "$(date '+%F %T')" "$ORIG_PANE" >>"$LOG_FILE"
+        fi
+    else
+        printf '[%s] switch-skip: pane=%s dir=%s\n' "$(date '+%F %T')" "$ORIG_PANE" "$NEW_DIR" >>"$LOG_FILE"
+        tmux display-message "lazygit popup: cannot switch dir (pane='$ORIG_PANE', dir='$NEW_DIR')"
     fi
+else
+    printf '[%s] no-lastdir\n' "$(date '+%F %T')" >>"$LOG_FILE"
+    tmux display-message "lazygit popup: lazygit did not report a new directory"
 fi

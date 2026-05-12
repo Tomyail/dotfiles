@@ -200,7 +200,7 @@ bind C-c run-shell 'p=$(readlink /proc/#{pane_pid}/cwd 2>/dev/null || lsof -a -p
 bind c run-shell 'p=$(readlink /proc/#{pane_pid}/cwd 2>/dev/null || lsof -a -p #{pane_pid} -d cwd -Fn 2>/dev/null | grep "^n" | head -1 | cut -c2-); tmux new-window -c "${p:-$HOME}"'  #!important  # 新建 window 继承当前 pane 目录
 bind-key h select-window -t :-                   # <prefix>+h 切换到左侧窗口
 bind-key l select-window -t :+                   # <prefix>+l 切换到右侧窗口
-bind-key g display-popup -d '#{pane_current_path}' -w 90% -h 90% -e 'TMUX_PANE=#{pane_id}' -E '~/.local/bin/lazygit-tmux-popup'  # <prefix>+g 打开 lazygit 悬浮窗口（支持目录切换）
+bind-key g run-shell 'tmux display-popup -d "#{pane_current_path}" -w 90% -h 90% -E "env ORIG_TMUX_PANE=#{pane_id} ~/.local/bin/lazygit-tmux-popup"'  # <prefix>+g 打开 lazygit 悬浮窗口（支持目录切换）
 bind-key R run-shell '\
   target="#{window_name}"; \
   [ -n "$target" ] || exit 0; \
