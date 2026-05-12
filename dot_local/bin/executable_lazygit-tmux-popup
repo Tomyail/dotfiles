@@ -18,8 +18,12 @@ if [ -f "$LAZYGIT_NEW_DIR_FILE" ]; then
     NEW_DIR=$(<"$LAZYGIT_NEW_DIR_FILE")
     rm -f "$LAZYGIT_NEW_DIR_FILE"
 
-    # Send cd command to the original pane if directory changed
+    # Send cd command to the original pane only if directory actually changed
     if [ -n "$ORIG_PANE" ] && [ -n "$NEW_DIR" ] && [ -d "$NEW_DIR" ]; then
-        tmux send-keys -t "$ORIG_PANE" C-u "cd -- $(printf '%q' "$NEW_DIR")" Enter
+        # Get the current working directory of the target pane
+        CURRENT_DIR=$(tmux display-message -t "$ORIG_PANE" -p "#{pane_current_path}")
+        if [ "$NEW_DIR" != "$CURRENT_DIR" ]; then
+            tmux send-keys -t "$ORIG_PANE" C-u "cd -- $(printf '%q' "$NEW_DIR")" Enter
+        fi
     fi
 fi
