@@ -311,6 +311,71 @@ function gwa() {
 	fi
 }
 
+# Git worktree "switch" - move current branch to a worktree and switch to main
+# Usage:
+#   gwA <branch>     - pull, switch main, then create worktree for specified branch
+#   gwA              - pull, switch main, then create worktree for current branch
+# Environment:
+#   WORKTREE_ROOT    - override default worktree directory (default: ~/worktrees)
+function gwA() {
+	local root="${WORKTREE_ROOT:-$HOME/worktrees}"
+	local main_worktree=$(command git worktree list --porcelain 2>/dev/null | head -1 | cut -d' ' -f2)
+	if [[ -z "$main_worktree" ]]; then
+		echo "Error: Not in a git repository" >&2
+		return 1
+	fi
+
+	local repo=$(basename "$main_worktree")
+	local current_branch=$(command git branch --show-current)
+	local target_branch="${1:-$current_branch}"
+
+	if [[ -z "$target_branch" ]]; then
+		echo "Error: Could not determine target branch" >&2
+		return 1
+	fi
+
+	# Detect main branch (main or master)
+	local main_branch=""
+	if command git show-ref --verify --quiet refs/heads/main 2>/dev/null; then
+		main_branch="main"
+	elif command git show-ref --verify --quiet refs/heads/master 2>/dev/null; then
+		main_branch="master"
+	else
+		echo "Error: Could not find main or master branch" >&2
+		return 1
+	fi
+
+	echo "Pulling latest changes..."
+	command git pull || return 1
+
+	# Stash any uncommitted changes if we're switching away from current branch
+	local stashed=false
+	if [[ "$current_branch" != "$main_branch" ]] && ! git diff --quiet HEAD 2>/dev/null; then
+		echo "Stashing uncommitted changes..."
+		command git stash push -m "Auto-stash before gwA on $(date '+%Y-%m-%d %H:%M:%S')"
+		stashed=true
+	fi
+
+	echo "Switching to $main_branch..."
+	command git checkout "$main_branch" || return 1
+
+	# Prepare worktree path
+	local branch_dir=${target_branch//\//-}
+	local worktree_path="$root/$repo-$branch_dir"
+
+	echo "Creating worktree for $target_branch at $worktree_path..."
+	if command git worktree add "$worktree_path" "$target_branch"; then
+		cd "$worktree_path" || return 1
+		if [[ "$stashed" == "true" ]] && [[ "$target_branch" == "$current_branch" ]]; then
+			echo "Note: Uncommitted changes were stashed in main worktree. Run 'git stash pop' to restore."
+		fi
+	else
+		echo "Error: Failed to create worktree. Switching back to $current_branch..."
+		command git checkout "$current_branch"
+		return 1
+	fi
+}
+
 # Git commit and push via Claude (non-interactive, background)
 # Usage: gcP
 function gcP() {
