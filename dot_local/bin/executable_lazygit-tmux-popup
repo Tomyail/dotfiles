@@ -7,7 +7,8 @@
 ORIG_PANE="$ORIG_TMUX_PANE"
 
 # Use a popup-specific file so this cannot race with a regular lg invocation.
-export LAZYGIT_NEW_DIR_FILE="${TMPDIR:-/tmp}/lazygit-lastdir-popup-$$"
+# TMPDIR usually ends with /, so use /tmp/ as default to match.
+export LAZYGIT_NEW_DIR_FILE="${TMPDIR:-/tmp/}lazygit-lastdir-popup-$$"
 
 # Run lazygit
 lazygit "$@"
