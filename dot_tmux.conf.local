@@ -171,7 +171,8 @@ set -g @plugin 'tmux-plugins/tmux-resurrect'     # 持久化会话插件
 set -g @plugin 'tmux-plugins/tmux-continuum'     # 自动保存与恢复会话插件
 set -g @plugin 'christoomey/vim-tmux-navigator'  # Vim/Tmux 光标联动插件
 set -g @plugin 'sainnhe/tmux-fzf'                # FZF 方式切换窗口/会话
-set -g @continuum-restore 'on'                   # 启用 tmux-continuum 自动恢复
+set -g @continuum-restore 'off'                  # 禁用自动恢复，但保留自动保存
+set -g @continuum-save-interval '15'             # 每15分钟自动保存一次
 
 
 # ------------------------------------------------------------------------------
