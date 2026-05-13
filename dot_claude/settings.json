@@ -82,7 +82,6 @@
     ]
   },
   "enabledPlugins": {
-    "scheduler@claude-scheduler": true,
     "superpowers@claude-plugins-official": true,
     "andrej-karpathy-skills@karpathy-skills": true,
     "codex@openai-codex": true,

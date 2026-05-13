@@ -1,5 +1,5 @@
 {
-  "CLAUDE_MEM_MODEL":"deepseek-v4-flash",
+  "CLAUDE_MEM_MODEL": "{{ if eq .isWork "true" }}{{ .workMemModel }}{{ else }}{{ .homeMemModel }}{{ end }}",
   "CLAUDE_MEM_CONTEXT_OBSERVATIONS": "50",
   "CLAUDE_MEM_WORKER_PORT": "37701",
   "CLAUDE_MEM_WORKER_HOST": "127.0.0.1",
