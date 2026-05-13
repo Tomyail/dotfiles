@@ -390,13 +390,13 @@ function gcC() {
 
 # Lazygit with directory switching - changes shell dir to match lazygit's last location on exit
 function lg() {
-	export LAZYGIT_NEW_DIR_FILE=~/.config/lazygit/lastdir
+	export LAZYGIT_NEW_DIR_FILE="${TMPDIR:-/tmp/}lazygit-lastdir-$$"
 
 	lazygit "$@"
 
-	if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
-		cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
-		rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+	if [ -f "$LAZYGIT_NEW_DIR_FILE" ]; then
+		cd "$(cat "$LAZYGIT_NEW_DIR_FILE")"
+		rm -f "$LAZYGIT_NEW_DIR_FILE" > /dev/null
 	fi
 	unset LAZYGIT_NEW_DIR_FILE
 }
