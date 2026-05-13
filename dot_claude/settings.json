@@ -85,8 +85,8 @@
     "scheduler@claude-scheduler": true,
     "superpowers@claude-plugins-official": true,
     "andrej-karpathy-skills@karpathy-skills": true,
-    "episodic-memory@superpowers-marketplace": true,
-    "codex@openai-codex": true
+    "codex@openai-codex": true,
+    "claude-mem@thedotmack": true
   },
   "extraKnownMarketplaces": {
     "superpowers-marketplace": {
@@ -106,8 +106,17 @@
         "source": "github",
         "repo": "openai/codex-plugin-cc"
       }
+    },
+    "thedotmack": {
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
+      }
     }
   },
   "skipDangerousModePermissionPrompt": true,
-  "autoCompactEnabled": true
+  "autoCompactEnabled": true,
+  "env": {
+    "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "1"
+  }
 }
