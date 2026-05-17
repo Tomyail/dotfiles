@@ -1,0 +1,21 @@
+#!/bin/bash
+{{- if and (eq .chezmoi.os "linux") .isDesktop }}
+
+set -eu
+
+if command -v kitty &>/dev/null; then
+  echo "kitty already installed: $(kitty --version)"
+  exit 0
+fi
+
+echo "Installing kitty via official installer..."
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n
+
+# Symlink to ~/.local/bin so it's in PATH
+ln -sf "$HOME/.local/kitty.app/bin/kitty" "$HOME/.local/bin/kitty"
+ln -sf "$HOME/.local/kitty.app/bin/kitten" "$HOME/.local/bin/kitten"
+
+echo "kitty installed: $(kitty --version)"
+{{- else }}
+exit 0
+{{- end }}
