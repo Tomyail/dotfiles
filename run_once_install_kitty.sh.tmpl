@@ -12,8 +12,21 @@ echo "Installing kitty via official installer..."
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin launch=n
 
 # Symlink to ~/.local/bin so it's in PATH
+mkdir -p "$HOME/.local/bin"
 ln -sf "$HOME/.local/kitty.app/bin/kitty" "$HOME/.local/bin/kitty"
 ln -sf "$HOME/.local/kitty.app/bin/kitten" "$HOME/.local/bin/kitten"
+
+# Install desktop entry and icon
+mkdir -p "$HOME/.local/share/applications" "$HOME/.local/share/icons"
+cp "$HOME/.local/kitty.app/share/applications/kitty.desktop" "$HOME/.local/share/applications/"
+cp "$HOME/.local/kitty.app/share/applications/kitty-open.desktop" "$HOME/.local/share/applications/"
+cp "$HOME/.local/kitty.app/lib/kitty/logo/kitty-128.png" "$HOME/.local/share/icons/"
+
+# Use absolute path in desktop entry so launcher can find the binary
+sed -i "s|^Exec=kitty|Exec=$HOME/.local/bin/kitty|" "$HOME/.local/share/applications/kitty.desktop"
+sed -i "s|^TryExec=kitty|TryExec=$HOME/.local/bin/kitty|" "$HOME/.local/share/applications/kitty.desktop"
+
+update-desktop-database "$HOME/.local/share/applications/" 2>/dev/null || true
 
 echo "kitty installed: $(kitty --version)"
 {{- else }}
