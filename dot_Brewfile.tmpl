@@ -131,4 +131,9 @@ cask "claude-code"                  # Claude Code
 cask "codex"                        # OpenAI Codex CLI/App
 brew "asheshgoplani/tap/agent-deck" # AI Agent 多会话 TUI
 
+{{ if .isDesktop -}}
+# Desktop Applications (Linux GUI only)
+brew "kitty"                        # GPU 加速终端
+{{- end }}
+
 {{- end -}}

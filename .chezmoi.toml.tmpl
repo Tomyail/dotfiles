@@ -7,6 +7,7 @@
 [data]
   claudeCommand    = {{ $claudeCmd | quote }}
   isWork           = {{ promptBool "Is this company computer?" | quote }}
+  isDesktop        = {{ promptBool "Is this a desktop (GUI) environment?" | quote }}
   personalGitName  = {{ promptString "Personal git name" | quote }}
   personalGitEmail = {{ promptString "Personal git email" | quote }}
   workGitName      = {{ promptString "Work git name" | quote }}

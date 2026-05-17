@@ -38,8 +38,10 @@ README.md
 .yabairc
 Library/Rime
 .config/alacritty
-.config/kitty
 .config/wezterm
+{{ if not .isDesktop }}
+.config/kitty
+{{ end }}
 {{ end }}
 
 {{ if ne .chezmoi.os "linux" }}
