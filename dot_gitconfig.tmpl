@@ -194,6 +194,13 @@
 [credential]
 	helper =
 	helper = {{ $gcm }}
+{{- if eq .chezmoi.os "linux" }}
+	credentialStore = plaintext
+{{- end }}
+{{- end }}
+{{- if eq .chezmoi.os "linux" }}
+[credential "https://gitea.tomyail.com"]
+	provider = generic
 {{- end }}
 [credential "https://github.com"]
 	username = {{ .personalGitName }}
