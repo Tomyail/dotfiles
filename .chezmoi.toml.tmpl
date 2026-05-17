@@ -8,7 +8,8 @@
 {{- if eq .chezmoi.os "darwin" -}}
   {{- $isDesktop = true -}}
 {{- else if eq .chezmoi.os "linux" -}}
-  {{- if or (stat "/usr/share/xsessions") (stat "/usr/share/wayland-sessions") -}}
+  {{- $isWSL := contains "microsoft" (output "uname" "-r" | lower) -}}
+  {{- if and (not $isWSL) (or (stat "/usr/share/xsessions") (stat "/usr/share/wayland-sessions")) -}}
     {{- $isDesktop = true -}}
   {{- end -}}
 {{- end -}}
