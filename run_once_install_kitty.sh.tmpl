@@ -16,15 +16,12 @@ mkdir -p "$HOME/.local/bin"
 ln -sf "$HOME/.local/kitty.app/bin/kitty" "$HOME/.local/bin/kitty"
 ln -sf "$HOME/.local/kitty.app/bin/kitten" "$HOME/.local/bin/kitten"
 
-# Install desktop entry and icon
-mkdir -p "$HOME/.local/share/applications" "$HOME/.local/share/icons"
+# Install desktop entry with absolute paths (official kitty docs approach)
+mkdir -p "$HOME/.local/share/applications"
 cp "$HOME/.local/kitty.app/share/applications/kitty.desktop" "$HOME/.local/share/applications/"
 cp "$HOME/.local/kitty.app/share/applications/kitty-open.desktop" "$HOME/.local/share/applications/"
-cp "$HOME/.local/kitty.app/lib/kitty/logo/kitty-128.png" "$HOME/.local/share/icons/"
-
-# Use absolute path in desktop entry so launcher can find the binary
-sed -i "s|^Exec=kitty|Exec=$HOME/.local/bin/kitty|" "$HOME/.local/share/applications/kitty.desktop"
-sed -i "s|^TryExec=kitty|TryExec=$HOME/.local/bin/kitty|" "$HOME/.local/share/applications/kitty.desktop"
+sed -i "s|Icon=kitty|Icon=$(readlink -f "$HOME")/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" "$HOME/.local/share/applications/kitty.desktop" "$HOME/.local/share/applications/kitty-open.desktop"
+sed -i "s|Exec=kitty|Exec=$(readlink -f "$HOME")/.local/kitty.app/bin/kitty|g" "$HOME/.local/share/applications/kitty.desktop" "$HOME/.local/share/applications/kitty-open.desktop"
 
 update-desktop-database "$HOME/.local/share/applications/" 2>/dev/null || true
 
