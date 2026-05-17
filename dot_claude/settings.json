@@ -1,39 +1,11 @@
 {
-  "autoCompactEnabled": true,
-  "enabledPlugins": {
-    "superpowers@claude-plugins-official": true,
-    "andrej-karpathy-skills@karpathy-skills": true,
-    "codex@openai-codex": true,
-    "claude-mem@thedotmack": true
-  },
   "env": {
     "CLAUDE_CODE_DISABLE_AUTO_MEMORY": "1"
   },
-  "extraKnownMarketplaces": {
-    "superpowers-marketplace": {
-      "source": {
-        "source": "github",
-        "repo": "obra/superpowers-marketplace"
-      }
-    },
-    "karpathy-skills": {
-      "source": {
-        "source": "github",
-        "repo": "forrestchang/andrej-karpathy-skills"
-      }
-    },
-    "openai-codex": {
-      "source": {
-        "source": "github",
-        "repo": "openai/codex-plugin-cc"
-      }
-    },
-    "thedotmack": {
-      "source": {
-        "source": "github",
-        "repo": "thedotmack/claude-mem"
-      }
-    }
+  "permissions": {
+    "allow": [
+      "Bash(git *)"
+    ]
   },
   "hooks": {
     "Notification": [
@@ -113,8 +85,38 @@
       }
     ]
   },
-  "permissions": {
-    "allow": []
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "andrej-karpathy-skills@karpathy-skills": true,
+    "codex@openai-codex": true,
+    "claude-mem@thedotmack": true
   },
-  "skipDangerousModePermissionPrompt": true
+  "extraKnownMarketplaces": {
+    "superpowers-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "obra/superpowers-marketplace"
+      }
+    },
+    "karpathy-skills": {
+      "source": {
+        "source": "github",
+        "repo": "forrestchang/andrej-karpathy-skills"
+      }
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      }
+    },
+    "thedotmack": {
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
+      }
+    }
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "autoCompactEnabled": true
 }
