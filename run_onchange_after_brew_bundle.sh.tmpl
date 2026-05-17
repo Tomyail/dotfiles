@@ -1,5 +1,14 @@
 #!/bin/bash
 # Brewfile hash: {{ include "dot_Brewfile.tmpl" | sha256sum }}
 
+# Ensure brew is in PATH when chezmoi runs this in a non-interactive subshell
+for _brew_path in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
+  if [[ -x "$_brew_path" ]]; then
+    eval "$("$_brew_path" shellenv)"
+    break
+  fi
+done
+unset _brew_path
+
 echo "Running brew bundle --global..."
 brew bundle --global || true

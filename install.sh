@@ -1,8 +1,22 @@
 #!/usr/bin/env bash
 # Bootstrap script for tomyail/dotfiles
-# Usage: curl -fsSL https://raw.githubusercontent.com/tomyail/dotfiles/main/install.sh | bash
+# Usage: Download and run directly — do NOT pipe through bash.
+#   curl -fsSL https://raw.githubusercontent.com/tomyail/dotfiles/main/install.sh -o /tmp/install.sh
+#   bash /tmp/install.sh
+#
+# Piping via `curl ... | bash` loses the TTY, which breaks Bitwarden login
+# and chezmoi interactive prompts.
 
 set -euo pipefail
+
+# Warn and abort if stdin is not a terminal (pipe mode)
+if ! [[ -t 0 ]]; then
+  echo "ERROR: This script must be run directly, not piped through bash." >&2
+  echo "  Download it first:" >&2
+  echo "    curl -fsSL https://raw.githubusercontent.com/tomyail/dotfiles/main/install.sh -o /tmp/install.sh" >&2
+  echo "    bash /tmp/install.sh" >&2
+  exit 1
+fi
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -197,7 +211,7 @@ else
   if ! grep -qF "$ZSH_PATH" /etc/shells 2>/dev/null; then
     echo "$ZSH_PATH" | sudo tee -a /etc/shells
   fi
-  chsh -s "$ZSH_PATH"
+  sudo chsh -s "$ZSH_PATH" "$USER"
   success "Default shell changed to zsh (takes effect in next login)"
 fi
 
