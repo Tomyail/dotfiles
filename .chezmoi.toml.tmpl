@@ -16,7 +16,7 @@
 
 [data]
   claudeCommand    = {{ $claudeCmd | quote }}
-  isWork           = {{ promptBool "Is this company computer?" | quote }}
+  isWork           = {{ promptBool "Is this company computer?" }}
   isDesktop        = {{ $isDesktop }}
   personalGitName  = {{ promptString "Personal git name" | quote }}
   personalGitEmail = {{ promptString "Personal git email" | quote }}
