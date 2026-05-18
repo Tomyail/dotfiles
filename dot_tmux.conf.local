@@ -215,6 +215,8 @@ bind-key -r y run-shell '\
   tmux has-session -t "$SESSION" 2>/dev/null || \
   tmux new-session -d -s "$SESSION" -c "#{pane_current_path}" "claude"; \
   tmux display-popup -w80% -h80% -E "tmux attach-session -t $SESSION"'
+bind-key - split-window -h -c '#{pane_current_path}'  # <prefix>+- 左右分割（水平）
+bind-key _ split-window -v -c '#{pane_current_path}'  # <prefix>+_ 上下分割（垂直）
 # vim-tmux-navigator 通过 TPM 异步安装，会在 oh-my-tmux 完成后覆盖 C-l 绑定，
 # 导致 oh-my-tmux 原有的 C-l（清屏+清除历史）失效（见 gpakosz/.tmux#788）。
 # 此处手动接管 C-l：在 vim/fzf 内透传按键，否则切换右侧 pane。
