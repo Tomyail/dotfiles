@@ -32,6 +32,18 @@ README.md
 .tmux/plugins/*
 !.tmux/plugins/tpm
 
+# herdr: only the static config.toml is managed. Everything else is
+# per-machine runtime state or auto-downloaded plugin code.
+#   - plugins/        downloaded by herdr (analogous to node_modules / tpm plugins)
+#   - plugins.json    mixes plugin list with machine-specific install state
+#   - session.json    live workspace/tab/pane layout, changes every run
+#   - *.log, *.sock   runtime logs and unix sockets
+.config/herdr/plugins
+.config/herdr/plugins.json
+.config/herdr/session.json
+.config/herdr/*.log
+.config/herdr/*.sock
+
 {{ if ne .chezmoi.os "darwin" }}
 # macOS-only files
 .skhdrc

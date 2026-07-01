@@ -1,0 +1,118 @@
+# ------------------------------------------------------------------------------
+# 终端 / 新面板目录策略
+# ------------------------------------------------------------------------------
+[terminal]
+new_cwd = "follow"
+
+# ------------------------------------------------------------------------------
+# 键位映射
+# ------------------------------------------------------------------------------
+[keys]
+prefix = "ctrl+a"
+
+# —— 会话 / 工作区(对应 tmux session)——————————————
+# tmux: bind C-c new-session(继承当前目录) → herdr 新建 workspace
+new_workspace = "prefix+ctrl+c"
+# tmux: prefix+s = choose-tree(列出所有 session) → herdr workspace 列表/选择器
+workspace_picker = "prefix+s"
+# tmux: prefix+C-f find-session → 也可作 workspace 选择器的别名入口
+# (workspace_picker 是单值键,如需额外入口可挪走)
+# tmux: bind R(rename session) → herdr 重命名工作区
+rename_workspace = "prefix+shift+r"
+# herdr 默认 prefix+shift+d,与 tmux 关闭会话习惯一致,保留
+close_workspace = "prefix+shift+d"
+# tmux: bind d = detach-client → herdr 分离(原默认 prefix+q)
+detach = "prefix+d"
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
+
+# —— 标签页(对应 tmux window)——————————————————————
+# tmux: bind c new-window(继承目录) → herdr 新建 tab
+new_tab = "prefix+c"
+# tmux 默认: prefix+, rename-window → herdr 重命名 tab
+rename_tab = "prefix+comma"
+switch_tab = "prefix+1..9"
+switch_workspace = "prefix+shift+1..9"
+focus_agent = "prefix+alt+1..9"
+close_tab = "prefix+shift+x"
+
+# —— 面板导航:由 vim-herdr-navigation 插件接管 C-h/j/k/l ————————
+# 见下方 [[keys.command]] 段。插件负责:在 vim/neovim 内部移动 split,
+# 到达边缘则跨越到相邻 herdr pane;对 lazygit/k9s 透传(见 PASSTHROUGH)。
+# 注意:以下 4 个键不再用 focus_pane_* 直接绑定,改为 plugin_action。
+# ⚠️ 代价:C-l 不再透传给 shell 清屏,C-k 不再是 readline kill-line
+#         (与 vim-tmux-navigator 同样的取舍)。需要清屏可用 prefix+l 或改回。
+
+# —— 分屏(对应 .local 覆盖后的定义)——————————————————
+split_vertical = "prefix+minus"
+split_horizontal = "prefix+v"
+zoom = "prefix+z"
+
+# —— 其他 ——————————————————————————————————————
+# tmux: bind r source(重载配置) → herdr 重载(原默认 prefix+shift+r)
+reload_config = "prefix+r"
+toggle_sidebar = "prefix+e"
+# tmux 无对应;herdr 内置设置面板(prefix+s 已让给 workspace_picker)
+settings = "prefix+shift+s"
+# 帮助(herdr 默认)
+help = "prefix+?"
+# copy-mode(进入复制/滚动模式)。herdr 默认是 prefix+[,改成 prefix+enter。
+copy_mode = "prefix+enter"
+
+
+
+# —— 自定义命令(对应 tmux 里的 popup 绑定)——————————————
+# tmux: bind g lazygit 悬浮窗 → herdr 在临时面板里打开 lazygit
+[[keys.command]]
+key = "prefix+g"
+type = "pane"
+command = "lazygit"
+description = "run lazygit"
+
+
+# —— vim-herdr-navigation:C-h/j/k/l 跨 vim/herdr 无缝导航 ————————
+# 插件逻辑:在 vim/neovim 内移动 split,到边缘则交给 herdr pane focus;
+# 对 lazygit/k9s 透传(见文件顶部/启动环境的 HERDR_NAV_PASSTHROUGH_RE)。
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "vim-herdr-navigation.left"
+description = "navigate left (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "vim-herdr-navigation.down"
+description = "navigate down (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "vim-herdr-navigation.up"
+description = "navigate up (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "vim-herdr-navigation.right"
+description = "navigate right (vim/herdr)"
+
+# ------------------------------------------------------------------------------
+# 界面(可选,按需调整)
+# ------------------------------------------------------------------------------
+[ui]
+# 对应 tmux: set -g mouse on
+mouse_capture = true
+# 显示 agent 标签
+show_agent_labels_on_pane_borders = true
+
+agent_panel_sort = "spaces"
+[theme]
+name = "catppuccin"
+auto_switch = false
+
+[ui.toast]
+delivery = "herdr"
+
+[experimental]
+switch_ascii_input_source_in_prefix = false
